@@ -1,0 +1,30 @@
+* {
+  @apply mb-2;
+}
+form {
+  @apply flex flex-col w-72 rounded-lg p-3 relative bg-gold;
+}
+input {
+  @apply rounded-md p-2 text-dark-brown bg-gray-300;
+}
+.title {
+  @apply text-center text-xl font-bold text-dark-brown py-2;
+}
+::placeholder {
+  @apply text-sm text-dark-brown;
+}
+button[type="submit"] {
+  @apply rounded-md p-2 bg-dark-brown text-gold;
+}
+.close {
+  @apply absolute z-10 bg-transparent text-xl right-0 top-0 pr-3;
+}
+.error {
+  @apply text-center text-gold;
+}
+.spinner {
+  @apply flex justify-center;
+}
+.mat-warn {
+  --mdc-circular-progress-active-indicator-color: #7f654d;
+}

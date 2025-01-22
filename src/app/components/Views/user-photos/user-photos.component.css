@@ -1,0 +1,3 @@
+:host {
+  @apply h-full w-screen bg-dark-brown flex flex-col items-center;
+}

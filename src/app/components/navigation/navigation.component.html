@@ -1,0 +1,35 @@
+<nav class="w-3/5 flex gap-9 justify-between py-4" *ngIf="isContentReady">
+  <p class="text-xl text-gold font-bold cursor-pointer" [routerLink]="isLoggedIn ? ['/userprofile'] : ['/']">
+    tribebuddy
+  </p>
+  <ul class="flex justify-between gap-9">
+    <li *ngIf="!isLoggedIn">
+      <button mat-button (click)="openRegistrationDialog()">
+        Regisztráció
+      </button>
+    </li>
+    <li *ngIf="!isLoggedIn">
+      <button mat-button (click)="openLoginDialog()">Bejelentkezés</button>
+    </li>
+    <li *ngIf="isLoggedIn" class="flex items-center">
+      <span
+        mat-button
+        [matMenuTriggerFor]="menu"
+        aria-label="User menu"
+      >
+        <img
+          *ngIf="profilePhoto"
+          [src]="'https://tribebuddy.hu/photos/' + profilePhoto + '.webp'"
+          class="object-cover w-12 h-12 rounded-full cursor-pointer"
+          alt="Profile photo"
+        />
+        <mat-icon mat-icon-button *ngIf="!profilePhoto" aria-label="User icon">person</mat-icon>
+      </span>
+      <mat-menu #menu="matMenu" xPosition="after">
+        <button mat-button [routerLink]="['/userprofile']">Profilod</button>
+        <button mat-button [routerLink]="['/userphotos']">Fotó feltöltés</button>
+        <button mat-button (click)="logout()">Kilépés</button>
+      </mat-menu>
+    </li>
+  </ul>
+</nav>

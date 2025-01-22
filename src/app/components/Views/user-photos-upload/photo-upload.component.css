@@ -1,0 +1,16 @@
+:host {
+  @apply w-full flex justify-center bg-dark-brown;
+}
+
+form {
+  @apply flex flex-col pb-20;
+}
+
+.hidden {
+  display: none;
+}
+
+mat-progress-bar {
+  @apply bg-gold;
+}
+

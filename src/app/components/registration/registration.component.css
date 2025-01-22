@@ -1,0 +1,77 @@
+* {
+  @apply mb-2;
+}
+form {
+  @apply flex flex-col w-72 rounded-lg pt-2 px-3 relative bg-gold;
+}
+.title {
+  @apply text-center text-xl font-bold text-dark-brown py-2;
+}
+input,
+select {
+  @apply rounded-md p-2 text-dark-brown bg-gray-300;
+}
+::placeholder {
+  @apply text-dark-brown;
+}
+button[type='submit'] {
+  @apply rounded-md p-2 bg-dark-brown text-gold;
+}
+button.disabled {
+  @apply bg-slate-600 text-slate-500;
+  cursor: not-allowed;
+}
+.close {
+  @apply absolute z-10 bg-transparent text-xl right-0 top-0;
+}
+.error {
+  @apply text-center text-gray-200;
+}
+.spinner {
+  @apply flex justify-center;
+}
+.mat-warn {
+  --mdc-circular-progress-active-indicator-color: #dfbd69;
+}
+.invalid {
+  border: 1px solid red;
+}
+.mat-snack-bar-container {
+  border-radius: 8px !important;
+}
+.terms-checkbox {
+  @apply flex items-center gap-2;
+}
+.terms-checkbox a {
+  @apply text-dark-brown underline cursor-pointer;
+}
+.terms-checkbox input[type='checkbox'] {
+  @apply bg-gold;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  position: relative;
+  border:
+    1px,
+    solid #412d24;
+}
+
+.terms-checkbox input[type='checkbox']:checked {
+  @apply bg-dark-brown;
+}
+
+.terms-checkbox input[type='checkbox']:checked::after {
+  content: '✓';
+  position: absolute;
+  left: 3px;
+  top: -2px;
+  @apply text-gold;
+}
+
+label {
+  @apply text-dark-brown;
+}
+
+a {
+  text-decoration: none !important;
+}

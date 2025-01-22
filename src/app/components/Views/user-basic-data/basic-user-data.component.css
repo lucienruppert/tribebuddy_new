@@ -1,0 +1,8 @@
+:host {
+  @apply h-auto w-full flex justify-center bg-dark-brown text-white;
+}
+
+span {
+  border: 1px solid #505050;
+  @apply rounded-md p-2 bg-light-brown text-gray-300 mb-2;
+}

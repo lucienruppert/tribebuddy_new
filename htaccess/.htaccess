@@ -1,0 +1,10 @@
+RewriteEngine On
+#RewriteBase /tribebuddy/
+RewriteBase /
+
+# Redirect all requests to index.html, but preserve the /tribebuddy/ base path
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ /tribebuddy/index.html [L]
+RewriteRule ^(.*)$ /index.html [L]
+

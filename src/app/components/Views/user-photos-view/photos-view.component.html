@@ -1,0 +1,24 @@
+<div class="grid grid-cols-4 gap-2.5 mx-20">
+  <div *ngFor="let photoData of photosData"
+    class="box-border relative cursor-pointer transition-opacity duration-200"
+    [class.opacity-0]="!photoData.isLoaded"
+    [style.border]="photoData.isLoaded && photoData.isProfile ? '3px solid #a18e58' : 'none'"
+    (click)="setProfilePhoto(photoData)"
+    (keyup.enter)="setProfilePhoto(photoData)"
+    tabindex="0">
+    <img [src]="'https://tribebuddy.hu/photos/' + photoData.fileName + '.webp'"
+      (load)="onImageLoad(photoData)"
+      alt="User Photo"
+      class="w-full h-64 object-cover">
+    <button *ngIf="photoData.isProfile && photoData.isLoaded" 
+      class="absolute bottom-0 left-0 text-gold bg-dark-brown bg-opacity-80 pt-1 px-1 rounded-tr-md">
+      <mat-icon>star</mat-icon>
+    </button>
+    <button *ngIf="photoData.isLoaded"
+      class="absolute bottom-0 right-0 text-gold bg-dark-brown bg-opacity-80 pt-1 px-1 rounded-tl-md"
+      (click)="$event.stopPropagation(); deletePhoto(photoData.fileName)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
+

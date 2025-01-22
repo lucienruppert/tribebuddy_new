@@ -1,0 +1,70 @@
+name: tribebuddy Frontend FTP Deploy
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x  
+
+      - name: Install dependencies
+        run: |
+              npm install -g npm-force-resolutions
+              npm install --legacy-peer-deps
+              npx npm-force-resolutions
+              npm install --legacy-peer-deps
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
+
+      - name: Build Angular app
+        run: npm run build -- --configuration production  
+
+      - name: Copy .htaccess to build directory
+        run: |
+          cp ./htaccess/.htaccess ./dist/browser/
+
+      - name: Upload built files via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        continue-on-error: true
+        id: ftp-deploy
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/browser/  
+          server-dir: /httpd/www/luciendelmar.com/html/tribebuddy/
+          dangerous-clean-slate: false
+          state-name: .ftp-deploy-sync-state.json
+          dry-run: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+
+      - name: Retry FTP Deploy on Failure
+        if: steps.ftp-deploy.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/browser/
+          server-dir: /httpd/www/luciendelmar.com/html/tribebuddy/
+          dangerous-clean-slate: false
+          state-name: .ftp-deploy-sync-state.json
+          dry-run: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

@@ -1,0 +1,11 @@
+:host {
+  @apply flex flex-col w-full;
+}
+
+app-basic-user-data {
+  @apply w-full;
+}
+
+app-detailed-user-profile {
+  @apply w-full;
+}

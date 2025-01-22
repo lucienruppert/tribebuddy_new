@@ -1,0 +1,40 @@
+:host {
+  @apply w-full flex justify-center;
+  height: var(--nav-height);
+}
+
+.mat-menu,
+.mat-mdc-button:not(:disabled) {
+  @apply text-gray-300 text-base bg-dark-brown;
+}
+
+.mat-mdc-button:hover,
+.custom-active-button[aria-expanded="true"] {
+  @apply bg-light-brown;
+}
+
+.mat-icon {
+  @apply text-gray-300;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+::ng-deep .mat-mdc-menu-panel {
+  background: #412d24 !important;
+  margin-left: -70px !important;
+}
+
+::ng-deep .mat-mdc-menu-content {
+  @apply flex flex-col;
+}
+
+::ng-deep .mat-mdc-menu-content button {
+  @apply w-full text-left;
+  min-width: 100px;
+}
+
+::ng-deep .mat-mdc-menu-content a {
+  @apply block w-full;
+}
