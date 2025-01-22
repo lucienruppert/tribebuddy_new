@@ -5,12 +5,12 @@
 
 .mat-menu,
 .mat-mdc-button:not(:disabled) {
-  @apply text-gray-300 text-base bg-dark-brown;
+  @apply text-gray-300 text-base;
 }
 
 .mat-mdc-button:hover,
 .custom-active-button[aria-expanded="true"] {
-  @apply bg-light-brown;
+  @apply bg-teal-900;
 }
 
 .mat-icon {

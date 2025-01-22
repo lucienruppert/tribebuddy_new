@@ -2,19 +2,19 @@
   @apply mb-2;
 }
 form {
-  @apply flex flex-col w-72 rounded-lg p-3 relative bg-gold;
+  @apply flex flex-col w-72 rounded-lg p-3 relative bg-yellow-500;
 }
 input {
   @apply rounded-md p-2 text-dark-brown bg-gray-300;
 }
 .title {
-  @apply text-center text-xl font-bold text-dark-brown py-2;
+  @apply text-center text-xl font-bold text-teal-950 py-2;
 }
 ::placeholder {
   @apply text-sm text-dark-brown;
 }
 button[type="submit"] {
-  @apply rounded-md p-2 bg-dark-brown text-gold;
+  @apply rounded-md p-2 bg-teal-950 text-yellow-500;
 }
 .close {
   @apply absolute z-10 bg-transparent text-xl right-0 top-0 pr-3;
