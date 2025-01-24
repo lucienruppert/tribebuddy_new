@@ -33,7 +33,7 @@ body {
 }
 
 :root {
-  --nav-height: 80px;
+  --nav-height: 45px;
 }
 
 .cdk-overlay-dark-backdrop {
