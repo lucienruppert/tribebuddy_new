@@ -7,6 +7,11 @@ export interface User {
   errors?: string[];
 }
 
+export interface Module {
+  id: string;
+  name: string;
+}
+
 export interface EmailSendingResult {
   sent: string;
   failed: string[];
@@ -32,6 +37,7 @@ export interface PhotoUploadResponse {
   message: string;
   fileName: string;
 }
+
 export interface UserProfile {
   email?: string | null;
   nickname: string;
