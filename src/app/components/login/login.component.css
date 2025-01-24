@@ -20,7 +20,7 @@ button[type="submit"] {
   @apply absolute z-10 bg-transparent text-xl right-0 top-0 pr-3;
 }
 .error {
-  @apply text-center text-gold;
+  @apply text-center text-teal-950;
 }
 .spinner {
   @apply flex justify-center;

@@ -44,9 +44,10 @@ export class AuthenticationService {
       return loginData;
     } catch (error: unknown) {
       const typedError = error as HttpErrorResponse;
-      if (typedError.error['errors'])
-        throw typedError.error['errors'].join(' ');
-      return typedError.error['errors'];
+      if (typedError.error && typedError.error.status) {
+        throw new Error(typedError.error.status);
+      }
+      throw new Error('Login failed. Please try again.');
     }
   }
 

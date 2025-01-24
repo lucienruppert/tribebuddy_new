@@ -31,19 +31,19 @@ export class LoginComponent implements OnInit {
   }
 
   public async submitForm(): Promise<void> {
+    this.errorMessage = ''; // Clear any previous error messages
     this.showSpinner = true;
     try {
       await this.authentication.login(this.email, this.password);
       this.dialogRef.close();
     } catch (error: unknown) {
-      if (typeof error === "string") {
-        this.errorMessage = error;
-      } else if (error instanceof Error) {
+      if (error instanceof Error) {
         this.errorMessage = error.message;
       } else {
-        this.errorMessage = "An unknown error occurred.";
+        this.errorMessage = 'An unknown error occurred.';
       }
+    } finally {
+      this.showSpinner = false;
     }
-    this.showSpinner = false;
   }
 }
