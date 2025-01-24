@@ -1,3 +1,8 @@
+CREATE TABLE tribebuddy_modules (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(36) NOT NULL
+);
+
 CREATE TABLE users_tribebuddy (
     id INT(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(36) NOT NULL,
