@@ -40,7 +40,7 @@ export class AuthenticationService {
   public async login(email: string, password: string): Promise<User> {
     try {
       const loginData = await this.loginUser(email, password);
-      this.router.navigate(['/userprofile']);
+      this.router.navigate(['/dashboard']);
       return loginData;
     } catch (error: unknown) {
       const typedError = error as HttpErrorResponse;

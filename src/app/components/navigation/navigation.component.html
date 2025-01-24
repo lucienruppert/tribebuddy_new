@@ -1,4 +1,4 @@
-<nav class="w-3/5 flex gap-9 justify-between py-4" *ngIf="isContentReady">
+<nav class="w-3/5 flex gap-9 justify-between py-4">
   <p class="text-xl text-yellow-500 font-bold cursor-pointer" [routerLink]="isLoggedIn ? ['/userprofile'] : ['/']">
     TribeBuddy
   </p>
@@ -23,11 +23,11 @@
           class="object-cover w-12 h-12 rounded-full cursor-pointer"
           alt="Profile photo"
         />
-        <mat-icon mat-icon-button *ngIf="!profilePhoto" aria-label="User icon">person</mat-icon>
+        <mat-icon mat-icon-button aria-label="User icon">person</mat-icon>
       </span>
       <mat-menu #menu="matMenu" xPosition="after">
-        <button mat-button [routerLink]="['/userprofile']">Profilod</button>
-        <button mat-button [routerLink]="['/userphotos']">Fotó feltöltés</button>
+        <!-- <button mat-button [routerLink]="['/userprofile']">Profilod</button>
+        <button mat-button [routerLink]="['/userphotos']">Fotó feltöltés</button> -->
         <button mat-button (click)="logout()">Kilépés</button>
       </mat-menu>
     </li>

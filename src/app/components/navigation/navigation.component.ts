@@ -27,12 +27,11 @@ import { UserPhotosService } from '../../services/user-photos.service';
     RouterModule,
   ],
 })
-export class NavigationComponent implements OnDestroy, OnInit {
+export class NavigationComponent implements OnDestroy {
   public isLoggedIn = false;
   private destroy$ = new Subject<void>();
   public isContentReady = false;
   public profilePhoto: string | null = null;
-  private profileUpdateSubscription: Subscription;
 
   constructor(
     private authentication: AuthenticationService,
@@ -44,38 +43,33 @@ export class NavigationComponent implements OnDestroy, OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe(isLoggedIn => {
         this.isLoggedIn = isLoggedIn;
-        if (isLoggedIn) {
-          this.loadProfilePhoto();
-        } else {
-          this.profilePhoto = null;
-        }
       });
 
-    this.profileUpdateSubscription = this.photosService
-      .getProfileUpdateListener()
-      .subscribe((fileName: string) => {
-        this.profilePhoto = fileName;
-      });
+    // this.profileUpdateSubscription = this.photosService
+    //   .getProfileUpdateListener()
+    //   .subscribe((fileName: string) => {
+    //     this.profilePhoto = fileName;
+    //   });
   }
 
-  async ngOnInit() {
-    if (this.authentication.isLoggedIn$.value) {
-      this.loadProfilePhoto();
-    }
-    setTimeout(() => {
-      this.isContentReady = true;
-    }, 200);
-  }
+  // async ngOnInit() {
+  //   if (this.authentication.isLoggedIn$.value) {
+  //     this.loadProfilePhoto();
+  //   }
+  //   setTimeout(() => {
+  //     this.isContentReady = true;
+  //   }, 200);
+  // }
 
-  private async loadProfilePhoto(): Promise<void> {
-    try {
-      const photo = await this.photosService.getProfilePhoto();
-      this.profilePhoto = photo;
-    } catch (error) {
-      console.error('Error loading profile photo:', error);
-      this.profilePhoto = null;
-    }
-  }
+  // private async loadProfilePhoto(): Promise<void> {
+  //   try {
+  //     const photo = await this.photosService.getProfilePhoto();
+  //     this.profilePhoto = photo;
+  //   } catch (error) {
+  //     console.error('Error loading profile photo:', error);
+  //     this.profilePhoto = null;
+  //   }
+  // }
 
   public openRegistrationDialog(): void {
     this.dialog.open(RegistrationComponent);
@@ -96,6 +90,5 @@ export class NavigationComponent implements OnDestroy, OnInit {
   public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-    this.profileUpdateSubscription.unsubscribe();
   }
 }

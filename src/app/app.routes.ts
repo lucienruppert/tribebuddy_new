@@ -5,6 +5,7 @@ import { GeneralRouteGuardService } from './services/general-route-guard.service
 import { UserPhotosComponent } from './components/Views/user-photos/user-photos.component';
 import { ContractComponent } from './components/contract/contract.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
+import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,10 @@ export const routes: Routes = [
   {
     path: 'dataprotection',
     component: DataProtectionComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
