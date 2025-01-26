@@ -1,16 +1,10 @@
-<main class="h-[calc(100vh-100px)]">
-    <div class="grid grid-cols-3 gap-4 p-4">
-        <div class="col-span-1 p-4 bg-white rounded shadow">
-            <h2 class="text-lg font-bold mb-2">Module 1</h2>
-            <p *ngIf="modules[0]">{{ modules[0].name }}</p>
-        </div>
-        <div class="col-span-1 p-4 bg-white rounded shadow">
-            <h2 class="text-lg font-bold mb-2">Module 2</h2>
-            <p *ngIf="modules[1]">{{ modules[1].name }}</p>
-        </div>
-        <div class="col-span-1 p-4 bg-white rounded shadow">
-            <h2 class="text-lg font-bold mb-2">Module 3</h2>
-            <p *ngIf="modules[2]">{{ modules[2].name }}</p>
-        </div>
+<main class="h-[calc(100vh-100px)] flex flex-col items-center mt-32">
+    <div class="grid grid-cols-3 gap-10">
+        @for (module of modules; track module.name) {
+            <div class="col-span-1 bg-yellow-500 shadow flex flex-col items-center justify-center cursor-pointer w-64 h-64 rounded-3xl">
+                <h2 class="text-3xl mb-2 text-teal-950">{{ module.name }}</h2>
+                <p class="text-teal-950 text-lg">modul</p>
+            </div>
+        }
     </div>
 </main>

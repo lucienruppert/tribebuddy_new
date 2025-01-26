@@ -24,7 +24,6 @@ export class DashboardComponent {
   private async initModules(): Promise<void> {
     try {
       this.modules = await this.modulesService.getModules();
-      console.log('Modules:', this.modules);
     } catch (error) {
       console.error('Error fetching modules:', error);
     }
