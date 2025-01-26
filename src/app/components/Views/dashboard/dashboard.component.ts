@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { ModulesService } from '../../../services/modules.service';
 import { CommonModule } from '@angular/common';
 
+interface Module {
+  name: string;
+  // add other properties as needed
+}
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -10,14 +15,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+  modules: Module[] = [];
+
   constructor(private modulesService: ModulesService) {
     this.initModules();
   }
 
   private async initModules(): Promise<void> {
     try {
-      const modules = await this.modulesService.getModules();
-      console.log('Modules:', modules);
+      this.modules = await this.modulesService.getModules();
+      console.log('Modules:', this.modules);
     } catch (error) {
       console.error('Error fetching modules:', error);
     }

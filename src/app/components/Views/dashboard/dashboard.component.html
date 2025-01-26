@@ -1,1 +1,16 @@
-<main class="h-[calc(100vh-100px)]"></main>
+<main class="h-[calc(100vh-100px)]">
+    <div class="grid grid-cols-3 gap-4 p-4">
+        <div class="col-span-1 p-4 bg-white rounded shadow">
+            <h2 class="text-lg font-bold mb-2">Module 1</h2>
+            <p *ngIf="modules[0]">{{ modules[0].name }}</p>
+        </div>
+        <div class="col-span-1 p-4 bg-white rounded shadow">
+            <h2 class="text-lg font-bold mb-2">Module 2</h2>
+            <p *ngIf="modules[1]">{{ modules[1].name }}</p>
+        </div>
+        <div class="col-span-1 p-4 bg-white rounded shadow">
+            <h2 class="text-lg font-bold mb-2">Module 3</h2>
+            <p *ngIf="modules[2]">{{ modules[2].name }}</p>
+        </div>
+    </div>
+</main>
