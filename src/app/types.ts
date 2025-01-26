@@ -10,6 +10,7 @@ export interface User {
 export interface Module {
   id: string;
   name: string;
+  isAvailable: boolean;
 }
 
 export interface EmailSendingResult {
