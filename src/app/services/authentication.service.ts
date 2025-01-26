@@ -47,7 +47,7 @@ export class AuthenticationService {
       if (typedError.error && typedError.error.status) {
         throw new Error(typedError.error.status);
       }
-      throw new Error('Login failed. Please try again.');
+      throw new Error('A belépés nem sikerült. Kérjük, próbáld újra!');
     }
   }
 

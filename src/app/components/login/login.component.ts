@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   public async submitForm(): Promise<void> {
-    this.errorMessage = ''; // Clear any previous error messages
+    this.errorMessage = ''; 
     this.showSpinner = true;
     try {
       await this.authentication.login(this.email, this.password);
