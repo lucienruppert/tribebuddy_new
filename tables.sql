@@ -3,6 +3,14 @@ CREATE TABLE tribebuddy_modules (
     name VARCHAR(36) NOT NULL
 );
 
+CREATE TABLE tribebuddy_users_modules (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userId INT(11) NOT NULL,
+    moduleId INT(11) NOT NULL,
+    CONSTRAINT fk_userId FOREIGN KEY (userId) REFERENCES users_tribebuddy(id) ON DELETE CASCADE,
+    CONSTRAINT fk_moduleId FOREIGN KEY (moduleId) REFERENCES tribebuddy_modules(id) ON DELETE CASCADE
+);
+
 CREATE TABLE users_tribebuddy (
     id INT(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(36) NOT NULL,
