@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { ModulesService } from '../../../services/modules.service';
 import { CommonModule } from '@angular/common';
+import { Module } from '../../../types';
 
-interface Module {
-  name: string;
-  // add other properties as needed
-}
+
 
 @Component({
   selector: 'app-dashboard',
