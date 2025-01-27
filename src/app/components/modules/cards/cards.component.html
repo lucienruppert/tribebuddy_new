@@ -1,4 +1,4 @@
-<main class="h-[calc(100vh-100px)] flex flex-col items-center mt-16">
+<main class="h-[calc(100vh-100px)] flex flex-col items-center mt-10">
   <span
     class="text-yellow-500 py-3 px-10 rounded-2xl text-4xl border-2 border-yellow-500 mb-20"
     >Kártyacsomagok</span
@@ -15,10 +15,12 @@
             getImagePath(card.name) +
             ')',
         }"
-        class="bg-cover bg-center bg-no-repeat cursor-pointer shadow flex flex-col items-center justify-between w-[240px] h-[360px] mx-auto rounded-3xl transition-all duration-300 p-4"
+        class="bg-cover bg-center bg-no-repeat cursor-pointer shadow flex flex-col items-center justify-between w-[240px] h-[360px] mx-auto rounded-3xl transition-all duration-300"
       >
         <div></div>
-        <h2 class="text-white text-2xl md:text-3xl text-center whitespace-pre-line z-10 bg-black/30 w-full py-2 rounded-b-3xl">
+        <h2
+          class="text-yellow-500 text-3xl md:text-3xl text-center whitespace-pre-line z-10 w-full py-2 drop-shadow-[0_4px_3px_rgba(0,0,0,0.9)]"
+        >
           {{ card.displayName }}
         </h2>
       </div>
