@@ -21,7 +21,7 @@ export class DashboardComponent {
   private async initModules(): Promise<void> {
     try {
       this.modules = await this.modulesService.getModules();
-      this.setDisplayNames(); 
+      this.setDisplayNames();
     } catch (error) {
       console.error('Error fetching modules:', error);
     }
@@ -30,12 +30,12 @@ export class DashboardComponent {
   private setDisplayNames(): void {
     this.modules.forEach((module: Module) => {
       switch (module.name) {
-        case 'default': {
-          module.displayName = 'Alap';
+        case 'chat': {
+          module.displayName = 'Cset';
           break;
         }
         case 'cards': {
-          module.displayName = 'Kártya- csomagok';
+          module.displayName = 'Kártya-\ncsomagok';
           break;
         }
         case 'caseAssessment': {
