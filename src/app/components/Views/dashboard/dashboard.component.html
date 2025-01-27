@@ -1,23 +1,30 @@
 <main class="h-[calc(100vh-100px)] flex flex-col items-center mt-32 px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 w-full max-w-7xl">
-        @for (module of modules; track module.name) {
-            <div [class]="module.isAvailable ? 
-                'bg-yellow-500 hover:bg-yellow-400 cursor-pointer' : 
-                'bg-gray-300 cursor-not-allowed opacity-60'"
-                class="shadow flex flex-col items-center justify-center w-full aspect-square min-h-[200px] rounded-3xl transition-all duration-300">
-                <h2 [class]="module.isAvailable ? 
-                    'text-teal-950' : 
-                    'text-gray-700'"
-                    class="text-2xl md:text-3xl mb-2">
-                    {{ module.name }}
-                </h2>
-                <p [class]="module.isAvailable ? 
-                    'text-teal-950' : 
-                    'text-gray-700'"
-                    class="text-base md:text-lg">
-                    {{ module.isAvailable ? 'modul' : 'nem elérhető' }}
-                </p>
-            </div>
-        }
-    </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 w-full max-w-7xl"
+  >
+    @for (module of modules; track module.name) {
+      <div
+        [class]="
+          module.isAvailable
+            ? 'bg-yellow-500 hover:bg-yellow-400 cursor-pointer'
+            : 'bg-gray-300 cursor-not-allowed opacity-60'
+        "
+        class="shadow flex flex-col items-center justify-center w-full aspect-square min-h-[200px] rounded-3xl transition-all duration-300"
+        [routerLink]="module.isAvailable ? ['/' + module.name] : null"
+      >
+        <h2
+          [class]="module.isAvailable ? 'text-teal-950' : 'text-gray-700'"
+          class="text-2xl md:text-3xl mb-2"
+        >
+          {{ module.displayName }}
+        </h2>
+        <p
+          [class]="module.isAvailable ? 'text-teal-950' : 'text-gray-700'"
+          class="text-base md:text-lg"
+        >
+          {{ module.isAvailable ? 'modul' : 'nem elérhető' }}
+        </p>
+      </div>
+    }
+  </div>
 </main>

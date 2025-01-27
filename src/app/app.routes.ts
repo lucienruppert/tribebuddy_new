@@ -6,6 +6,7 @@ import { UserPhotosComponent } from './components/Views/user-photos/user-photos.
 import { ContractComponent } from './components/contract/contract.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
 import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
+import { CardsComponent } from './components/modules/cards/cards.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,10 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+  },
+  {
+    path: 'cards',
+    component: CardsComponent,
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

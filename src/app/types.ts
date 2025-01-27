@@ -11,6 +11,7 @@ export interface Module {
   id: string;
   name: string;
   isAvailable: boolean;
+  displayName?: string;
 }
 
 export interface EmailSendingResult {

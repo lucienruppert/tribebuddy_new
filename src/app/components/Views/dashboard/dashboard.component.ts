@@ -2,18 +2,17 @@ import { Component } from '@angular/core';
 import { ModulesService } from '../../../services/modules.service';
 import { CommonModule } from '@angular/common';
 import { Module } from '../../../types';
-
-
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  modules: Module[] = [];
+  public modules: Module[] = [];
 
   constructor(private modulesService: ModulesService) {
     this.initModules();
@@ -22,8 +21,28 @@ export class DashboardComponent {
   private async initModules(): Promise<void> {
     try {
       this.modules = await this.modulesService.getModules();
+      this.setDisplayNames(); 
     } catch (error) {
       console.error('Error fetching modules:', error);
     }
+  }
+
+  private setDisplayNames(): void {
+    this.modules.forEach((module: Module) => {
+      switch (module.name) {
+        case 'chat': {
+          module.displayName = 'Cset';
+          break;
+        }
+        case 'cards': {
+          module.displayName = 'Kártyák';
+          break;
+        }
+        case 'caseAssessment': {
+          module.displayName = 'Esetfelmérő';
+          break;
+        }
+      }
+    });
   }
 }
