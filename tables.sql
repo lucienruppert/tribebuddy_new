@@ -3,6 +3,11 @@ CREATE TABLE tribebuddy_modules (
     name VARCHAR(36) NOT NULL
 );
 
+CREATE TABLE tribebuddy_cards (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(36) NOT NULL
+);
+
 CREATE TABLE tribebuddy_users_modules (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userId INT(11) NOT NULL,

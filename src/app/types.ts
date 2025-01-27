@@ -3,7 +3,7 @@ export interface User {
   role?: string;
   password?: string;
   name?: string;
-  sex?: "male" | "female";
+  sex?: 'male' | 'female';
   errors?: string[];
 }
 
@@ -55,4 +55,11 @@ export interface UserProfile {
   drinks: string;
   county: string;
   district: string;
+}
+
+export interface Card {
+  id: string;
+  title: string;
+  description: string;
+  isAvailable: boolean;
 }
