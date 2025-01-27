@@ -59,7 +59,6 @@ export interface UserProfile {
 
 export interface Card {
   id: string;
-  title: string;
-  description: string;
-  isAvailable: boolean;
+  name: string;
+  displayName?: string;
 }

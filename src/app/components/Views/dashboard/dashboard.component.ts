@@ -30,12 +30,12 @@ export class DashboardComponent {
   private setDisplayNames(): void {
     this.modules.forEach((module: Module) => {
       switch (module.name) {
-        case 'chat': {
-          module.displayName = 'Cset';
+        case 'default': {
+          module.displayName = 'Alap';
           break;
         }
         case 'cards': {
-          module.displayName = 'Kártyák';
+          module.displayName = 'Kártya- csomagok';
           break;
         }
         case 'caseAssessment': {

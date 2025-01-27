@@ -14,5 +14,26 @@ export class CardsComponent implements OnInit {
 
   async ngOnInit() {
     this.cards = await this.cardsService.getCards();
+    this.setDisplayNames();
+    console.log(this.cards);
   }
+
+   private setDisplayNames(): void {
+      this.cards.forEach((card: Card) => {
+        switch (card.name) {
+          case 'default': {
+            card.displayName = 'Alap';
+            break;
+          }
+          case 'wisdomKeepers': {
+            card.displayName = 'Bölcsességőrzők';
+            break;
+          }
+          case 'tarot': {
+            card.displayName = 'Tarot';
+            break;
+          }
+        }
+      });
+    }
 }

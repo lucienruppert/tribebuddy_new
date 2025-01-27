@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../environments/environment';
 import { Card } from '../types';
-import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
