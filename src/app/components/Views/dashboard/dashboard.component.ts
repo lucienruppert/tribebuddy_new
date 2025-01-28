@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModulesService } from '../../../services/modules.service';
 import { CommonModule } from '@angular/common';
-import { Module } from '../../../types';
+import { UserModule } from '../../../types';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  public modules: Module[] = [];
+  public modules: UserModule[] = [];
 
   constructor(private modulesService: ModulesService) {
     this.initModules();
@@ -28,17 +28,17 @@ export class DashboardComponent {
   }
 
   private setDisplayNames(): void {
-    this.modules.forEach((module: Module) => {
+    this.modules.forEach((module: UserModule) => {
       switch (module.name) {
         case 'chat': {
           module.displayName = 'Cset';
           break;
         }
-        case 'cards': {
-          module.displayName = 'Kártya-\ncsomagok';
+        case 'constellation': {
+          module.displayName = 'Állítás';
           break;
         }
-        case 'caseAssessment': {
+        case 'case-assessment': {
           module.displayName = 'Esetfelmérő';
           break;
         }

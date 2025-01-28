@@ -4,13 +4,13 @@ import { CardsService } from '../../../services/cards.service';
 import { Card } from '../../../types';
 
 @Component({
-  selector: 'app-cards',
-  templateUrl: './cards.component.html',
-  styleUrl: './cards.component.css',
+  selector: 'app-constellation',
+  templateUrl: './constellation.component.html',
+  styleUrl: './constellation.component.css',
   standalone: true,
   imports: [CommonModule],
 })
-export class CardsComponent implements OnInit {
+export class ConstellationComponent implements OnInit {
   cards: Card[] = [];
   private imageExtensions: { [key: string]: string } = {
     default: 'jpg',

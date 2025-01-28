@@ -7,10 +7,16 @@ export interface User {
   errors?: string[];
 }
 
-export interface Module {
+export interface UserModule {
   id: string;
   name: string;
   isAvailable: boolean;
+  displayName?: string;
+}
+
+export interface Card {
+  id: string;
+  name: string;
   displayName?: string;
 }
 
@@ -55,10 +61,4 @@ export interface UserProfile {
   drinks: string;
   county: string;
   district: string;
-}
-
-export interface Card {
-  id: string;
-  name: string;
-  displayName?: string;
 }

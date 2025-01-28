@@ -6,7 +6,7 @@ import { UserPhotosComponent } from './components/Views/user-photos/user-photos.
 import { ContractComponent } from './components/contract/contract.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
 import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
-import { CardsComponent } from './components/modules/cards/cards.component';
+import { ConstellationComponent } from './components/modules/constellation/constellation.component';
 
 export const routes: Routes = [
   {
@@ -36,8 +36,8 @@ export const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'cards',
-    component: CardsComponent,
+    path: 'constellation',
+    component: ConstellationComponent,
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
