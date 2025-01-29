@@ -1,5 +1,13 @@
-<nav class="w-3/5 flex gap-9 justify-end">
-  <p *ngIf=isLoggedIn class="text-xl text-yellow-500 hover:text-yellow-400 font-bold cursor-pointer mt-2" [routerLink]="['/dashboard']">
+<nav
+  [class]="
+    'w-3/5 flex gap-9 ' + (isLoggedIn ? 'justify-between' : 'justify-end')
+  "
+>
+  <p
+    *ngIf="isLoggedIn"
+    class="text-xl text-yellow-500 hover:text-yellow-400 font-bold cursor-pointer mt-2"
+    [routerLink]="['/dashboard']"
+  >
     TribeBuddy
   </p>
   <ul class="flex justify-between gap-9">
@@ -7,11 +15,7 @@
       <button mat-button (click)="openLoginDialog()">Bejelentkezés</button>
     </li>
     <li *ngIf="isLoggedIn" class="flex items-center">
-      <span
-        mat-button
-        [matMenuTriggerFor]="menu"
-        aria-label="User menu"
-      >
+      <span mat-button [matMenuTriggerFor]="menu" aria-label="User menu">
         <img
           *ngIf="profilePhoto"
           [src]="'https://tribebuddy.hu/photos/' + profilePhoto + '.webp'"
