@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -37,19 +37,12 @@ export class NavigationComponent implements OnDestroy {
     private authentication: AuthenticationService,
     private router: Router,
     private dialog: Dialog,
-    private photosService: UserPhotosService
   ) {
     this.authentication.isLoggedIn$
       .pipe(takeUntil(this.destroy$))
       .subscribe(isLoggedIn => {
         this.isLoggedIn = isLoggedIn;
       });
-
-    // this.profileUpdateSubscription = this.photosService
-    //   .getProfileUpdateListener()
-    //   .subscribe((fileName: string) => {
-    //     this.profilePhoto = fileName;
-    //   });
   }
 
   // async ngOnInit() {

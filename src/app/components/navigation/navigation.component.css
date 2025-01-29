@@ -5,7 +5,7 @@
 
 .mat-menu,
 .mat-mdc-button:not(:disabled) {
-  @apply text-gray-100 text-base;
+  @apply text-gray-400 text-base;
 }
 
 .mat-mdc-button:hover,
@@ -14,7 +14,7 @@
 }
 
 .mat-icon {
-  @apply text-gray-300 cursor-pointer;
+  @apply text-gray-400 cursor-pointer;
   font-size: 24px;
   width: 24px;
   height: 24px;

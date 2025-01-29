@@ -28,8 +28,7 @@
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  color: #9ca3af;
-  @apply bg-teal-950;
+  @apply bg-teal-950 text-gray-400;
 }
 
 :root {
