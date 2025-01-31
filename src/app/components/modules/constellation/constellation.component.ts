@@ -16,6 +16,7 @@ export class ConstellationComponent implements OnInit {
     default: 'jpg',
     wisdomKeepers: 'jpeg',
     tarot: 'png',
+    osho: 'jpg',
   };
 
   constructor(private cardsService: CardsService) {}
@@ -43,6 +44,10 @@ export class ConstellationComponent implements OnInit {
         }
         case 'tarot': {
           card.displayName = 'Tarot';
+          break;
+        }
+        case 'osho': {
+          card.displayName = 'Osho Zen-tarot';
           break;
         }
       }
