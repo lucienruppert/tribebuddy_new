@@ -42,6 +42,10 @@ export class DashboardComponent {
           module.displayName = 'Esetfelmérő';
           break;
         }
+        case 'newsletter': {
+          module.displayName = 'Hírlevél';
+          break;
+        }
       }
     });
   }
