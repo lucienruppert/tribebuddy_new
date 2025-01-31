@@ -11,9 +11,6 @@
     TribeBuddy
   </p>
   <ul class="flex justify-between gap-9">
-    <li *ngIf="!isLoggedIn">
-      <button mat-button (click)="openLoginDialog()">Bejelentkezés</button>
-    </li>
     <li *ngIf="isLoggedIn" class="flex items-center">
       <span mat-button [matMenuTriggerFor]="menu" aria-label="User menu">
         <img

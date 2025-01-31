@@ -1,9 +1,7 @@
-import { UsersService } from '../../services/user-data.service';
 import { Dialog } from '@angular/cdk/dialog';
 import { RegistrationComponent } from '../registration/registration.component';
-import { LoginComponent } from '../login/login.component';
 import { AuthenticationService } from '../../services/authentication.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +10,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { UserPhotosService } from '../../services/user-photos.service';
 
 @Component({
   selector: 'app-navigation',
@@ -66,10 +63,6 @@ export class NavigationComponent implements OnDestroy {
 
   public openRegistrationDialog(): void {
     this.dialog.open(RegistrationComponent);
-  }
-
-  public openLoginDialog(): void {
-    this.dialog.open(LoginComponent);
   }
 
   public logout(): void {
