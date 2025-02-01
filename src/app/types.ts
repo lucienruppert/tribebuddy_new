@@ -62,3 +62,10 @@ export interface UserProfile {
   county: string;
   district: string;
 }
+
+export interface Constellation {
+  id: number;
+  name: string;
+  isPersonal: boolean;
+  isGroup: boolean;
+}
