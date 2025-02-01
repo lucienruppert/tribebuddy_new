@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardsService } from '../../../services/cards.service';
+import { CardsService } from '../../../services/constellations.service';
 import { Card } from '../../../types';
 import { cardTranslations } from '../../../shared/translations/card-translations';
 
