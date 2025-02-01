@@ -7,6 +7,7 @@ import { ContractComponent } from './components/contract/contract.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
 import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
 import { ConstellationComponent } from './components/modules/constellation/constellation.component';
+import { CardTypesComponent } from './components/modules/card-types/card-types.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +39,10 @@ export const routes: Routes = [
   {
     path: 'constellation',
     component: ConstellationComponent,
+  },
+  {
+    path: 'card-types',
+    component: CardTypesComponent,
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

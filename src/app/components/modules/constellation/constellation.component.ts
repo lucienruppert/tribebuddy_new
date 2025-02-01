@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CardsService } from '../../../services/cards.service';
+import { Card } from '../../../types';
+import { cardTranslations } from '../../../shared/translations/card-translations';
 
 @Component({
-  selector: 'app-constellation-types',
-  imports: [],
+  selector: 'app-constellation',
   templateUrl: './constellation.component.html',
-  styleUrl: './constellation.component.css'
+  standalone: true,
+  imports: [CommonModule],
 })
-export class ConstellationComponent {
+export class ConstellationComponent implements OnInit {
+  cards: Card[] = [];
 
+  constructor(private cardsService: CardsService) {}
+
+  async ngOnInit() {
+    this.cards = await this.cardsService.getCardTypes();
+  }
+
+  getTranslatedName(cardName: string): string {
+    return cardTranslations[cardName] || cardName;
+  }
 }

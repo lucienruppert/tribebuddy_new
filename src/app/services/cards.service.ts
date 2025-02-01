@@ -10,11 +10,9 @@ import { Card } from '../types';
 export class CardsService {
   private apiUrl: string = environment.apiUrl;
 
-  constructor(
-    private http: HttpClient,
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  public async getCards(): Promise<Card[]> {
+  public async getCardTypes(): Promise<Card[]> {
     try {
       const result$ = this.http.get<Card[]>(`${this.apiUrl}/cards`);
       const response = await firstValueFrom(result$);

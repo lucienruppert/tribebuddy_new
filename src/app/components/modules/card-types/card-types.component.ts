@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardsService } from '../../../services/cards.service';
 import { Card } from '../../../types';
+import { cardTranslations } from '../../../shared/translations/card-translations';
 
 @Component({
   selector: 'app-card-types',
@@ -22,7 +23,7 @@ export class CardTypesComponent implements OnInit {
   constructor(private cardsService: CardsService) {}
 
   async ngOnInit() {
-    this.cards = await this.cardsService.getCards();
+    this.cards = await this.cardsService.getCardTypes();
     this.setDisplayNames();
   }
 
@@ -33,24 +34,7 @@ export class CardTypesComponent implements OnInit {
 
   private setDisplayNames(): void {
     this.cards.forEach((card: Card) => {
-      switch (card.name) {
-        case 'default': {
-          card.displayName = 'Alap';
-          break;
-        }
-        case 'wisdomKeepers': {
-          card.displayName = 'Bölcsesség-\nőrzők';
-          break;
-        }
-        case 'tarot': {
-          card.displayName = 'Tarot';
-          break;
-        }
-        case 'osho': {
-          card.displayName = 'Osho Zen-tarot';
-          break;
-        }
-      }
+      card.displayName = cardTranslations[card.name] || card.name;
     });
   }
 }
