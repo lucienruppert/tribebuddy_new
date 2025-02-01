@@ -38,7 +38,7 @@ export class DashboardComponent {
           module.displayName = 'Állítás';
           break;
         }
-        case 'case-assessment': {
+        case 'caseAssessment': {
           module.displayName = 'Esetfelmérő';
           break;
         }
