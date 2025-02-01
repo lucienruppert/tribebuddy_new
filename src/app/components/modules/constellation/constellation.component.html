@@ -1,17 +1,16 @@
 <main class="flex flex-col gap-4 p-4 mt-20">
-  <select class="p-2 border rounded-lg">
-    <option value="" disabled selected>Válassz kártyát</option>
+  <select class="p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
     <option *ngFor="let card of cards" [value]="card.id">
       {{ getTranslatedName(card.name) }}
     </option>
   </select>
 
-  <select class="p-2 border rounded-lg">
+  <select class="p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
     <option value="1" selected>Egyéni</option>
     <option value="2">Csoportos</option>
   </select>
 
-  <select class="p-2 border rounded-lg">
+  <select class="p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
     <option value="" disabled selected>Select option 3</option>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
