@@ -6,8 +6,9 @@ export const cardTranslations: { [key: string]: string } = {
 };
 
 export const constellationTranslations: { [key: string]: string } = {
-  'Personal Constellation': 'Személyes felállítás',
-  'Group Constellation': 'Csoportos felállítás',
-  'Family Constellation': 'Családfelállítás',
-  'Relationship Constellation': 'Párkapcsolati felállítás',
+  line: 'Vonal',
+  circle: 'Kör',
+  familyTree: 'Családfa',
+  geneKeys: 'Génkulcsok',
+  openSpace: 'Nyitott tér',
 };

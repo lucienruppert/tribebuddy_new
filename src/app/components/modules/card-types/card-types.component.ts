@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardsService } from '../../../services/constellations.service';
 import { Card } from '../../../types';
 import { cardTranslations } from '../../../shared/translations/card-translations';
+import { ConstellationsService } from '../../../services/constellations.service';
 
 @Component({
   selector: 'app-card-types',
@@ -20,10 +20,10 @@ export class CardTypesComponent implements OnInit {
     osho: 'jpg',
   };
 
-  constructor(private cardsService: CardsService) {}
+  constructor(private constellationsService: ConstellationsService) {}
 
   async ngOnInit() {
-    this.cards = await this.cardsService.getCardTypes();
+    this.cards = await this.constellationsService.getCardTypes();
     this.setDisplayNames();
   }
 

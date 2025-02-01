@@ -7,7 +7,7 @@ import { Card, Constellation } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class CardsService {
+export class ConstellationsService {
   private apiUrl: string = environment.apiUrl;
 
   constructor(private http: HttpClient) {}

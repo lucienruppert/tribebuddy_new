@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardsService } from '../../../services/constellations.service'; 
+import { ConstellationsService } from '../../../services/constellations.service'; 
 import { Card, Constellation } from '../../../types';
 import {
   cardTranslations,
@@ -17,11 +17,11 @@ export class ConstellationComponent implements OnInit {
   cards: Card[] = [];
   constellations: Constellation[] = [];
 
-  constructor(private cardsService: CardsService) {}
+  constructor(private constellationsService: ConstellationsService ) {}
 
   async ngOnInit() {
-    this.cards = await this.cardsService.getCardTypes();
-    this.constellations = await this.cardsService.getConstellations();
+    this.cards = await this.constellationsService.getCardTypes();
+    this.constellations = await this.constellationsService.getConstellations();
   }
 
   getTranslatedCardName(cardName: string): string {
