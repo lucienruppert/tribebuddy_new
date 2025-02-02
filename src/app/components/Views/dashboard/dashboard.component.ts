@@ -3,7 +3,7 @@ import { ModulesService } from '../../../services/modules.service';
 import { CommonModule } from '@angular/common';
 import { UserModule } from '../../../types';
 import { RouterModule } from '@angular/router';
-import { moduleTranslations } from '../../../shared/translations/card-translations';
+import { moduleTranslations } from '../../../translations';
 
 @Component({
   selector: 'app-dashboard',
