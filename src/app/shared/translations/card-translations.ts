@@ -12,3 +12,10 @@ export const constellationTranslations: { [key: string]: string } = {
   geneKeys: 'Génkulcsok',
   openSpace: 'Nyitott tér',
 };
+
+export const moduleTranslations: { [key: string]: string } = {
+  chat: 'Cset',
+  constellation: 'Állítás',
+  caseAssessment: 'Esetfelmérő',
+  newsletter: 'Hírlevél',
+};

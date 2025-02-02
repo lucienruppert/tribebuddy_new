@@ -3,6 +3,7 @@ import { ModulesService } from '../../../services/modules.service';
 import { CommonModule } from '@angular/common';
 import { UserModule } from '../../../types';
 import { RouterModule } from '@angular/router';
+import { moduleTranslations } from '../../../shared/translations/card-translations';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,24 +30,7 @@ export class DashboardComponent {
 
   private setDisplayNames(): void {
     this.modules.forEach((module: UserModule) => {
-      switch (module.name) {
-        case 'chat': {
-          module.displayName = 'Cset';
-          break;
-        }
-        case 'constellation': {
-          module.displayName = 'Állítás';
-          break;
-        }
-        case 'caseAssessment': {
-          module.displayName = 'Esetfelmérő';
-          break;
-        }
-        case 'newsletter': {
-          module.displayName = 'Hírlevél';
-          break;
-        }
-      }
+      module.displayName = moduleTranslations[module.name] || module.name;
     });
   }
 }
