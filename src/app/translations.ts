@@ -1,5 +1,5 @@
 export const cardTranslations: { [key: string]: string } = {
-  default: 'Alap',
+  dixit: 'Dixit',
   wisdomKeepers: 'Bölcsességőrzők',
   tarot: 'Tarot',
   osho: 'Osho Zen-tarot',
