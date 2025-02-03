@@ -80,8 +80,8 @@ export class AuthenticationService {
 
   private setBasicUserData(userData: User): void {
     sessionStorage.setItem(this.EMAIL_KEY, userData.email!);
-    sessionStorage.setItem(this.SEX_KEY, userData.sex!);
     sessionStorage.setItem(this.NAME_KEY, userData.name!);
+    sessionStorage.setItem('id', userData.id!);
     this.isLoggedIn$.next(true);
     this.userRole$.next(userData.role!);
   }
@@ -113,7 +113,7 @@ export class AuthenticationService {
     return sessionStorage.getItem(this.EMAIL_KEY);
   }
 
-  public getUserSex(): string | null {
-    return sessionStorage.getItem(this.SEX_KEY);
+  public getUserId(): string | null {
+    return sessionStorage.getItem('id');
   }
 }
