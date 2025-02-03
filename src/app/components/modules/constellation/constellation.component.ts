@@ -37,7 +37,6 @@ export class ConstellationComponent implements OnInit {
 
   async ngOnInit() {
     this.cards = await this.constellationsService.getCardTypes();
-    console.log('Cards before sorting:', this.cards);
 
     // Sort cards to put wisdomkeepers first, case insensitive
     this.cards.sort((a, b) => {
@@ -46,7 +45,6 @@ export class ConstellationComponent implements OnInit {
       return 0;
     });
 
-    console.log('Cards after sorting:', this.cards);
     if (this.cards.length > 0) {
       this.selectedCard = this.cards[0].id;
     }
@@ -97,9 +95,9 @@ export class ConstellationComponent implements OnInit {
 
     const submission: Session = {
       cardId: this.selectedCard,
-      id: this.selectedConstellation,
-      type: this.selectedType,
-      clientName:
+      constellationId: this.selectedConstellation,
+      constellationType: this.selectedType, // renamed from 'type'
+      client:
         this.selectedClient === 'new'
           ? this.newClientName
           : this.selectedClient,

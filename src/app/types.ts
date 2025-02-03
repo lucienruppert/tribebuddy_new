@@ -79,7 +79,7 @@ export interface Client {
 
 export interface Session {
   cardId: string;
-  id: number;
-  type: 'personal' | 'group';
-  clientName: string;
+  constellationId: number;
+  constellationType: 'personal' | 'group'; 
+  client: string;
 }
