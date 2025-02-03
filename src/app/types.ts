@@ -82,6 +82,7 @@ export interface Session {
   constellationType: number;
   type: 'personal' | 'group';
   client: string;
+  clientEmail: string;
   clientId?: number;
   id?: number;
 }

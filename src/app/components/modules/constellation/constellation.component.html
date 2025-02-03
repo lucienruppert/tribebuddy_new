@@ -45,7 +45,15 @@
     *ngIf="selectedType === 'personal' && selectedClient === 'new'"
     type="text"
     [(ngModel)]="newClientName"
-    placeholder="Új kliens"
+    placeholder="Név"
+    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500 placeholder-yellow-500/50"
+  />
+
+  <input
+    *ngIf="selectedType === 'personal' && selectedClient === 'new'"
+    type="email"
+    [(ngModel)]="newClientEmail"
+    placeholder="Email"
     class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500 placeholder-yellow-500/50"
   />
 

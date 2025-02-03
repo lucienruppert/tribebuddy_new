@@ -27,6 +27,7 @@ export class ConstellationComponent implements OnInit {
   selectedClient: string = '';
   newClientName: string = '';
   selectedClientId?: number;
+  newClientEmail: string = '';
 
   constructor(
     private constellationsService: ConstellationsService,
@@ -80,7 +81,11 @@ export class ConstellationComponent implements OnInit {
   isFormValid(): boolean {
     if (this.selectedType === 'personal') {
       if (this.selectedClient === 'new') {
-        return !!(this.selectedCard && this.newClientName);
+        return !!(
+          this.selectedCard &&
+          this.newClientName &&
+          this.newClientEmail
+        );
       }
       return !!(
         this.selectedCard &&
@@ -94,6 +99,7 @@ export class ConstellationComponent implements OnInit {
   clearForm() {
     this.selectedClient = '';
     this.newClientName = '';
+    this.newClientEmail = '';
     this.selectedType = 'personal';
   }
 
@@ -108,6 +114,10 @@ export class ConstellationComponent implements OnInit {
         this.selectedClient === 'new'
           ? this.newClientName
           : this.selectedClient,
+      clientEmail:
+        this.selectedClient === 'new'
+          ? this.newClientEmail
+          : this.clients.find(c => c.name === this.selectedClient)?.email || '',
       clientId:
         this.selectedClient === 'new' ? undefined : this.selectedClientId,
     };
