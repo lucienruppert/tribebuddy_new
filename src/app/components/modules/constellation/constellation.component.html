@@ -1,19 +1,19 @@
-<main class="flex flex-col gap-4 p-4 mt-20">
-  <select class="p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
+<main class="flex flex-col gap-4 p-4 mt-20 items-center">
+  <select class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
     <option *ngFor="let card of cards" [value]="card.id">
       {{ getTranslatedCardName(card.name) }}
     </option>
   </select>
 
   <select
-    class="p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
     [(ngModel)]="selectedType"
   >
     <option value="personal">Egyéni</option>
     <option value="group">Csoportos</option>
   </select>
 
-  <select class="p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
+  <select class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
     <option
       *ngFor="let constellation of getFilteredConstellations()"
       [value]="constellation.id"
@@ -24,10 +24,17 @@
 
   <select
     *ngIf="selectedType === 'personal'"
-    class="p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
   >
     <option *ngFor="let client of clients" [value]="client.id">
       {{ client.name }}
     </option>
   </select>
+
+  <input
+    *ngIf="selectedType === 'personal'"
+    type="text"
+    placeholder="Új kliens"
+    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500 placeholder-yellow-500/50"
+  />
 </main>

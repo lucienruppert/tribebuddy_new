@@ -20,7 +20,7 @@ export class ConstellationComponent implements OnInit {
   cards: Card[] = [];
   constellations: Constellation[] = [];
   clients: Client[] = [];
-  selectedType: 'personal' | 'group' = 'group';
+  selectedType: 'personal' | 'group' = 'personal';
   userEmail: string = '';
 
   constructor(
