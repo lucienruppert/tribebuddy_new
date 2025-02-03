@@ -1,3 +1,4 @@
+import { Card } from './types';
 import { Routes } from '@angular/router';
 import { UserProfileComponent } from './components/Views/user-profile/user-profile.component';
 import { HomeComponent } from './components/Views/home/home.component';
@@ -8,6 +9,7 @@ import { DataProtectionComponent } from './components/data-protection/data-prote
 import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
 import { CardTypesComponent } from './components/modules/constellation-components/card-types/card-types.component';
 import { ConstellationComponent } from './components/modules/constellation-components/constellation/constellation.component';
+import { CardDeckComponent } from './components/modules/constellation-components/card-deck/card-deck.component';
 
 
 export const routes: Routes = [
@@ -44,6 +46,10 @@ export const routes: Routes = [
   {
     path: 'card-types',
     component: CardTypesComponent,
+  },
+  {
+    path: 'card-deck',
+    component: CardDeckComponent,
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
