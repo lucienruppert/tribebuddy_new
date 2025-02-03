@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ConstellationsService } from '../../../services/constellations.service';
 import { ClientsService } from '../../../services/clients.service';
 import { AuthenticationService } from '../../../services/authentication.service';
-import { Card, Constellation, Client } from '../../../types';
+import { Card, Constellation, Client, Session } from '../../../types';
 import {
   cardTranslations,
   constellationTranslations,
@@ -22,6 +22,10 @@ export class ConstellationComponent implements OnInit {
   clients: Client[] = [];
   selectedType: 'personal' | 'group' = 'personal';
   userEmail: string = '';
+  selectedCard: string = '';
+  selectedConstellation: number = 0;
+  selectedClient: string = '';
+  newClientName: string = '';
 
   constructor(
     private constellationsService: ConstellationsService,
@@ -34,11 +38,15 @@ export class ConstellationComponent implements OnInit {
   async ngOnInit() {
     this.cards = await this.constellationsService.getCardTypes();
     this.constellations = await this.constellationsService.getConstellations();
+    // Set initial constellation
+    if (this.constellations.length > 0) {
+      this.selectedConstellation = this.constellations[0].id;
+    }
     if (this.userEmail) {
       this.clientsService
         .getClientsByEmail(this.userEmail)
         .subscribe(clients => {
-          this.clients = clients;
+          this.clients = clients.sort((a, b) => a.name.localeCompare(b.name));
         });
     }
   }
@@ -55,5 +63,16 @@ export class ConstellationComponent implements OnInit {
     return this.constellations.filter(c =>
       this.selectedType === 'personal' ? c.isPersonal : c.isGroup
     );
+  }
+
+  onSubmit() {
+    const submission: Session = {
+      cardId: this.selectedCard,
+      id: this.selectedConstellation,
+      type: this.selectedType,
+      clientName: this.selectedClient || this.newClientName,
+    };
+
+    console.log('Session:', submission);
   }
 }

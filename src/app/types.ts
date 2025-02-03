@@ -75,4 +75,11 @@ export interface Client {
   name: string;
   email: string;
   helperId: number;
-};
+}
+
+export interface Session {
+  cardId: string;
+  id: number;
+  type: 'personal' | 'group';
+  clientName: string;
+}

@@ -1,5 +1,9 @@
 <main class="flex flex-col gap-4 p-4 mt-20 items-center">
-  <select class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
+  <select
+    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+    [(ngModel)]="selectedCard"
+  >
+    <option value="">Válassz kártyát</option>
     <option *ngFor="let card of cards" [value]="card.id">
       {{ getTranslatedCardName(card.name) }}
     </option>
@@ -13,7 +17,10 @@
     <option value="group">Csoportos</option>
   </select>
 
-  <select class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500">
+  <select
+    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+    [(ngModel)]="selectedConstellation"
+  >
     <option
       *ngFor="let constellation of getFilteredConstellations()"
       [value]="constellation.id"
@@ -25,8 +32,10 @@
   <select
     *ngIf="selectedType === 'personal'"
     class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+    [(ngModel)]="selectedClient"
   >
-    <option *ngFor="let client of clients" [value]="client.id">
+    <option value="">Klienseid</option>
+    <option *ngFor="let client of clients" [value]="client.name">
       {{ client.name }}
     </option>
   </select>
@@ -34,7 +43,15 @@
   <input
     *ngIf="selectedType === 'personal'"
     type="text"
+    [(ngModel)]="newClientName"
     placeholder="Új kliens"
     class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500 placeholder-yellow-500/50"
   />
+
+  <button
+    (click)="onSubmit()"
+    class="w-72 p-2 rounded-lg text-2xl bg-yellow-500 text-teal-900 hover:bg-yellow-400"
+  >
+    Küldés
+  </button>
 </main>
