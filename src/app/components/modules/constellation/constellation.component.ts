@@ -37,6 +37,19 @@ export class ConstellationComponent implements OnInit {
 
   async ngOnInit() {
     this.cards = await this.constellationsService.getCardTypes();
+    console.log('Cards before sorting:', this.cards);
+
+    // Sort cards to put wisdomkeepers first, case insensitive
+    this.cards.sort((a, b) => {
+      if (a.name.toLowerCase() === 'wisdomkeepers') return -1;
+      if (b.name.toLowerCase() === 'wisdomkeepers') return 1;
+      return 0;
+    });
+
+    console.log('Cards after sorting:', this.cards);
+    if (this.cards.length > 0) {
+      this.selectedCard = this.cards[0].id;
+    }
     this.constellations = await this.constellationsService.getConstellations();
     // Set initial constellation
     if (this.constellations.length > 0) {
@@ -65,12 +78,31 @@ export class ConstellationComponent implements OnInit {
     );
   }
 
+  isFormValid(): boolean {
+    if (this.selectedType === 'personal') {
+      if (this.selectedClient === 'new') {
+        return !!(this.selectedCard && this.newClientName);
+      }
+      return !!(
+        this.selectedCard &&
+        this.selectedClient &&
+        this.selectedClient !== ''
+      );
+    }
+    return !!this.selectedCard;
+  }
+
   onSubmit() {
+    if (!this.isFormValid()) return;
+
     const submission: Session = {
       cardId: this.selectedCard,
       id: this.selectedConstellation,
       type: this.selectedType,
-      clientName: this.selectedClient || this.newClientName,
+      clientName:
+        this.selectedClient === 'new'
+          ? this.newClientName
+          : this.selectedClient,
     };
 
     console.log('Session:', submission);

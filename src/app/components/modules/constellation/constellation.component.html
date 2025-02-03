@@ -3,7 +3,6 @@
     class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
     [(ngModel)]="selectedCard"
   >
-    <option value="">Válassz kártyát</option>
     <option *ngFor="let card of cards" [value]="card.id">
       {{ getTranslatedCardName(card.name) }}
     </option>
@@ -35,13 +34,14 @@
     [(ngModel)]="selectedClient"
   >
     <option value="">Klienseid</option>
+    <option value="new">Új kliens</option>
     <option *ngFor="let client of clients" [value]="client.name">
       {{ client.name }}
     </option>
   </select>
 
   <input
-    *ngIf="selectedType === 'personal'"
+    *ngIf="selectedType === 'personal' && selectedClient === 'new'"
     type="text"
     [(ngModel)]="newClientName"
     placeholder="Új kliens"
@@ -50,7 +50,8 @@
 
   <button
     (click)="onSubmit()"
-    class="w-72 p-2 rounded-lg text-2xl bg-yellow-500 text-teal-900 hover:bg-yellow-400"
+    [disabled]="!isFormValid()"
+    class="w-72 p-2 rounded-lg text-2xl bg-yellow-500 text-teal-900 hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
   >
     Küldés
   </button>
