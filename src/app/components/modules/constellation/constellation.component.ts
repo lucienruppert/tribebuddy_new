@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConstellationsService } from '../../../services/constellations.service';
-import { Card, Constellation } from '../../../types';
+import { ClientsService } from '../../../services/clients.service';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { Card, Constellation, Client } from '../../../types';
 import {
   cardTranslations,
   constellationTranslations,
@@ -17,13 +19,28 @@ import {
 export class ConstellationComponent implements OnInit {
   cards: Card[] = [];
   constellations: Constellation[] = [];
-  selectedType: 'personal' | 'group' = 'personal';
+  clients: Client[] = [];
+  selectedType: 'personal' | 'group' = 'group';
+  userEmail: string = '';
 
-  constructor(private constellationsService: ConstellationsService) {}
+  constructor(
+    private constellationsService: ConstellationsService,
+    private clientsService: ClientsService,
+    private authService: AuthenticationService
+  ) {
+    this.userEmail = this.authService.getUserEmail() || '';
+  }
 
   async ngOnInit() {
     this.cards = await this.constellationsService.getCardTypes();
     this.constellations = await this.constellationsService.getConstellations();
+    if (this.userEmail) {
+      this.clientsService
+        .getClientsByEmail(this.userEmail)
+        .subscribe(clients => {
+          this.clients = clients;
+        });
+    }
   }
 
   getTranslatedCardName(cardName: string): string {

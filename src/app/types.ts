@@ -69,3 +69,10 @@ export interface Constellation {
   isPersonal: boolean;
   isGroup: boolean;
 }
+
+export interface Client {
+  id: number;
+  name: string;
+  email: string;
+  helperId: number;
+};
