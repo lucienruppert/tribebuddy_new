@@ -129,6 +129,7 @@ export class ConstellationComponent implements OnInit {
           : this.clients.find(c => c.name === this.selectedClient)?.email || '',
       clientId:
         this.selectedClient === 'new' ? undefined : this.selectedClientId,
+      helperId: this.authService.getUserId(),
     };
 
     console.log('Storing session object:', JSON.stringify(session, null, 2));

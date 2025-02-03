@@ -113,7 +113,7 @@ export class AuthenticationService {
     return sessionStorage.getItem(this.EMAIL_KEY);
   }
 
-  public getUserId(): string | null {
-    return sessionStorage.getItem('id');
+  public getUserId(): string {
+    return sessionStorage.getItem('id')!;
   }
 }
