@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Card } from '../../../types';
-import { cardTranslations } from '../../../translations';
-import { ConstellationsService } from '../../../services/constellations.service';
+import { ConstellationsService } from '../../../../services/constellations.service';
+import { cardTranslations } from '../../../../translations';
+import { Card } from '../../../../types';
+
 
 @Component({
   selector: 'app-card-types',

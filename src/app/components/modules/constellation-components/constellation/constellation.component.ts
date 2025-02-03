@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ConstellationsService } from '../../../services/constellations.service';
-import { ClientsService } from '../../../services/clients.service';
-import { AuthenticationService } from '../../../services/authentication.service';
-import { Card, Constellation, Client, Session } from '../../../types';
-import {
-  cardTranslations,
-  constellationTranslations,
-} from '../../../translations';
+import { AuthenticationService } from '../../../../services/authentication.service';
+import { ClientsService } from '../../../../services/clients.service';
+import { ConstellationsService } from '../../../../services/constellations.service';
+import { cardTranslations, constellationTranslations } from '../../../../translations';
+import { Card, Constellation, Client, Session } from '../../../../types';
+
+
 
 @Component({
   selector: 'app-constellation',
