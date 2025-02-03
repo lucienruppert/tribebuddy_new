@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card-deck',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './card-deck.component.html',
-  styleUrl: './card-deck.component.css'
 })
 export class CardDeckComponent {
+  cards: number[] = [];
 
+  constructor() {
+    this.cards = Array.from({ length: 64 }, (_, i) => i + 1);
+  }
 }

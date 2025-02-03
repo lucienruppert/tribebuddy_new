@@ -1,1 +1,13 @@
-<p>card-deck works!</p>
+<div
+  class="w-screen grid grid-cols-[repeat(auto-fill,minmax(120px,1fr))] gap-2 px-2 -mt-8 m-0 p-0"
+>
+  @for (card of cards; track card) {
+    <div class="aspect-[2/3] transition-transform hover:scale-105 hover:z-10">
+      <img
+        [src]="'https://tribebuddy.com/cards/dixit/' + card + '.jpg'"
+        [alt]="'Card ' + card"
+        class="w-full h-full object-cover rounded-lg"
+      />
+    </div>
+  }
+</div>
