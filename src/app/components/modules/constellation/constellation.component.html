@@ -19,10 +19,11 @@
   <select
     class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
     [(ngModel)]="selectedConstellation"
+    type="number"
   >
     <option
       *ngFor="let constellation of getFilteredConstellations()"
-      [value]="constellation.id"
+      [ngValue]="constellation.id"
     >
       {{ getTranslatedConstellationName(constellation.name) }}
     </option>

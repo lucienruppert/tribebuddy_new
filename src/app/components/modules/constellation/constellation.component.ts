@@ -117,7 +117,7 @@ export class ConstellationComponent implements OnInit {
 
     const session: Session = {
       cardId: parseInt(this.selectedCard),
-      constellationType: this.selectedConstellation,
+      constellationType: this.selectedConstellation, // already a number, no parseInt needed
       type: this.selectedType,
       client:
         this.selectedClient === 'new'
@@ -129,7 +129,7 @@ export class ConstellationComponent implements OnInit {
           : this.clients.find(c => c.name === this.selectedClient)?.email || '',
       clientId:
         this.selectedClient === 'new' ? undefined : this.selectedClientId,
-      helperId: this.authService.getUserId(),
+      helperId: parseInt(this.authService.getUserId()),
     };
 
     console.log('Storing session object:', JSON.stringify(session, null, 2));

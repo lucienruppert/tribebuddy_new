@@ -86,5 +86,5 @@ export interface Session {
   clientEmail: string;
   clientId?: number;
   id?: number;
-  helperId?: string;
+  helperId?: number;
 }
