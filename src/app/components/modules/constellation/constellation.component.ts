@@ -94,7 +94,7 @@ export class ConstellationComponent implements OnInit {
   onSubmit() {
     if (!this.isFormValid()) return;
 
-    const submission: Session = {
+    const session: Session = {
       cardId: this.selectedCard,
       constellationType: this.selectedConstellation,
       type: this.selectedType,
@@ -106,7 +106,7 @@ export class ConstellationComponent implements OnInit {
         this.selectedClient === 'new' ? undefined : this.selectedClientId,
     };
 
-    console.log('Session:', submission);
+    console.log('Session:', session);
   }
 
   onClientChange(clientName: string) {

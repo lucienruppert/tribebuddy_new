@@ -34,7 +34,7 @@
     [(ngModel)]="selectedClient"
     (ngModelChange)="onClientChange($event)"
   >
-    <option value="">Klienseid</option>
+    <option value="">Klienseim</option>
     <option value="new">Új kliens</option>
     <option *ngFor="let client of clients" [value]="client.name">
       {{ client.name }}
