@@ -32,6 +32,7 @@
     *ngIf="selectedType === 'personal'"
     class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
     [(ngModel)]="selectedClient"
+    (ngModelChange)="onClientChange($event)"
   >
     <option value="">Klienseid</option>
     <option value="new">Új kliens</option>

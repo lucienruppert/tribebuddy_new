@@ -26,6 +26,7 @@ export class ConstellationComponent implements OnInit {
   selectedConstellation: number = 0;
   selectedClient: string = '';
   newClientName: string = '';
+  selectedClientId?: number;
 
   constructor(
     private constellationsService: ConstellationsService,
@@ -95,14 +96,21 @@ export class ConstellationComponent implements OnInit {
 
     const submission: Session = {
       cardId: this.selectedCard,
-      constellationId: this.selectedConstellation,
-      constellationType: this.selectedType, // renamed from 'type'
+      constellationType: this.selectedConstellation,
+      type: this.selectedType,
       client:
         this.selectedClient === 'new'
           ? this.newClientName
           : this.selectedClient,
+      clientId:
+        this.selectedClient === 'new' ? undefined : this.selectedClientId,
     };
 
     console.log('Session:', submission);
+  }
+
+  onClientChange(clientName: string) {
+    const selectedClient = this.clients.find(c => c.name === clientName);
+    this.selectedClientId = selectedClient?.id;
   }
 }
