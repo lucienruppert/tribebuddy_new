@@ -91,11 +91,17 @@ export class ConstellationComponent implements OnInit {
     return !!this.selectedCard;
   }
 
+  clearForm() {
+    this.selectedClient = '';
+    this.newClientName = '';
+    this.selectedType = 'personal';
+  }
+
   onSubmit() {
     if (!this.isFormValid()) return;
 
     const session: Session = {
-      cardId: this.selectedCard,
+      cardId: parseInt(this.selectedCard),
       constellationType: this.selectedConstellation,
       type: this.selectedType,
       client:
@@ -106,7 +112,17 @@ export class ConstellationComponent implements OnInit {
         this.selectedClient === 'new' ? undefined : this.selectedClientId,
     };
 
-    console.log('Session:', session);
+    console.log('Storing session object:', JSON.stringify(session, null, 2));
+
+    this.clientsService.storeConstellationSession(session).subscribe({
+      next: response => {
+        console.log('Session stored successfully:', response);
+        this.clearForm();
+      },
+      error: error => {
+        console.error('Error storing session:', error);
+      },
+    });
   }
 
   onClientChange(clientName: string) {
