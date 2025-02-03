@@ -78,9 +78,18 @@ export class ConstellationComponent implements OnInit {
     );
   }
 
+  private isValidEmail(email: string): boolean {
+    const emailRegex =
+      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)+$/;
+    return emailRegex.test(email);
+  }
+
   isFormValid(): boolean {
     if (this.selectedType === 'personal') {
       if (this.selectedClient === 'new') {
+        if (!this.newClientEmail || !this.isValidEmail(this.newClientEmail)) {
+          return false;
+        }
         return !!(
           this.selectedCard &&
           this.newClientName &&
