@@ -83,4 +83,5 @@ export interface Session {
   type: 'personal' | 'group';
   client: string;
   clientId?: number;
+  id?: number;
 }
