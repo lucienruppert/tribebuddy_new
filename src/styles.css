@@ -39,11 +39,11 @@ body {
   @apply bg-teal-950;
 }
 
-cdk-dialog-container {
+/* cdk-dialog-container {
   position: fixed;
   top: 20%;
   left: calc(50% - 144px);
-}
+} */
 
 .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background,
 .mdc-checkbox__ripple {
