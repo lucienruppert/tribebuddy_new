@@ -138,7 +138,8 @@ export class ConstellationComponent implements OnInit {
         clientEmail:
           this.selectedClient === 'new'
             ? this.newClientEmail
-            : this.clients.find(c => c.name === this.selectedClient)?.email || '',
+            : this.clients.find(c => c.name === this.selectedClient)?.email ||
+              '',
         clientId:
           this.selectedClient === 'new' ? undefined : this.selectedClientId,
         helperId: parseInt(this.authService.getUserId()),
@@ -153,12 +154,16 @@ export class ConstellationComponent implements OnInit {
           this.clearForm();
         },
         error: error => {
-          this.snackBar.showSnackBar('Hiba történt a létrehozás során. Kérjük próbáld újra!');
+          this.snackBar.showSnackBar(
+            'Hiba történt a létrehozás során. Kérjük próbáld újra!'
+          );
           console.error('Error storing session:', error);
         },
       });
     } catch (error) {
-      this.snackBar.showSnackBar('Hiba történt a létrehozás során. Kérjük próbáld újra!');
+      this.snackBar.showSnackBar(
+        'Hiba történt a létrehozás során. Kérjük próbáld újra!'
+      );
       console.error('Submission error:', error);
     }
   }
