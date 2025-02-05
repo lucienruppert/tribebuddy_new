@@ -154,16 +154,27 @@ export class ConstellationComponent implements OnInit {
           this.clearForm();
         },
         error: error => {
-          this.snackBar.showSnackBar(
-            'Hiba történt a létrehozás során. Kérjük próbáld újra!'
-          );
+          let errorMessage = 'Hiba történt a létrehozás során.';
+
+          if (error.error?.message) {
+            // Handle array of messages
+            if (Array.isArray(error.error.message)) {
+              errorMessage = error.error.message.join(', ');
+            } else {
+              errorMessage = error.error.message;
+            }
+          }
+
+          this.snackBar.showSnackBar(errorMessage);
           console.error('Error storing session:', error);
         },
       });
     } catch (error) {
-      this.snackBar.showSnackBar(
-        'Hiba történt a létrehozás során. Kérjük próbáld újra!'
-      );
+      let errorMessage = 'Váratlan hiba történt.';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      this.snackBar.showSnackBar(errorMessage);
       console.error('Submission error:', error);
     }
   }
