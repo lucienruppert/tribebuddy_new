@@ -68,6 +68,7 @@ export interface Constellation {
   id: number;
   name: string;
   isPersonal: boolean;
+  isPersonalGroup: boolean;
   isGroup: boolean;
 }
 
@@ -81,7 +82,7 @@ export interface Client {
 export interface Session {
   cardId: number;
   constellationType: number;
-  type: 'personal' | 'group';
+  type: 'personal' | 'personalGroup' | 'group';
   client: string;
   clientEmail: string;
   clientId?: number;

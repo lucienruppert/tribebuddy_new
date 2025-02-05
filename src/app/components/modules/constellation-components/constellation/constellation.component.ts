@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../../../services/authentication.service';
 import { ClientsService } from '../../../../services/clients.service';
 import { ConstellationsService } from '../../../../services/constellations.service';
-import { cardTranslations, constellationTranslations } from '../../../../translations';
+import {
+  cardTranslations,
+  constellationTranslations,
+} from '../../../../translations';
 import { Card, Constellation, Client, Session } from '../../../../types';
-
-
 
 @Component({
   selector: 'app-constellation',
@@ -19,7 +20,7 @@ export class ConstellationComponent implements OnInit {
   cards: Card[] = [];
   constellations: Constellation[] = [];
   clients: Client[] = [];
-  selectedType: 'personal' | 'group' = 'personal';
+  selectedType: 'personal' | 'personalGroup' | 'group' = 'personal';
   userEmail: string = '';
   selectedCard: string = '';
   selectedConstellation: number = 0;
@@ -72,9 +73,18 @@ export class ConstellationComponent implements OnInit {
   }
 
   getFilteredConstellations(): Constellation[] {
-    return this.constellations.filter(c =>
-      this.selectedType === 'personal' ? c.isPersonal : c.isGroup
-    );
+    return this.constellations.filter(c => {
+      switch (this.selectedType) {
+        case 'personal':
+          return c.isPersonal;
+        case 'personalGroup':
+          return c.isPersonalGroup;
+        case 'group':
+          return c.isGroup;
+        default:
+          return false;
+      }
+    });
   }
 
   private isValidEmail(email: string): boolean {
