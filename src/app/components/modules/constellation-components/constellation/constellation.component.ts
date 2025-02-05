@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../../../services/authentication.service';
 import { ClientsService } from '../../../../services/clients.service';
 import { ConstellationsService } from '../../../../services/constellations.service';
+import { SnackBarService } from '../../../../services/snackbar.service';
 import {
   cardTranslations,
   constellationTranslations,
@@ -32,7 +33,8 @@ export class ConstellationComponent implements OnInit {
   constructor(
     private constellationsService: ConstellationsService,
     private clientsService: ClientsService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private snackBar: SnackBarService
   ) {
     this.userEmail = this.authService.getUserEmail() || '';
   }
@@ -121,37 +123,44 @@ export class ConstellationComponent implements OnInit {
     this.selectedType = 'personal';
   }
 
-  onSubmit() {
-    if (!this.isFormValid()) return;
+  async onSubmit(): Promise<void> {
+    try {
+      if (!this.isFormValid()) return;
 
-    const session: Session = {
-      cardId: parseInt(this.selectedCard),
-      constellationType: this.selectedConstellation, // already a number, no parseInt needed
-      type: this.selectedType,
-      client:
-        this.selectedClient === 'new'
-          ? this.newClientName
-          : this.selectedClient,
-      clientEmail:
-        this.selectedClient === 'new'
-          ? this.newClientEmail
-          : this.clients.find(c => c.name === this.selectedClient)?.email || '',
-      clientId:
-        this.selectedClient === 'new' ? undefined : this.selectedClientId,
-      helperId: parseInt(this.authService.getUserId()),
-    };
+      const session: Session = {
+        cardId: parseInt(this.selectedCard),
+        constellationType: this.selectedConstellation, // already a number, no parseInt needed
+        type: this.selectedType,
+        client:
+          this.selectedClient === 'new'
+            ? this.newClientName
+            : this.selectedClient,
+        clientEmail:
+          this.selectedClient === 'new'
+            ? this.newClientEmail
+            : this.clients.find(c => c.name === this.selectedClient)?.email || '',
+        clientId:
+          this.selectedClient === 'new' ? undefined : this.selectedClientId,
+        helperId: parseInt(this.authService.getUserId()),
+      };
 
-    console.log('Storing session object:', JSON.stringify(session, null, 2));
+      console.log('Storing session object:', JSON.stringify(session, null, 2));
 
-    this.clientsService.storeConstellationSession(session).subscribe({
-      next: response => {
-        console.log('Session stored successfully:', response);
-        this.clearForm();
-      },
-      error: error => {
-        console.error('Error storing session:', error);
-      },
-    });
+      this.clientsService.storeConstellationSession(session).subscribe({
+        next: response => {
+          console.log('Session stored successfully:', response);
+          this.snackBar.showSnackBar('Sikeres létrehozás!');
+          this.clearForm();
+        },
+        error: error => {
+          this.snackBar.showSnackBar('Hiba történt a létrehozás során. Kérjük próbáld újra!');
+          console.error('Error storing session:', error);
+        },
+      });
+    } catch (error) {
+      this.snackBar.showSnackBar('Hiba történt a létrehozás során. Kérjük próbáld újra!');
+      console.error('Submission error:', error);
+    }
   }
 
   onClientChange(clientName: string) {
