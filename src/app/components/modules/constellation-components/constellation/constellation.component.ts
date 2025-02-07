@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../../../services/authentication.servi
 import { ClientsService } from '../../../../services/clients.service';
 import { ConstellationsService } from '../../../../services/constellations.service';
 import { SnackBarService } from '../../../../services/snackbar.service';
+import { WebsocketService } from '../../../../services/websocket.service';
 import {
   cardTranslations,
   constellationTranslations,
@@ -34,9 +35,16 @@ export class ConstellationComponent implements OnInit {
     private constellationsService: ConstellationsService,
     private clientsService: ClientsService,
     private authService: AuthenticationService,
-    private snackBar: SnackBarService
+    private snackBar: SnackBarService,
+    private wsService: WebsocketService
   ) {
     this.userEmail = this.authService.getUserEmail() || '';
+
+    // Subscribe to WebSocket messages
+    this.wsService.messages$.subscribe(message => {
+      console.log('Constellation received websocket message:', message);
+      // Handle incoming messages here
+    });
   }
 
   async ngOnInit() {
@@ -146,6 +154,9 @@ export class ConstellationComponent implements OnInit {
       };
 
       console.log('Storing session object:', JSON.stringify(session, null, 2));
+
+      // Send websocket message when creating new session
+      this.wsService.sendMessage({ type: 'new_constellation', data: session });
 
       this.clientsService.storeConstellationSession(session).subscribe({
         next: response => {
