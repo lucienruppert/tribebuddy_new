@@ -11,6 +11,7 @@ export const constellationTranslations: { [key: string]: string } = {
   familyTree: 'Családfa',
   geneKeys: 'Génkulcsok',
   openSpace: 'Nyitott tér',
+  lifeTree: 'Életfa',
 };
 
 export const moduleTranslations: { [key: string]: string } = {
