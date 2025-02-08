@@ -8,9 +8,8 @@ import { ContractComponent } from './components/contract/contract.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
 import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
 import { CardTypesComponent } from './components/modules/constellation-components/card-types/card-types.component';
-import { ConstellationComponent } from './components/modules/constellation-components/constellation-selector/constellation.component';
+import { ConstellationSelectorComponent } from './components/modules/constellation-components/constellation-selector/constellation-selector.component';
 import { CardDeckComponent } from './components/modules/constellation-components/card-deck/card-deck.component';
-
 
 export const routes: Routes = [
   {
@@ -41,7 +40,7 @@ export const routes: Routes = [
   },
   {
     path: 'constellation',
-    component: ConstellationComponent,
+    component: ConstellationSelectorComponent,
   },
   {
     path: 'card-types',

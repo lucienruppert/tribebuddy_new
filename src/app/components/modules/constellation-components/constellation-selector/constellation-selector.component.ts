@@ -14,13 +14,13 @@ import {
 import { Card, Constellation, Client, Session } from '../../../../types';
 
 @Component({
-  selector: 'app-constellation',
-  templateUrl: './constellation.component.html',
-  styleUrls: ['./constellation.component.css'],
+  selector: 'app-constellation-selector',
+  templateUrl: './constellation-selector.component.html',
+  styleUrls: ['./constellation-selector.component.css'],
   standalone: true,
   imports: [FormsModule, MatProgressSpinnerModule, NgIf, NgFor],
 })
-export class ConstellationComponent implements OnInit {
+export class ConstellationSelectorComponent implements OnInit {
   isLoading = true;
   cards: Card[] = [];
   constellations: Constellation[] = [];
@@ -62,7 +62,6 @@ export class ConstellationComponent implements OnInit {
       });
 
       this.constellations = constellations;
-      console.log(this.constellations);
 
       if (this.cards.length > 0) {
         this.selectedCard = this.cards[0].id;
@@ -173,15 +172,12 @@ export class ConstellationComponent implements OnInit {
         helperId: parseInt(this.authService.getUserId()),
       };
 
-      console.log('Storing session object:', JSON.stringify(session, null, 2));
-
       // Send websocket message when creating new session
       //this.wsService.sendMessage({ type: 'new_constellation', data: session });
 
       this.clientsService.storeConstellationSession(session).subscribe({
         next: response => {
-          console.log('Session stored successfully:', response);
-          this.snackBar.showSnackBar('Sikeres létrehozás!');
+          this.snackBar.showSnackBar('Az ülés létrehozva.');
           this.clearForm();
         },
         error: error => {
