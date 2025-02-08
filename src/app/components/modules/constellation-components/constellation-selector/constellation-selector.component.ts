@@ -7,6 +7,7 @@ import { ClientsService } from '../../../../services/clients.service';
 import { ConstellationsService } from '../../../../services/constellations.service';
 import { SnackBarService } from '../../../../services/snackbar.service';
 import { WebsocketService } from '../../../../services/websocket.service';
+import { Router } from '@angular/router';
 import {
   cardTranslations,
   constellationTranslations,
@@ -39,7 +40,8 @@ export class ConstellationSelectorComponent implements OnInit {
     private clientsService: ClientsService,
     private authService: AuthenticationService,
     private snackBar: SnackBarService,
-    private wsService: WebsocketService
+    private wsService: WebsocketService,
+    private router: Router
   ) {
     this.userEmail = this.authService.getUserEmail() || '';
     this.wsService.messages$.subscribe(message => {
@@ -153,6 +155,15 @@ export class ConstellationSelectorComponent implements OnInit {
   async onSubmit(): Promise<void> {
     try {
       if (!this.isFormValid()) return;
+
+      const selectedConstellation = this.constellations.find(
+        c => c.id === this.selectedConstellation
+      );
+
+      if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
+        this.router.navigate(['/genekeyes-preselector']);
+        return;
+      }
 
       const session: Session = {
         cardId: parseInt(this.selectedCard),
