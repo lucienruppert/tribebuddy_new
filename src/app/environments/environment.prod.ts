@@ -5,5 +5,4 @@ export const environment = {
   websocketUrl: 'wss://devbuddy.hu/wsocket',
   EMAIL_KEY: 'userEmail',
   NAME_KEY: 'userName',
-  SEX_KEY: 'userSex',
 };

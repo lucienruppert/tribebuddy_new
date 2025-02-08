@@ -5,5 +5,4 @@ export const environment = {
   websocketUrl: 'ws://localhost:3200/wsocket',
   EMAIL_KEY: 'userEmail',
   NAME_KEY: 'userName',
-  SEX_KEY: 'userSex',
 };

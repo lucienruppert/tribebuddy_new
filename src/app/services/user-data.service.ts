@@ -10,13 +10,9 @@ import { BehaviorSubject, firstValueFrom } from 'rxjs';
 export class UsersService {
   private apiUrl: string = environment.apiUrl;
   private NAME_KEY: string = environment.NAME_KEY;
-  private SEX_KEY: string = environment.SEX_KEY;
   private EMAIL_KEY: string = environment.EMAIL_KEY;
   public userName$ = new BehaviorSubject<string | null>(
     sessionStorage.getItem(this.NAME_KEY)
-  );
-  public userSex$ = new BehaviorSubject<string | null>(
-    sessionStorage.getItem(this.SEX_KEY)
   );
 
   constructor(private http: HttpClient) {}

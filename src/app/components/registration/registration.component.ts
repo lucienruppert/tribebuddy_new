@@ -29,7 +29,6 @@ import { RouterModule } from '@angular/router';
 export class RegistrationComponent implements OnInit {
   public formData: User = {
     name: '',
-    sex: 'female',
     email: '',
     password: '',
   };

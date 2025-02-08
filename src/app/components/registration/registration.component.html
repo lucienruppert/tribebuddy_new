@@ -11,15 +11,6 @@
         required
         [ngClass]="{ invalid: form.submitted && !formData.name }"
       />
-      <select
-        [(ngModel)]="formData.sex"
-        name="sex"
-        required
-        [ngClass]="{ invalid: form.submitted && !formData.sex }"
-      >
-        <option value="female">Nő</option>
-        <option value="male">Férfi</option>
-      </select>
       <input
         type="email"
         [(ngModel)]="formData.email"

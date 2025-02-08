@@ -10,7 +10,6 @@ import { User } from '../types';
 })
 export class AuthenticationService {
   private EMAIL_KEY: string = environment.EMAIL_KEY;
-  private SEX_KEY: string = environment.SEX_KEY;
   private NAME_KEY: string = environment.NAME_KEY;
   private apiUrl: string = environment.apiUrl;
   public isLoggedIn$ = new BehaviorSubject<boolean>(false);
@@ -26,14 +25,13 @@ export class AuthenticationService {
 
   private checkExistingSession(): void {
     const email = sessionStorage.getItem(this.EMAIL_KEY);
-    const sex = sessionStorage.getItem(this.SEX_KEY);
     const name = sessionStorage.getItem(this.NAME_KEY);
 
-    if (email && sex && name) {
+    if (email && name) {
       this.isLoggedIn$.next(true);
-      // Since we don't store the role in session storage, defaulting to 'user'
-      // You might want to add role to session storage as well
       this.userRole$.next('user');
+    } else {
+      this.isLoggedIn$.next(false);
     }
   }
 
@@ -66,7 +64,6 @@ export class AuthenticationService {
     );
     const response = await firstValueFrom(result$);
     const userData = response.body as User;
-    console.log(userData);
 
     // Get cookies from response headers
     const cookies = response.headers.getAll('Set-Cookie');
@@ -95,7 +92,7 @@ export class AuthenticationService {
   private logoutOnClient(): void {
     this.isLoggedIn$.next(false);
     this.userRole$.next('');
-    [this.EMAIL_KEY, this.SEX_KEY].forEach(key =>
+    [this.EMAIL_KEY, this.NAME_KEY, 'id'].forEach(key =>
       sessionStorage.removeItem(key)
     );
   }

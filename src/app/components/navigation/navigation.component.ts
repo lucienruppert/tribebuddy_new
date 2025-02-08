@@ -33,7 +33,7 @@ export class NavigationComponent implements OnDestroy {
   constructor(
     private authentication: AuthenticationService,
     private router: Router,
-    private dialog: Dialog,
+    private dialog: Dialog
   ) {
     this.authentication.isLoggedIn$
       .pipe(takeUntil(this.destroy$))

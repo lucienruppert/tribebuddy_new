@@ -4,7 +4,6 @@ export interface User {
   role?: string;
   password?: string;
   name?: string;
-  sex?: 'male' | 'female';
   errors?: string[];
 }
 
