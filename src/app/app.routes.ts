@@ -8,7 +8,7 @@ import { ContractComponent } from './components/contract/contract.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
 import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
 import { CardTypesComponent } from './components/modules/constellation-components/card-types/card-types.component';
-import { ConstellationComponent } from './components/modules/constellation-components/constellation/constellation.component';
+import { ConstellationComponent } from './components/modules/constellation-components/constellation-selector/constellation.component';
 import { CardDeckComponent } from './components/modules/constellation-components/card-deck/card-deck.component';
 
 
