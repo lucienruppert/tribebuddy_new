@@ -15,6 +15,7 @@
       class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
       [(ngModel)]="selectedConstellation"
       type="number"
+      (ngModelChange)="onConstellationChange()"
     >
       <option
         *ngFor="let constellation of getFilteredConstellations()"

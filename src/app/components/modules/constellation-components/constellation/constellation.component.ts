@@ -88,6 +88,12 @@ export class ConstellationComponent implements OnInit {
     }
   }
 
+  onConstellationChange() {
+    if (!this.needsCards()) {
+      this.selectedCard = '';
+    }
+  }
+
   getTranslatedCardName(cardName: string): string {
     return cardTranslations[cardName] || cardName;
   }
@@ -124,18 +130,18 @@ export class ConstellationComponent implements OnInit {
           return false;
         }
         return !!(
-          this.selectedCard &&
+          (!this.needsCards() || this.selectedCard) &&
           this.newClientName &&
           this.newClientEmail
         );
       }
       return !!(
-        this.selectedCard &&
+        (!this.needsCards() || this.selectedCard) &&
         this.selectedClient &&
         this.selectedClient !== ''
       );
     }
-    return !!this.selectedCard;
+    return !this.needsCards() || !!this.selectedCard;
   }
 
   clearForm() {
@@ -170,7 +176,7 @@ export class ConstellationComponent implements OnInit {
       console.log('Storing session object:', JSON.stringify(session, null, 2));
 
       // Send websocket message when creating new session
-      this.wsService.sendMessage({ type: 'new_constellation', data: session });
+      //this.wsService.sendMessage({ type: 'new_constellation', data: session });
 
       this.clientsService.storeConstellationSession(session).subscribe({
         next: response => {
