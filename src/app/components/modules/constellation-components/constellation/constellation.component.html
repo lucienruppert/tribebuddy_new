@@ -4,15 +4,6 @@
   } @else {
     <select
       class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
-      [(ngModel)]="selectedCard"
-    >
-      <option *ngFor="let card of cards" [value]="card.id">
-        {{ getTranslatedCardName(card.name) }}
-      </option>
-    </select>
-
-    <select
-      class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
       [(ngModel)]="selectedType"
     >
       <option value="personal">Egyéni</option>
@@ -32,6 +23,17 @@
         {{ getTranslatedConstellationName(constellation.name) }}
       </option>
     </select>
+
+    @if (needsCards()) {
+      <select
+        class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+        [(ngModel)]="selectedCard"
+      >
+        <option *ngFor="let card of cards" [value]="card.id">
+          {{ getTranslatedCardName(card.name) }}
+        </option>
+      </select>
+    }
 
     <select
       *ngIf="selectedType === 'personal'"

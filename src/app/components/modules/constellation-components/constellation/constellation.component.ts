@@ -62,6 +62,7 @@ export class ConstellationComponent implements OnInit {
       });
 
       this.constellations = constellations;
+      console.log(this.constellations);
 
       if (this.cards.length > 0) {
         this.selectedCard = this.cards[0].id;
@@ -206,5 +207,12 @@ export class ConstellationComponent implements OnInit {
   onClientChange(clientName: string) {
     const selectedClient = this.clients.find(c => c.name === clientName);
     this.selectedClientId = selectedClient?.id;
+  }
+
+  needsCards(): boolean {
+    const selectedConst = this.constellations.find(
+      c => c.id === this.selectedConstellation
+    );
+    return selectedConst?.needsCard || false;
   }
 }

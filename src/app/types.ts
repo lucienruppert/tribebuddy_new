@@ -69,6 +69,7 @@ export interface Constellation {
   isPersonal: boolean;
   isPersonalGroup: boolean;
   isGroup: boolean;
+  needsCard: boolean;
 }
 
 export interface Client {
