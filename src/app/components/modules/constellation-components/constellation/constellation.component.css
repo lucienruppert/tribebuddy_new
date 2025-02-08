@@ -1,0 +1,9 @@
+.mat-warn {
+  --mdc-circular-progress-active-indicator-color: #eab308;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}

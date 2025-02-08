@@ -1,69 +1,73 @@
 <main class="flex flex-col gap-4 p-4 mt-20 items-center">
-  <select
-    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
-    [(ngModel)]="selectedCard"
-  >
-    <option *ngFor="let card of cards" [value]="card.id">
-      {{ getTranslatedCardName(card.name) }}
-    </option>
-  </select>
-
-  <select
-    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
-    [(ngModel)]="selectedType"
-  >
-    <option value="personal">Egyéni</option>
-    <option value="personalGroup">Egyéniek csoportban</option>
-    <option value="group">Csoport</option>
-  </select>
-
-  <select
-    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
-    [(ngModel)]="selectedConstellation"
-    type="number"
-  >
-    <option
-      *ngFor="let constellation of getFilteredConstellations()"
-      [ngValue]="constellation.id"
+  @if (isLoading) {
+    <mat-spinner color="warn" [diameter]="100"></mat-spinner>
+  } @else {
+    <select
+      class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+      [(ngModel)]="selectedCard"
     >
-      {{ getTranslatedConstellationName(constellation.name) }}
-    </option>
-  </select>
+      <option *ngFor="let card of cards" [value]="card.id">
+        {{ getTranslatedCardName(card.name) }}
+      </option>
+    </select>
 
-  <select
-    *ngIf="selectedType === 'personal'"
-    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
-    [(ngModel)]="selectedClient"
-    (ngModelChange)="onClientChange($event)"
-  >
-    <option value="">Klienseim</option>
-    <option value="new">Új kliens</option>
-    <option *ngFor="let client of clients" [value]="client.name">
-      {{ client.name }}
-    </option>
-  </select>
+    <select
+      class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+      [(ngModel)]="selectedType"
+    >
+      <option value="personal">Egyéni</option>
+      <option value="personalGroup">Egyéniek csoportban</option>
+      <option value="group">Csoport</option>
+    </select>
 
-  <input
-    *ngIf="selectedType === 'personal' && selectedClient === 'new'"
-    type="text"
-    [(ngModel)]="newClientName"
-    placeholder="Név"
-    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500 placeholder-yellow-500/50"
-  />
+    <select
+      class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+      [(ngModel)]="selectedConstellation"
+      type="number"
+    >
+      <option
+        *ngFor="let constellation of getFilteredConstellations()"
+        [ngValue]="constellation.id"
+      >
+        {{ getTranslatedConstellationName(constellation.name) }}
+      </option>
+    </select>
 
-  <input
-    *ngIf="selectedType === 'personal' && selectedClient === 'new'"
-    type="email"
-    [(ngModel)]="newClientEmail"
-    placeholder="Email"
-    class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500 placeholder-yellow-500/50"
-  />
+    <select
+      *ngIf="selectedType === 'personal'"
+      class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500"
+      [(ngModel)]="selectedClient"
+      (ngModelChange)="onClientChange($event)"
+    >
+      <option value="">Klienseim</option>
+      <option value="new">Új kliens</option>
+      <option *ngFor="let client of clients" [value]="client.name">
+        {{ client.name }}
+      </option>
+    </select>
 
-  <button
-    (click)="onSubmit()"
-    [disabled]="!isFormValid()"
-    class="w-72 p-2 rounded-lg text-2xl bg-yellow-500 text-teal-900 hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
-  >
-    Kezdjük
-  </button>
+    <input
+      *ngIf="selectedType === 'personal' && selectedClient === 'new'"
+      type="text"
+      [(ngModel)]="newClientName"
+      placeholder="Név"
+      class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500 placeholder-yellow-500/50"
+    />
+
+    <input
+      *ngIf="selectedType === 'personal' && selectedClient === 'new'"
+      type="email"
+      [(ngModel)]="newClientEmail"
+      placeholder="Email"
+      class="w-72 p-2 rounded-lg text-2xl bg-teal-900 text-yellow-500 placeholder-yellow-500/50"
+    />
+
+    <button
+      (click)="onSubmit()"
+      [disabled]="!isFormValid()"
+      class="w-72 p-2 rounded-lg text-2xl bg-yellow-500 text-teal-900 hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Kezdjük
+    </button>
+  }
 </main>

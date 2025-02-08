@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthenticationService } from '../../../../services/authentication.service';
 import { ClientsService } from '../../../../services/clients.service';
 import { ConstellationsService } from '../../../../services/constellations.service';
@@ -15,10 +16,12 @@ import { Card, Constellation, Client, Session } from '../../../../types';
 @Component({
   selector: 'app-constellation',
   templateUrl: './constellation.component.html',
+  styleUrls: ['./constellation.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule, MatProgressSpinnerModule, NgIf, NgFor],
 })
 export class ConstellationComponent implements OnInit {
+  isLoading = true;
   cards: Card[] = [];
   constellations: Constellation[] = [];
   clients: Client[] = [];
@@ -39,38 +42,48 @@ export class ConstellationComponent implements OnInit {
     private wsService: WebsocketService
   ) {
     this.userEmail = this.authService.getUserEmail() || '';
-
-    // Subscribe to WebSocket messages
     this.wsService.messages$.subscribe(message => {
-      console.log('Constellation received websocket message:', message);
       // Handle incoming messages here
     });
   }
 
   async ngOnInit() {
-    this.cards = await this.constellationsService.getCardTypes();
+    try {
+      this.isLoading = true;
+      const [cards, constellations] = await Promise.all([
+        this.constellationsService.getCardTypes(),
+        this.constellationsService.getConstellations(),
+      ]);
 
-    // Sort cards to put wisdomkeepers first, case insensitive
-    this.cards.sort((a, b) => {
-      if (a.name.toLowerCase() === 'wisdomkeepers') return -1;
-      if (b.name.toLowerCase() === 'wisdomkeepers') return 1;
-      return 0;
-    });
+      this.cards = cards.sort((a, b) => {
+        if (a.name.toLowerCase() === 'wisdomkeepers') return -1;
+        if (b.name.toLowerCase() === 'wisdomkeepers') return 1;
+        return 0;
+      });
 
-    if (this.cards.length > 0) {
-      this.selectedCard = this.cards[0].id;
-    }
-    this.constellations = await this.constellationsService.getConstellations();
-    // Set initial constellation
-    if (this.constellations.length > 0) {
-      this.selectedConstellation = this.constellations[0].id;
-    }
-    if (this.userEmail) {
-      this.clientsService
-        .getClientsByEmail(this.userEmail)
-        .subscribe(clients => {
-          this.clients = clients.sort((a, b) => a.name.localeCompare(b.name));
+      this.constellations = constellations;
+
+      if (this.cards.length > 0) {
+        this.selectedCard = this.cards[0].id;
+      }
+      if (this.constellations.length > 0) {
+        this.selectedConstellation = this.constellations[0].id;
+      }
+
+      if (this.userEmail) {
+        await new Promise<void>(resolve => {
+          this.clientsService
+            .getClientsByEmail(this.userEmail)
+            .subscribe(clients => {
+              this.clients = clients.sort((a, b) =>
+                a.name.localeCompare(b.name)
+              );
+              resolve();
+            });
         });
+      }
+    } finally {
+      this.isLoading = false;
     }
   }
 
