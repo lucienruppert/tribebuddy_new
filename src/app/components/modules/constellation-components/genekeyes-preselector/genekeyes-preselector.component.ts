@@ -17,6 +17,7 @@ export class GenekeyesPreselectorComponent implements OnInit {
   geneKeys = geneKeys;
   focusedIndex: number = -1;
   geneKeyValues: { [key: string]: string } = {};
+  selections: { [key: string]: number } = {};
 
   constructor(private clientsService: ClientsService) {}
 
@@ -34,6 +35,38 @@ export class GenekeyesPreselectorComponent implements OnInit {
 
   onBlur() {
     this.focusedIndex = -1;
+    this.updateSelections();
+  }
+
+  private updateSelections() {
+    Object.entries(this.geneKeyValues).forEach(([key, value]) => {
+      if (value) {
+        this.selections[key] = parseInt(value);
+      }
+    });
+    console.log('Current selections:', this.selections);
+  }
+
+  onKeyDown(event: KeyboardEvent): boolean {
+    // Allow: backspace, delete, tab, escape, enter
+    if (
+      [46, 8, 9, 27, 13].indexOf(event.keyCode) !== -1 ||
+      // Allow: Ctrl+A
+      (event.keyCode === 65 && event.ctrlKey === true) ||
+      // Allow: home, end, left, right
+      (event.keyCode >= 35 && event.keyCode <= 39)
+    ) {
+      return true;
+    }
+    // Ensure that it is a number and stop the keypress
+    if (
+      (event.shiftKey || event.keyCode < 48 || event.keyCode > 57) &&
+      (event.keyCode < 96 || event.keyCode > 105)
+    ) {
+      event.preventDefault();
+      return false;
+    }
+    return true;
   }
 
   validateInput(event: any, key: string) {
@@ -45,14 +78,8 @@ export class GenekeyesPreselectorComponent implements OnInit {
       return;
     }
 
-    // Prevent 3 or more digits
-    if (value.length > 2) {
-      event.target.value = this.geneKeyValues[key] || '';
-      return;
-    }
-
-    // Only allow numbers
-    if (!/^\d+$/.test(value)) {
+    // Only allow numbers and enforce max length
+    if (!/^\d{1,2}$/.test(value)) {
       event.target.value = this.geneKeyValues[key] || '';
       return;
     }
