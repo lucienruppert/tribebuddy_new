@@ -20,3 +20,17 @@ export const moduleTranslations: { [key: string]: string } = {
   caseAssessment: 'Esetfelmérő',
   newsletter: 'Hírlevél',
 };
+
+export const geneKeyTranslations: { [key: string]: string } = {
+  lifeWork: 'Tennivalód az életben',
+  evolution: 'Fejlődésed útja',
+  radiance: 'Ragyogásod',
+  purpose: 'Életcélod',
+  attraction: 'Vonzásmeződ',
+  iq: 'IQ',
+  eq: 'EQ',
+  sq: 'SQ',
+  vocation: 'Mag/Hivatás',
+  culture: 'Kultúra',
+  pearl: 'Gyöngy',
+};

@@ -156,15 +156,6 @@ export class ConstellationSelectorComponent implements OnInit {
     try {
       if (!this.isFormValid()) return;
 
-      const selectedConstellation = this.constellations.find(
-        c => c.id === this.selectedConstellation
-      );
-
-      if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
-        this.router.navigate(['/genekeyes-preselector']);
-        return;
-      }
-
       const clientName =
         this.selectedClient === 'new'
           ? this.newClientName
@@ -219,6 +210,16 @@ export class ConstellationSelectorComponent implements OnInit {
       this.snackBar.showSnackBar(errorMessage);
       console.error('Submission error:', error);
     }
+
+    const selectedConstellation = this.constellations.find(
+            c => c.id === this.selectedConstellation
+          );
+    
+    if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
+      this.router.navigate(['/genekeyes-preselector']);
+      return;
+    }
+    
   }
 
   onClientChange(clientName: string) {
