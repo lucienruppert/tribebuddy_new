@@ -48,51 +48,48 @@ export class GenekeyesPreselectorComponent implements OnInit {
   }
 
   onKeyDown(event: KeyboardEvent): boolean {
-    // Allow: backspace, delete, tab, escape, enter
+    // Allow navigation keys
     if (
-      [46, 8, 9, 27, 13].indexOf(event.keyCode) !== -1 ||
-      // Allow: Ctrl+A
-      (event.keyCode === 65 && event.ctrlKey === true) ||
-      // Allow: home, end, left, right
-      (event.keyCode >= 35 && event.keyCode <= 39)
+      ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(
+        event.key
+      )
     ) {
       return true;
     }
-    // Ensure that it is a number and stop the keypress
-    if (
-      (event.shiftKey || event.keyCode < 48 || event.keyCode > 57) &&
-      (event.keyCode < 96 || event.keyCode > 105)
-    ) {
-      event.preventDefault();
-      return false;
+
+    // Get the future value after this keypress
+    const input = event.target as HTMLInputElement;
+    const futureValue = input.value + event.key;
+    const num = parseInt(futureValue);
+
+    // Only allow if the result would be a valid number between 1-64
+    if (/^\d+$/.test(event.key) && num >= 1 && num <= 64) {
+      return true;
     }
-    return true;
+
+    event.preventDefault();
+    return false;
   }
 
   validateInput(event: any, key: string) {
-    let value = event.target.value.trim();
-
-    // Remove any non-numeric characters
-    value = value.replace(/[^0-9]/g, '');
-
-    // Enforce 2 digit limit
-    if (value.length > 2) {
-      value = value.slice(0, 2);
-    }
+    const input = event.target;
+    const value = input.value.trim();
+    const previousValue = this.geneKeyValues[key] || '';
 
     // Handle empty input
     if (value === '') {
       this.geneKeyValues[key] = '';
-      event.target.value = '';
+      input.value = '';
       return;
     }
 
     const num = parseInt(value);
-    if (num >= 1 && num <= 64) {
-      this.geneKeyValues[key] = value;
-      event.target.value = value;
-    } else {
-      event.target.value = this.geneKeyValues[key] || '';
+    if (!num || num < 1 || num > 64) {
+      input.value = previousValue;
+      return;
     }
+
+    this.geneKeyValues[key] = num.toString();
+    input.value = num.toString();
   }
 }
