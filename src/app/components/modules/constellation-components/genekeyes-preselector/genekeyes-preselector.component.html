@@ -9,9 +9,8 @@
         {{ getTranslatedGeneKey(key) }}
       </div>
       <input
-        type="number"
-        min="1"
-        max="64"
+        type="text"
+        maxlength="2"
         inputmode="numeric"
         [(ngModel)]="geneKeyValues[key]"
         (keydown)="onKeyDown($event)"

@@ -70,23 +70,27 @@ export class GenekeyesPreselectorComponent implements OnInit {
   }
 
   validateInput(event: any, key: string) {
-    const value = event.target.value;
+    let value = event.target.value.trim();
 
-    // Allow empty input for backspace/delete
-    if (value === '') {
-      this.geneKeyValues[key] = '';
-      return;
+    // Remove any non-numeric characters
+    value = value.replace(/[^0-9]/g, '');
+
+    // Enforce 2 digit limit
+    if (value.length > 2) {
+      value = value.slice(0, 2);
     }
 
-    // Only allow numbers and enforce max length
-    if (!/^\d{1,2}$/.test(value)) {
-      event.target.value = this.geneKeyValues[key] || '';
+    // Handle empty input
+    if (value === '') {
+      this.geneKeyValues[key] = '';
+      event.target.value = '';
       return;
     }
 
     const num = parseInt(value);
     if (num >= 1 && num <= 64) {
       this.geneKeyValues[key] = value;
+      event.target.value = value;
     } else {
       event.target.value = this.geneKeyValues[key] || '';
     }
