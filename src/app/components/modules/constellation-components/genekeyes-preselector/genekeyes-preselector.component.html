@@ -1,11 +1,16 @@
 <div>
   <h2 class="text-3xl m-10 text-center" *ngIf="clientName">{{ clientName }}</h2>
   <div class="flex flex-col space-y-2">
-    <input
-      *ngFor="let key of geneKeys"
-      type="text"
-      class="p-2 bg-gray-100 rounded text-center border border-gray-300 focus:border-blue-500 focus:outline-none"
-      [placeholder]="getTranslatedGeneKey(key)"
-    />
+    <div *ngFor="let key of geneKeys" class="relative h-10">
+      <div
+        class="absolute inset-0 p-2 bg-yellow-500 rounded text-center text-gray-500"
+      >
+        {{ getTranslatedGeneKey(key) }}
+      </div>
+      <input
+        type="text"
+        class="relative w-full h-full p-2 rounded text-center border border-gray-300 focus:border-blue-500 focus:outline-none bg-transparent"
+      />
+    </div>
   </div>
 </div>
