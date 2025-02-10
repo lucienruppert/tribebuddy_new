@@ -20,4 +20,8 @@ export class ClientsService {
       session
     );
   }
+
+  getClientName(): string {
+    return sessionStorage.getItem('client') || '';
+  }
 }

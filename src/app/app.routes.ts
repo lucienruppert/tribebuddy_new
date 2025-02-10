@@ -1,9 +1,5 @@
-import { Card } from './types';
 import { Routes } from '@angular/router';
-import { UserProfileComponent } from './components/Views/user-profile/user-profile.component';
 import { HomeComponent } from './components/Views/home/home.component';
-import { GeneralRouteGuardService } from './services/general-route-guard.service';
-import { UserPhotosComponent } from './components/Views/user-photos/user-photos.component';
 import { ContractComponent } from './components/contract/contract.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
 import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
@@ -16,16 +12,6 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-  },
-  {
-    path: 'userprofile',
-    component: UserProfileComponent,
-    canActivate: [GeneralRouteGuardService],
-  },
-  {
-    path: 'userphotos',
-    component: UserPhotosComponent,
-    canActivate: [GeneralRouteGuardService],
   },
   {
     path: 'contract',

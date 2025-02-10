@@ -165,14 +165,18 @@ export class ConstellationSelectorComponent implements OnInit {
         return;
       }
 
+      const clientName =
+        this.selectedClient === 'new'
+          ? this.newClientName
+          : this.selectedClient;
+
+      sessionStorage.setItem('client', clientName);
+
       const session: Session = {
         cardId: parseInt(this.selectedCard),
-        constellationType: this.selectedConstellation, // already a number, no parseInt needed
+        constellationType: this.selectedConstellation,
         type: this.selectedType,
-        client:
-          this.selectedClient === 'new'
-            ? this.newClientName
-            : this.selectedClient,
+        client: clientName,
         clientEmail:
           this.selectedClient === 'new'
             ? this.newClientEmail
