@@ -16,8 +16,8 @@
         (keydown)="onKeyDown($event)"
         (input)="validateInput($event, key)"
         class="relative w-full h-full p-2 rounded text-center focus:border-blue-500 focus:outline-none bg-transparent"
+        [class.border]="geneKeyValues[key]"
         [class.border-yellow-500]="geneKeyValues[key]"
-        [class.border-2]="geneKeyValues[key]"
         (focus)="onFocus(i)"
         (blur)="onBlur()"
       />
