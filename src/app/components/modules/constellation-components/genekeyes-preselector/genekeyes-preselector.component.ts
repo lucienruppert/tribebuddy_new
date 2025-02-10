@@ -18,6 +18,7 @@ export class GenekeyesPreselectorComponent implements OnInit {
   focusedIndex: number = -1;
   geneKeyValues: { [key: string]: string } = {};
   selections: { [key: string]: number } = {};
+  duplicateValues: Set<string> = new Set();
 
   constructor(private clientsService: ClientsService) {}
 
@@ -36,6 +37,7 @@ export class GenekeyesPreselectorComponent implements OnInit {
   onBlur() {
     this.focusedIndex = -1;
     this.updateSelections();
+    this.checkForDuplicates();
   }
 
   private updateSelections() {
@@ -45,6 +47,30 @@ export class GenekeyesPreselectorComponent implements OnInit {
       }
     });
     console.log('Current selections:', this.selections);
+  }
+
+  private checkForDuplicates() {
+    this.duplicateValues.clear();
+    const values = new Map<string, string>();
+
+    Object.entries(this.geneKeyValues).forEach(([key, value]) => {
+      if (!value) return;
+
+      const existingKey = Array.from(values.entries()).find(
+        ([_, v]) => v === value
+      )?.[0];
+
+      if (existingKey) {
+        this.duplicateValues.add(existingKey);
+        this.duplicateValues.add(key);
+      } else {
+        values.set(key, value);
+      }
+    });
+  }
+
+  isDuplicate(key: string): boolean {
+    return this.duplicateValues.has(key);
   }
 
   onKeyDown(event: KeyboardEvent): boolean {
