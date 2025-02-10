@@ -1,15 +1,23 @@
 <div>
   <h2 class="text-3xl m-10 text-center" *ngIf="clientName">{{ clientName }}</h2>
   <div class="flex flex-col space-y-2">
-    <div *ngFor="let key of geneKeys" class="relative h-10">
+    <div *ngFor="let key of geneKeys; let i = index" class="relative h-10">
       <div
         class="absolute inset-0 p-2 bg-yellow-500 rounded text-center text-gray-500"
+        [class.hidden]="focusedIndex === i"
       >
         {{ getTranslatedGeneKey(key) }}
       </div>
       <input
         type="text"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        maxlength="2"
+        [(ngModel)]="geneKeyValues[key]"
+        (input)="validateInput($event, key)"
         class="relative w-full h-full p-2 rounded text-center border border-gray-300 focus:border-blue-500 focus:outline-none bg-transparent"
+        (focus)="onFocus(i)"
+        (blur)="onBlur()"
       />
     </div>
   </div>
