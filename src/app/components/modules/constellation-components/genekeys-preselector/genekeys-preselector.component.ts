@@ -6,13 +6,13 @@ import { geneKeyTranslations } from '../../../../translations';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-genekeyes-preselector',
+  selector: 'app-genekeys-preselector',
   standalone: true,
   imports: [NgFor, NgIf, FormsModule],
-  templateUrl: './genekeyes-preselector.component.html',
-  styleUrl: './genekeyes-preselector.component.css',
+  templateUrl: './genekeys-preselector.component.html',
+  styleUrl: './genekeys-preselector.component.css',
 })
-export class GenekeyesPreselectorComponent implements OnInit {
+export class GenekeysPreselectorComponent implements OnInit {
   @Output() submitGeneKeys = new EventEmitter<{ [key: string]: string }>();
 
   clientName: string = '';

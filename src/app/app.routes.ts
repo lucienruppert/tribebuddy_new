@@ -6,7 +6,7 @@ import { DashboardComponent } from './components/Views/dashboard/dashboard.compo
 import { CardTypesComponent } from './components/modules/constellation-components/card-types/card-types.component';
 import { ConstellationSelectorComponent } from './components/modules/constellation-components/constellation-selector/constellation-selector.component';
 import { CardDeckComponent } from './components/modules/constellation-components/card-deck/card-deck.component';
-import { GenekeyesPreselectorComponent } from './components/modules/constellation-components/genekeyes-preselector/genekeyes-preselector.component';
+import { GenekeysPreselectorComponent } from './components/modules/constellation-components/genekeys-preselector/genekeys-preselector.component';
 
 export const routes: Routes = [
   {
@@ -30,8 +30,8 @@ export const routes: Routes = [
     component: ConstellationSelectorComponent,
   },
   {
-    path: 'genekeyes-preselector',
-    component: GenekeyesPreselectorComponent,
+    path: 'genekeys-preselector',
+    component: GenekeysPreselectorComponent,
   },
   {
     path: 'card-types',
