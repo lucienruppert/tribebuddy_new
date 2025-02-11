@@ -1,26 +1,26 @@
-import { Component, OnInit } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { NgIf } from "@angular/common";
-import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { AuthenticationService } from "../../services/authentication.service";
-import { DialogRef } from "@angular/cdk/dialog";
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthService } from '../../services/authentication.service';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
-  selector: "app-login",
+  selector: 'app-login',
   standalone: true,
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
   imports: [FormsModule, MatProgressSpinnerModule, NgIf],
 })
 export class LoginComponent implements OnInit {
-  public email = "";
-  public password = "";
-  public errorMessage = "";
+  public email = '';
+  public password = '';
+  public errorMessage = '';
   public showSpinner = false;
   public isDialogReady = false;
 
   constructor(
-    private authentication: AuthenticationService,
+    private authentication: AuthService,
     public dialogRef: DialogRef
   ) {}
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   public async submitForm(): Promise<void> {
-    this.errorMessage = ''; 
+    this.errorMessage = '';
     this.showSpinner = true;
     try {
       await this.authentication.login(this.email, this.password);

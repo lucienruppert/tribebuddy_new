@@ -1,5 +1,5 @@
 import { geneKeys } from '../../../../../../constants';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { ClientsService } from '../../../../services/clients.service';
 import { geneKeyTranslations } from '../../../../translations';
@@ -13,8 +13,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './genekeys-preselector.component.css',
 })
 export class GenekeysPreselectorComponent implements OnInit {
-  @Output() submitGeneKeys = new EventEmitter<{ [key: string]: string }>();
-
   clientName: string = '';
   geneKeys = geneKeys;
   focusedIndex: number = -1;
@@ -132,8 +130,22 @@ export class GenekeysPreselectorComponent implements OnInit {
 
   onSubmit(): void {
     if (this.isFormValid()) {
-      console.log('Submitted selections:', this.selections);
-      this.submitGeneKeys.emit(this.geneKeyValues);
+      const geneKeysData = Object.entries(this.geneKeyValues).reduce(
+        (acc, [key, value]) => {
+          acc[key] = parseInt(value);
+          return acc;
+        },
+        {} as { [key: string]: number }
+      );
+
+      this.clientsService.storeGeneKeys(geneKeysData).subscribe({
+        next: response => {
+          console.log('Gene keys stored successfully:', response);
+        },
+        error: error => {
+          console.error('Error storing gene keys:', error);
+        },
+      });
     }
   }
 }

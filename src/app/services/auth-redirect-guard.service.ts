@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
+import { AuthService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthRedirectGuardService {
   constructor(
-    private authentication: AuthenticationService,
-    private router: Router,
+    private authentication: AuthService,
+    private router: Router
   ) {}
 
   public canActivate(): boolean | Promise<boolean> {

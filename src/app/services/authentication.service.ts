@@ -8,7 +8,7 @@ import { User } from '../types';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationService {
+export class AuthService {
   private EMAIL_KEY: string = environment.EMAIL_KEY;
   private NAME_KEY: string = environment.NAME_KEY;
   private apiUrl: string = environment.apiUrl;

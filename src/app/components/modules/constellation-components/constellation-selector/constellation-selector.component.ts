@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AuthenticationService } from '../../../../services/authentication.service';
+import { AuthService } from '../../../../services/authentication.service';
 import { ClientsService } from '../../../../services/clients.service';
 import { ConstellationsService } from '../../../../services/constellations.service';
 import { SnackBarService } from '../../../../services/snackbar.service';
@@ -38,7 +38,7 @@ export class ConstellationSelectorComponent implements OnInit {
   constructor(
     private constellationsService: ConstellationsService,
     private clientsService: ClientsService,
-    private authService: AuthenticationService,
+    private authService: AuthService,
     private snackBar: SnackBarService,
     private wsService: WebsocketService,
     private router: Router
@@ -212,14 +212,13 @@ export class ConstellationSelectorComponent implements OnInit {
     }
 
     const selectedConstellation = this.constellations.find(
-            c => c.id === this.selectedConstellation
-          );
-    
+      c => c.id === this.selectedConstellation
+    );
+
     if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
       this.router.navigate(['/genekeys-preselector']);
       return;
     }
-    
   }
 
   onClientChange(clientName: string) {

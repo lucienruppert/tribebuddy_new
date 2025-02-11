@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Client, Session, ApiCallResponse } from '../types';
+import { Client, Session, ApiCallResponse, GeneKeysData } from '../types';
 import { environment } from '../environments/environment';
+import { AuthService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ClientsService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
 
   getClientsByEmail(email: string): Observable<Client[]> {
     return this.http.get<Client[]>(`${environment.apiUrl}/clients/${email}`);
@@ -23,5 +27,15 @@ export class ClientsService {
 
   getClientName(): string {
     return sessionStorage.getItem('client') || '';
+  }
+
+  storeGeneKeys(geneKeysData: GeneKeysData): Observable<ApiCallResponse> {
+    return this.http.post<ApiCallResponse>(
+      `${environment.apiUrl}/clients/genekeys/store`,
+      {
+        id: this.authService.getUserId(),
+        ...geneKeysData,
+      }
+    );
   }
 }

@@ -1,6 +1,6 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { RegistrationComponent } from '../registration/registration.component';
-import { AuthenticationService } from '../../services/authentication.service';
+import { AuthService } from '../../services/authentication.service';
 import { Component, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -31,7 +31,7 @@ export class NavigationComponent implements OnDestroy {
   public profilePhoto: string | null = null;
 
   constructor(
-    private authentication: AuthenticationService,
+    private authentication: AuthService,
     private router: Router,
     private dialog: Dialog
   ) {

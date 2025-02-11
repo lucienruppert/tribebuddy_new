@@ -89,3 +89,7 @@ export interface Session {
   id?: number;
   helperId?: number;
 }
+
+export interface GeneKeysData {
+  [key: string]: number;
+}
