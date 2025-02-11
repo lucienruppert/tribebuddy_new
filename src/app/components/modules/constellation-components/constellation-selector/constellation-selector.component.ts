@@ -216,7 +216,7 @@ export class ConstellationSelectorComponent implements OnInit {
           );
     
     if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
-      this.router.navigate(['/genekeyes-preselector']);
+      this.router.navigate(['/genekeys-preselector']);
       return;
     }
     
