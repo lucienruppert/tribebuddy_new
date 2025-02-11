@@ -1,0 +1,77 @@
+.hologenetic-chart-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  display: block;
+  position: relative;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.outer-circle {
+  fill: none;
+  stroke: #333;
+  stroke-width: 2;
+}
+
+.main-circle {
+  fill: none;
+  stroke: #333;
+  stroke-width: 1;
+}
+
+.connections line {
+  stroke: #333;
+  stroke-width: 1.5;
+}
+
+.segment {
+  fill: #f0f0f0;
+  stroke: #666;
+  stroke-width: 1;
+  transition: fill 0.3s ease;
+}
+
+.segment:hover {
+  fill: #e0e0e0;
+  cursor: pointer;
+}
+
+.center-point {
+  fill: #333;
+}
+
+.dot {
+  fill: white;
+  stroke: #333;
+  stroke-width: 1.5;
+  cursor: pointer;
+}
+
+.dot:hover {
+  fill: #f0f0f0;
+}
+
+.number-text {
+  font-size: 8px;
+  fill: #333;
+  font-weight: 500;
+}
+
+.dot-text {
+  font-size: 12px;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.label-text {
+  font-size: 10px;
+  text-anchor: middle;
+  fill: #333;
+  font-weight: 500;
+}
