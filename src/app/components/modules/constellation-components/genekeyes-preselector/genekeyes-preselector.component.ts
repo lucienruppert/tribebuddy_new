@@ -1,5 +1,5 @@
 import { geneKeys } from '../../../../../../constants';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { ClientsService } from '../../../../services/clients.service';
 import { geneKeyTranslations } from '../../../../translations';
@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './genekeyes-preselector.component.css',
 })
 export class GenekeyesPreselectorComponent implements OnInit {
+  @Output() submitGeneKeys = new EventEmitter<{ [key: string]: string }>();
+
   clientName: string = '';
   geneKeys = geneKeys;
   focusedIndex: number = -1;
@@ -117,5 +119,11 @@ export class GenekeyesPreselectorComponent implements OnInit {
 
     this.geneKeyValues[key] = num.toString();
     input.value = num.toString();
+  }
+
+  onSubmit(): void {
+    if (Object.values(this.geneKeyValues).every(value => value)) {
+      this.submitGeneKeys.emit(this.geneKeyValues);
+    }
   }
 }
