@@ -22,7 +22,7 @@ export const moduleTranslations: { [key: string]: string } = {
 };
 
 export const geneKeyTranslations: { [key: string]: string } = {
-  lifeWork: 'Tennivalód az életben',
+  lifesWork: 'Tennivalód az életben',
   evolution: 'Fejlődésed útja',
   radiance: 'Ragyogásod',
   purpose: 'Életcélod',

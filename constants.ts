@@ -1,5 +1,5 @@
 export const geneKeys = [
-  'lifeWork',
+  'lifesWork',
   'evolution',
   'radiance',
   'purpose',
