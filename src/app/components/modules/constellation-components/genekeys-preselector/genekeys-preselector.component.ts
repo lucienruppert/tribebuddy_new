@@ -4,6 +4,8 @@ import { NgFor, NgIf } from '@angular/common';
 import { ClientsService } from '../../../../services/clients.service';
 import { geneKeyTranslations } from '../../../../translations';
 import { FormsModule } from '@angular/forms';
+import { GeneKeysData } from '../../../../types';
+import { SnackBarService } from '../../../../services/snackbar.service';
 
 @Component({
   selector: 'app-genekeys-preselector',
@@ -21,7 +23,10 @@ export class GenekeysPreselectorComponent implements OnInit {
   duplicateValues: Set<string> = new Set();
   isInitialized: boolean = false;
 
-  constructor(private clientsService: ClientsService) {}
+  constructor(
+    private clientsService: ClientsService,
+    private snackbarService: SnackBarService
+  ) {}
 
   ngOnInit() {
     this.clientName = this.clientsService.getClientName();
@@ -122,10 +127,13 @@ export class GenekeysPreselectorComponent implements OnInit {
 
   isFormValid(): boolean {
     if (!this.isInitialized) return false;
-    return (
-      Object.values(this.geneKeyValues).every(value => value) &&
-      this.duplicateValues.size === 0
+
+    // Check if we have values for all gene keys
+    const allFieldsFilled = this.geneKeys.every(
+      key => this.geneKeyValues[key] && this.geneKeyValues[key].length > 0
     );
+
+    return allFieldsFilled && this.duplicateValues.size === 0;
   }
 
   onSubmit(): void {
@@ -135,12 +143,15 @@ export class GenekeysPreselectorComponent implements OnInit {
           acc[key] = parseInt(value);
           return acc;
         },
-        {} as { [key: string]: number }
+        { id: this.clientsService.getUserId() } as GeneKeysData
       );
 
       this.clientsService.storeGeneKeys(geneKeysData).subscribe({
         next: response => {
           console.log('Gene keys stored successfully:', response);
+          this.snackbarService.showMessage(
+            'A kliens génkulcsai mentésre kerültek.'
+          );
         },
         error: error => {
           console.error('Error storing gene keys:', error);

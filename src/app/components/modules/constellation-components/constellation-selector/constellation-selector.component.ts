@@ -183,7 +183,7 @@ export class ConstellationSelectorComponent implements OnInit {
 
       this.clientsService.storeConstellationSession(session).subscribe({
         next: response => {
-          this.snackBar.showSnackBar('Az ülés létrehozva.');
+          this.snackBar.showMessage('Az ülés létrehozva.');
           this.clearForm();
         },
         error: error => {
@@ -198,7 +198,7 @@ export class ConstellationSelectorComponent implements OnInit {
             }
           }
 
-          this.snackBar.showSnackBar(errorMessage);
+          this.snackBar.showMessage(errorMessage);
           console.error('Error storing session:', error);
         },
       });
@@ -207,7 +207,7 @@ export class ConstellationSelectorComponent implements OnInit {
       if (error instanceof Error) {
         errorMessage = error.message;
       }
-      this.snackBar.showSnackBar(errorMessage);
+      this.snackBar.showMessage(errorMessage);
       console.error('Submission error:', error);
     }
 

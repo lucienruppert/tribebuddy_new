@@ -24,7 +24,7 @@ import { RouterModule } from '@angular/router';
     MatSnackBarModule,
     CommonModule,
     RouterModule,
-  ]
+  ],
 })
 export class RegistrationComponent implements OnInit {
   public formData: User = {
@@ -38,10 +38,12 @@ export class RegistrationComponent implements OnInit {
   public isDialogReady = false;
 
   get isSubmitDisabled(): boolean {
-    return !this.formData.name || 
-           !this.formData.email || 
-           !this.formData.password || 
-           !this.acceptTerms;
+    return (
+      !this.formData.name ||
+      !this.formData.email ||
+      !this.formData.password ||
+      !this.acceptTerms
+    );
   }
 
   constructor(
@@ -62,12 +64,14 @@ export class RegistrationComponent implements OnInit {
       this.showSpinner = true;
       try {
         await this.registration.register(this.formData);
-        this.snackbar.showSnackBar('Regisztrációd sikeres.');
+        this.snackbar.showMessage('Regisztrációd sikeres.');
         this.dialogRef.close();
         // Fire and forget email confirmation
-        this.email.sendRegistrationConfirmation(this.formData).catch(error => 
-          console.error('Failed to send confirmation email:', error)
-        );
+        this.email
+          .sendRegistrationConfirmation(this.formData)
+          .catch(error =>
+            console.error('Failed to send confirmation email:', error)
+          );
       } catch (error: unknown) {
         console.error('Registration error:', error);
         if (error && typeof error === 'object') {
@@ -81,7 +85,8 @@ export class RegistrationComponent implements OnInit {
         } else if (typeof error === 'string') {
           this.errorMessage = error;
         } else {
-          this.errorMessage = 'Sikertelen regisztráció. Kérjük próbáld újra később.';
+          this.errorMessage =
+            'Sikertelen regisztráció. Kérjük próbáld újra később.';
         }
       }
       this.showSpinner = false;

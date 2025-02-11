@@ -30,12 +30,17 @@ export class ClientsService {
   }
 
   storeGeneKeys(geneKeysData: GeneKeysData): Observable<ApiCallResponse> {
+    const { id, ...data } = geneKeysData;
     return this.http.post<ApiCallResponse>(
       `${environment.apiUrl}/clients/genekeys/store`,
       {
-        id: this.authService.getUserId(),
-        ...geneKeysData,
+        id: Number(this.authService.getUserId()),
+        ...data,
       }
     );
+  }
+
+  getUserId(): number {
+    return Number(this.authService.getUserId());
   }
 }

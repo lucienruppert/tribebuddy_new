@@ -9,10 +9,10 @@ export class SnackBarService {
 
   constructor(private snackBar: MatSnackBar) {}
 
-  public showSnackBar(message: string): void {
-    this.snackBar.open(message, "", {
+  public showMessage(message: string): void {
+    this.snackBar.open(message, '', {
       duration: this.SNACKBAR_DURATION,
-      verticalPosition: "top"
+      verticalPosition: 'top',
     });
   }
 }

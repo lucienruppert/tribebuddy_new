@@ -91,5 +91,6 @@ export interface Session {
 }
 
 export interface GeneKeysData {
+  id: number;
   [key: string]: number;
 }
