@@ -41,6 +41,16 @@ export interface ApiCallResponse {
   message: string;
 }
 
+export interface SessionResponse extends ApiCallResponse {
+  cardId: number;
+  constellationType: number;
+  type: string;
+  clientId: number;
+  helperId: number;
+  id: number;
+  date: string;
+}
+
 export interface PhotoUploadResponse {
   message: string;
   fileName: string;

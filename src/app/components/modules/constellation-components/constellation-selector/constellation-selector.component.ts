@@ -12,7 +12,7 @@ import {
   cardTranslations,
   constellationTranslations,
 } from '../../../../translations';
-import { Card, Constellation, Client, Session } from '../../../../types';
+import { Card, Constellation, Client, Session, SessionResponse } from '../../../../types';
 
 @Component({
   selector: 'app-constellation-selector',
@@ -183,6 +183,11 @@ export class ConstellationSelectorComponent implements OnInit {
 
       this.clientsService.storeConstellationSession(session).subscribe({
         next: response => {
+          const sessionResponse = response as SessionResponse;
+          sessionStorage.setItem(
+            'clientId',
+            sessionResponse.clientId.toString()
+          );
           this.snackBar.showMessage('Az ülés létrehozva.');
           this.clearForm();
         },
