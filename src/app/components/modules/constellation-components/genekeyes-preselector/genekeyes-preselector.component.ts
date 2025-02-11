@@ -21,6 +21,7 @@ export class GenekeyesPreselectorComponent implements OnInit {
   geneKeyValues: { [key: string]: string } = {};
   selections: { [key: string]: number } = {};
   duplicateValues: Set<string> = new Set();
+  isInitialized: boolean = false;
 
   constructor(private clientsService: ClientsService) {}
 
@@ -43,12 +44,12 @@ export class GenekeyesPreselectorComponent implements OnInit {
   }
 
   private updateSelections() {
+    this.isInitialized = true;
     Object.entries(this.geneKeyValues).forEach(([key, value]) => {
       if (value) {
         this.selections[key] = parseInt(value);
       }
     });
-    console.log('Current selections:', this.selections);
   }
 
   private checkForDuplicates() {
@@ -121,8 +122,17 @@ export class GenekeyesPreselectorComponent implements OnInit {
     input.value = num.toString();
   }
 
+  isFormValid(): boolean {
+    if (!this.isInitialized) return false;
+    return (
+      Object.values(this.geneKeyValues).every(value => value) &&
+      this.duplicateValues.size === 0
+    );
+  }
+
   onSubmit(): void {
-    if (Object.values(this.geneKeyValues).every(value => value)) {
+    if (this.isFormValid()) {
+      console.log('Submitted selections:', this.selections);
       this.submitGeneKeys.emit(this.geneKeyValues);
     }
   }
