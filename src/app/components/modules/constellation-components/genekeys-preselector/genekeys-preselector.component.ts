@@ -143,7 +143,7 @@ export class GenekeysPreselectorComponent implements OnInit {
           acc[key] = parseInt(value);
           return acc;
         },
-        { id: this.clientsService.getUserId() } as GeneKeysData
+        {} as { [key: string]: number }
       );
 
       this.clientsService.storeGeneKeys(geneKeysData).subscribe({

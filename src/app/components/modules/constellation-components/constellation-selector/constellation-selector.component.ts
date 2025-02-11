@@ -161,7 +161,7 @@ export class ConstellationSelectorComponent implements OnInit {
           ? this.newClientName
           : this.selectedClient;
 
-      sessionStorage.setItem('client', clientName);
+      sessionStorage.setItem('clientName', clientName);
 
       const session: Session = {
         cardId: parseInt(this.selectedCard),

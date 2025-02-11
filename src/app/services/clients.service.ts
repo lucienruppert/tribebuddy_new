@@ -26,21 +26,22 @@ export class ClientsService {
   }
 
   getClientName(): string {
-    return sessionStorage.getItem('client') || '';
+    return sessionStorage.getItem('clientName') || '';
   }
 
-  storeGeneKeys(geneKeysData: GeneKeysData): Observable<ApiCallResponse> {
-    const { id, ...data } = geneKeysData;
+  getClientId(): number {
+    return Number(sessionStorage.getItem('clientId')) || 0;
+  }
+
+  storeGeneKeys(geneKeysData: {
+    [key: string]: number;
+  }): Observable<ApiCallResponse> {
     return this.http.post<ApiCallResponse>(
       `${environment.apiUrl}/clients/genekeys/store`,
       {
-        id: Number(this.authService.getUserId()),
-        ...data,
+        id: Number(this.getClientId()),
+        ...geneKeysData,
       }
     );
-  }
-
-  getUserId(): number {
-    return Number(this.authService.getUserId());
   }
 }
