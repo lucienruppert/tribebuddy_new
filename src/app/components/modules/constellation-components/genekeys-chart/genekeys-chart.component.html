@@ -53,10 +53,10 @@
 
     <!-- Intersection points -->
     <circle [attr.cx]="400 + radius" cy="400" r="35" class="fill-green-900" />
-    <circle [attr.cx]="400 - radius" cy="400" r="35" class="fill-green-900" />
     <circle cx="400" [attr.cy]="400 - radius" r="35" class="fill-green-900" />
     <circle cx="400" [attr.cy]="400 + radius" r="35" class="fill-green-900" />
     <circle cx="400" cy="400" r="35" class="fill-green-900" />
+    <circle [attr.cx]="400 - radius" cy="400" r="35" class="fill-green-900" />
 
     <!-- Diagonal intersection points with inner circle -->
     <circle
@@ -109,15 +109,7 @@
     >
       1
     </text>
-    <text
-      [attr.x]="400 + radius * 0.866"
-      [attr.y]="400 + radius * 0.5 - 30"
-      fill="white"
-      class="text-lg"
-      text-anchor="middle"
-    >
-      2
-    </text>
+    <!-- Removed text label for number 2 -->
     <text
       [attr.x]="400 - radius"
       y="370"
@@ -126,15 +118,6 @@
       text-anchor="middle"
     >
       3
-    </text>
-    <text
-      [attr.x]="400 - radius * 0.866"
-      [attr.y]="400 + radius * 0.5 - 30"
-      fill="white"
-      class="text-lg"
-      text-anchor="middle"
-    >
-      4
     </text>
     <text
       x="400"
@@ -214,17 +197,6 @@
     <!-- Removed text label for number 20 -->
 
     <!-- Green spots for outer diagonal intersections -->
-    <circle
-      [attr.cx]="400 + radius * 0.866"
-      [attr.cy]="400 + radius * 0.5"
-      r="35"
-      class="fill-green-900"
-    />
-    <circle
-      [attr.cx]="400 - radius * 0.866"
-      [attr.cy]="400 + radius * 0.5"
-      r="35"
-      class="fill-green-900"
-    />
+    <!-- Removed circle for spot 2 -->
   </svg>
 </div>
