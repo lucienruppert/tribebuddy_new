@@ -248,6 +248,14 @@
       <tspan x="400" dy="-0.6em">Vonzás-</tspan>
       <tspan x="400" dy="1.2em">meződ</tspan>
     </text>
+
+    <!-- Add two semicircles for split color effect -->
+    <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
+      <path d="M-40,0 A40,40 0 0,1 40,0" class="fill-teal-900" />
+      <path d="M-40,0 A40,40 0 0,0 40,0" class="fill-red-900" />
+    </g>
+
+    <!-- Move the text label here, after the semicircles -->
     <text
       x="400"
       [attr.y]="400 + radius"
