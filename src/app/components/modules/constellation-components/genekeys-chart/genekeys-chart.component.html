@@ -1,30 +1,12 @@
-<div class="hologenetic-chart-container">
-  <svg viewBox="-200 -200 400 400">
-    <!-- Main circle -->
-    <circle class="main-circle" r="160" />
-
-    <!-- Connection lines -->
-    <g class="connections">
-      <line
-        *ngFor="let conn of connections"
-        [attr.x1]="getPointPosition(conn[0] - 1).x"
-        [attr.y1]="getPointPosition(conn[0] - 1).y"
-        [attr.x2]="getPointPosition(conn[1] - 1).x"
-        [attr.y2]="getPointPosition(conn[1] - 1).y"
-      />
-    </g>
-
-    <!-- Dots and Labels -->
-    <g class="dots">
-      <g *ngFor="let point of points; let i = index">
-        <circle [attr.cx]="point.x" [attr.cy]="point.y" r="8" class="dot" />
-        <text [attr.x]="point.x" [attr.y]="point.y" dy="-15" class="label-text">
-          {{ point.label }}
-        </text>
-        <text [attr.x]="point.x" [attr.y]="point.y" dy=".35em" class="dot-text">
-          {{ point.number }}
-        </text>
-      </g>
-    </g>
+<div class="chart-container flex items-center justify-center w-full h-full">
+  <svg width="400" height="400">
+    <circle
+      cx="200"
+      cy="200"
+      [attr.r]="radius"
+      stroke="black"
+      stroke-width="2"
+      fill="none"
+    />
   </svg>
 </div>
