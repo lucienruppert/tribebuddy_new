@@ -15,6 +15,11 @@ import { PublicRouteGuard } from './services/public-route.guard';
 
 export const routes: Routes = [
   {
+    path: 'genekeys-chart',
+    component: GenekeysChartComponent,
+    canActivate: [PublicRouteGuard], // Keep this route at the top to prevent home resolver from intercepting
+  },
+  {
     path: '',
     component: HomeComponent,
     resolve: {
@@ -48,11 +53,6 @@ export const routes: Routes = [
     path: 'genekeys-preselector',
     component: GenekeysPreselectorComponent,
     canActivate: [RouteGuardService],
-  },
-  {
-    path: 'genekeys-chart',
-    component: GenekeysChartComponent,
-    canActivate: [PublicRouteGuard], // Explicitly mark as public
   },
   {
     path: 'card-types',

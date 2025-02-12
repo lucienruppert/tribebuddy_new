@@ -21,6 +21,12 @@ export class RouteGuardService {
   }
 
   public redirectBasedOnAuth(): boolean {
+    const currentPath = this.router.url.split('?')[0];
+    // Don't redirect if we're on a public route
+    if (currentPath === '/genekeys-chart') {
+      return true;
+    }
+
     const isLoggedIn = !!this.auth.getUserEmail();
     if (isLoggedIn) {
       this.router.navigate(['/dashboard']);
