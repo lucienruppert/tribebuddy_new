@@ -109,35 +109,35 @@
     />
 
     <!-- Intersection points -->
-    <circle [attr.cx]="400 + radius" cy="400" r="35" class="fill-green-900" />
-    <circle cx="400" [attr.cy]="400 - radius" r="35" class="fill-green-900" />
-    <circle cx="400" [attr.cy]="400 + radius" r="35" class="fill-green-900" />
-    <circle cx="400" cy="400" r="35" class="fill-green-900" />
-    <circle [attr.cx]="400 - radius" cy="400" r="35" class="fill-green-900" />
+    <circle [attr.cx]="400 + radius" cy="400" r="40" class="fill-green-900" />
+    <circle cx="400" [attr.cy]="400 - radius" r="40" class="fill-green-900" />
+    <circle cx="400" [attr.cy]="400 + radius" r="40" class="fill-green-900" />
+    <circle cx="400" cy="400" r="40" class="fill-green-900" />
+    <circle [attr.cx]="400 - radius" cy="400" r="40" class="fill-green-900" />
 
     <!-- Diagonal intersection points with inner circle -->
     <circle
       [attr.cx]="400 + radius * 0.5 * 0.866"
       [attr.cy]="400 + radius * 0.5 * 0.5"
-      r="35"
+      r="40"
       class="fill-green-900"
     />
     <circle
       [attr.cx]="400 - radius * 0.5 * 0.866"
       [attr.cy]="400 + radius * 0.5 * 0.5"
-      r="35"
+      r="40"
       class="fill-green-900"
     />
     <circle
       [attr.cx]="400 - radius * 0.5 * 0.866"
       [attr.cy]="400 - radius * 0.5 * 0.5"
-      r="35"
+      r="40"
       class="fill-green-900"
     />
     <circle
       [attr.cx]="400 + radius * 0.5 * 0.866"
       [attr.cy]="400 - radius * 0.5 * 0.5"
-      r="35"
+      r="40"
       class="fill-green-900"
     />
 
@@ -145,27 +145,27 @@
     <circle
       cx="400"
       [attr.cy]="400 - radius * 0.5"
-      r="35"
+      r="40"
       class="fill-green-900"
     />
     <circle
       cx="400"
       [attr.cy]="400 + radius * 0.5"
-      r="35"
+      r="40"
       class="fill-green-900"
     />
 
     <!-- All number labels in one section -->
     <text
       [attr.x]="400 + radius"
-      y="370"
-      fill="white"
-      class="text-lg"
+      y="400"
+      class="text-sm fill-gray-400"
       text-anchor="middle"
+      dominant-baseline="middle"
     >
-      1
+      <tspan [attr.x]="400 + radius" dy="-0.6em">Fejlődésed</tspan>
+      <tspan [attr.x]="400 + radius" dy="1.2em">útja</tspan>
     </text>
-    <!-- Removed text label for number 2 -->
     <text
       [attr.x]="400 - radius"
       y="370"
