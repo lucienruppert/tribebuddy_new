@@ -8,5 +8,71 @@
       stroke-width="2"
       fill="none"
     />
+    <circle
+      cx="400"
+      cy="400"
+      [attr.r]="radius * 0.5"
+      class="stroke-yellow-500"
+      stroke-width="2"
+      fill="none"
+    />
+    <line
+      x1="400"
+      y1="50"
+      x2="400"
+      y2="750"
+      class="stroke-yellow-500"
+      stroke-width="2"
+    />
+    <line
+      x1="50"
+      y1="400"
+      x2="750"
+      y2="400"
+      class="stroke-yellow-500"
+      stroke-width="2"
+    />
+
+    <!-- Intersection points -->
+    <circle cx="700" cy="400" r="24" class="fill-green-500" />
+    <circle cx="100" cy="400" r="24" class="fill-green-500" />
+    <circle cx="400" cy="100" r="24" class="fill-green-500" />
+    <circle cx="400" cy="700" r="24" class="fill-green-500" />
+    <circle cx="400" cy="550" r="24" class="fill-green-500" />
+    <circle cx="400" cy="250" r="24" class="fill-green-500" />
+    <circle cx="400" cy="400" r="24" class="fill-green-500" />
+    <!-- center -->
+
+    <!-- Right intersections -->
+    <text x="100" y="370" fill="white" class="text-lg" text-anchor="middle">
+      3
+    </text>
+
+    <!-- Left intersections -->
+    <text
+      x="200"
+      y="395"
+      fill="white"
+      class="text-lg"
+      dominant-baseline="middle"
+    >
+      4
+    </text>
+
+    <!-- Top intersections -->
+    <text x="400" y="70" fill="white" class="text-lg" text-anchor="middle">
+      5
+    </text>
+    <text x="400" y="220" fill="white" class="text-lg" text-anchor="middle">
+      6
+    </text>
+
+    <!-- Bottom intersections -->
+    <text x="400" y="730" fill="white" class="text-lg" text-anchor="middle">
+      7
+    </text>
+    <text x="400" y="580" fill="white" class="text-lg" text-anchor="middle">
+      8
+    </text>
   </svg>
 </div>
