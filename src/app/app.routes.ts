@@ -1,4 +1,6 @@
-import { Routes } from '@angular/router';
+import { Routes, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { AuthService } from './services/authentication.service';
 import { HomeComponent } from './components/Views/home/home.component';
 import { ContractComponent } from './components/contract/contract.component';
 import { DataProtectionComponent } from './components/data-protection/data-protection.component';
@@ -14,6 +16,14 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    resolve: {
+      auth: () => {
+        const auth = inject(AuthService);
+        const router = inject(Router);
+        const guard = new RouteGuardService(auth, router);
+        return guard.redirectBasedOnAuth();
+      },
+    },
   },
   {
     path: 'contract',
@@ -52,5 +62,8 @@ export const routes: Routes = [
     component: CardDeckComponent,
     canActivate: [RouteGuardService],
   },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];

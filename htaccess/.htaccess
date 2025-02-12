@@ -1,10 +1,20 @@
+# Ensure HTTPS is always used
 RewriteEngine On
-#RewriteBase /tribebuddy/
-RewriteBase /
 
-# Redirect all requests to index.html, but preserve the /tribebuddy/ base path
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteRule ^(.*)$ /tribebuddy/index.html [L]
-RewriteRule ^(.*)$ /index.html [L]
+# Redirect HTTP to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Handle SPA (Single Page Application) fallback
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Ignore direct access to index.html
+  RewriteRule ^index\.html$ - [L]
+
+  # Redirect all other requests to index.html if not a file or directory
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
