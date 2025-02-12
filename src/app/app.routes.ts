@@ -8,31 +8,38 @@ import { ConstellationSelectorComponent } from './components/modules/constellati
 import { CardDeckComponent } from './components/modules/constellation-components/card-deck/card-deck.component';
 import { GenekeysPreselectorComponent } from './components/modules/constellation-components/genekeys-preselector/genekeys-preselector.component';
 import { GenekeysChartComponent } from './components/modules/constellation-components/genekeys-chart/genekeys-chart.component';
+import { AuthRedirectGuardService } from './services/auth-redirect-guard.service';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'contract',
     component: ContractComponent,
+    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'dataprotection',
     component: DataProtectionComponent,
+    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'constellation',
     component: ConstellationSelectorComponent,
+    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'genekeys-preselector',
     component: GenekeysPreselectorComponent,
+    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'genekeys-chart',
@@ -41,10 +48,12 @@ export const routes: Routes = [
   {
     path: 'card-types',
     component: CardTypesComponent,
+    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'card-deck',
     component: CardDeckComponent,
+    canActivate: [AuthRedirectGuardService],
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
