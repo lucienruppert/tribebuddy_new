@@ -14,17 +14,14 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'contract',
     component: ContractComponent,
-    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'dataprotection',
     component: DataProtectionComponent,
-    canActivate: [AuthRedirectGuardService],
   },
   {
     path: 'dashboard',
