@@ -11,6 +11,7 @@ import { CardDeckComponent } from './components/modules/constellation-components
 import { GenekeysPreselectorComponent } from './components/modules/constellation-components/genekeys-preselector/genekeys-preselector.component';
 import { GenekeysChartComponent } from './components/modules/constellation-components/genekeys-chart/genekeys-chart.component';
 import { RouteGuardService } from './services/auth-redirect-guard.service';
+import { PublicRouteGuard } from './services/public-route.guard';
 
 export const routes: Routes = [
   {
@@ -51,6 +52,7 @@ export const routes: Routes = [
   {
     path: 'genekeys-chart',
     component: GenekeysChartComponent,
+    canActivate: [PublicRouteGuard], // Explicitly mark as public
   },
   {
     path: 'card-types',

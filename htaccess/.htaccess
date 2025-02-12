@@ -10,10 +10,13 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   RewriteEngine On
   RewriteBase /
 
+  # Allow direct access to public routes
+  RewriteRule ^genekeys-chart/?$ /index.html [L]
+
   # Ignore direct access to index.html
   RewriteRule ^index\.html$ - [L]
 
-  # Redirect all other requests to index.html if not a file or directory
+  # Handle all other routes
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
