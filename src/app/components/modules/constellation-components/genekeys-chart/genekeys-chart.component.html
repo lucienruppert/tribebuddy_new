@@ -249,10 +249,10 @@
       <tspan x="400" dy="1.2em">meződ</tspan>
     </text>
 
-    <!-- Add two semicircles for split color effect -->
+    <!-- Add two diagonal split parts for color effect -->
     <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
-      <path d="M-40,0 A40,40 0 0,1 40,0" class="fill-red-900" />
-      <path d="M-40,0 A40,40 0 0,0 40,0" class="fill-teal-900" />
+      <path d="M-40,-40 L40,40 A40,40 0 1,1 -40,-40" class="fill-teal-900" />
+      <path d="M-40,-40 L40,40 A40,40 0 1,0 -40,-40" class="fill-red-900" />
     </g>
 
     <!-- Move the text label here, after the semicircles -->
