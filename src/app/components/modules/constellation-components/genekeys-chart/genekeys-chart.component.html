@@ -33,46 +33,152 @@
       stroke-width="2"
     />
 
+    <!-- 30 degree diagonal lines -->
+    <line
+      [attr.x1]="400 - radius * 0.866"
+      [attr.y1]="400 - radius * 0.5"
+      [attr.x2]="400 + radius * 0.866"
+      [attr.y2]="400 + radius * 0.5"
+      class="stroke-yellow-500"
+      stroke-width="2"
+    />
+    <line
+      [attr.x1]="400 + radius * 0.866"
+      [attr.y1]="400 - radius * 0.5"
+      [attr.x2]="400 - radius * 0.866"
+      [attr.y2]="400 + radius * 0.5"
+      class="stroke-yellow-500"
+      stroke-width="2"
+    />
+
     <!-- Intersection points -->
-    <circle cx="700" cy="400" r="24" class="fill-green-500" />
-    <circle cx="100" cy="400" r="24" class="fill-green-500" />
-    <circle cx="400" cy="100" r="24" class="fill-green-500" />
-    <circle cx="400" cy="700" r="24" class="fill-green-500" />
-    <circle cx="400" cy="550" r="24" class="fill-green-500" />
-    <circle cx="400" cy="250" r="24" class="fill-green-500" />
+    <circle [attr.cx]="400 + radius" cy="400" r="24" class="fill-green-500" />
+    <circle [attr.cx]="400 - radius" cy="400" r="24" class="fill-green-500" />
+    <circle cx="400" [attr.cy]="400 - radius" r="24" class="fill-green-500" />
+    <circle cx="400" [attr.cy]="400 + radius" r="24" class="fill-green-500" />
+    <circle
+      cx="400"
+      [attr.cy]="400 + radius * 0.5"
+      r="24"
+      class="fill-green-500"
+    />
+    <circle
+      cx="400"
+      [attr.cy]="400 - radius * 0.5"
+      r="24"
+      class="fill-green-500"
+    />
     <circle cx="400" cy="400" r="24" class="fill-green-500" />
-    <!-- center -->
 
-    <!-- Right intersections -->
-    <text x="100" y="370" fill="white" class="text-lg" text-anchor="middle">
-      3
-    </text>
-
-    <!-- Left intersections -->
+    <!-- Text labels -->
     <text
-      x="200"
-      y="395"
+      [attr.x]="400 - radius"
+      y="370"
       fill="white"
       class="text-lg"
-      dominant-baseline="middle"
+      text-anchor="middle"
     >
-      4
+      3
     </text>
-
-    <!-- Top intersections -->
-    <text x="400" y="70" fill="white" class="text-lg" text-anchor="middle">
+    <text
+      x="400"
+      [attr.y]="400 - radius - 30"
+      fill="white"
+      class="text-lg"
+      text-anchor="middle"
+    >
       5
     </text>
-    <text x="400" y="220" fill="white" class="text-lg" text-anchor="middle">
+    <text
+      x="400"
+      [attr.y]="400 - radius * 0.5 - 30"
+      fill="white"
+      class="text-lg"
+      text-anchor="middle"
+    >
       6
     </text>
-
-    <!-- Bottom intersections -->
-    <text x="400" y="730" fill="white" class="text-lg" text-anchor="middle">
+    <text
+      x="400"
+      [attr.y]="400 + radius + 30"
+      fill="white"
+      class="text-lg"
+      text-anchor="middle"
+    >
       7
     </text>
-    <text x="400" y="580" fill="white" class="text-lg" text-anchor="middle">
+    <text
+      x="400"
+      [attr.y]="400 + radius * 0.5 + 30"
+      fill="white"
+      class="text-lg"
+      text-anchor="middle"
+    >
       8
+    </text>
+
+    <!-- Updated Intersection points - diagonal with inner circle -->
+    <circle
+      [attr.cx]="400 + radius * 0.5 * 0.866"
+      [attr.cy]="400 + radius * 0.5 * 0.5"
+      r="24"
+      class="fill-green-500"
+    />
+    <circle
+      [attr.cx]="400 - radius * 0.5 * 0.866"
+      [attr.cy]="400 + radius * 0.5 * 0.5"
+      r="24"
+      class="fill-green-500"
+    />
+    <circle
+      [attr.cx]="400 - radius * 0.5 * 0.866"
+      [attr.cy]="400 - radius * 0.5 * 0.5"
+      r="24"
+      class="fill-green-500"
+    />
+    <circle
+      [attr.cx]="400 + radius * 0.5 * 0.866"
+      [attr.cy]="400 - radius * 0.5 * 0.5"
+      r="24"
+      class="fill-green-500"
+    />
+
+    <!-- Updated Numbers for diagonal intersections -->
+    <text
+      [attr.x]="400 + radius * 0.5 * 0.866"
+      [attr.y]="400 + radius * 0.5 * 0.5 - 30"
+      fill="white"
+      class="text-lg"
+      text-anchor="middle"
+    >
+      9
+    </text>
+    <text
+      [attr.x]="400 - radius * 0.5 * 0.866"
+      [attr.y]="400 + radius * 0.5 * 0.5 - 30"
+      fill="white"
+      class="text-lg"
+      text-anchor="middle"
+    >
+      10
+    </text>
+    <text
+      [attr.x]="400 - radius * 0.5 * 0.866"
+      [attr.y]="400 - radius * 0.5 * 0.5 - 30"
+      fill="white"
+      class="text-lg"
+      text-anchor="middle"
+    >
+      11
+    </text>
+    <text
+      [attr.x]="400 + radius * 0.5 * 0.866"
+      [attr.y]="400 - radius * 0.5 * 0.5 - 30"
+      fill="white"
+      class="text-lg"
+      text-anchor="middle"
+    >
+      12
     </text>
   </svg>
 </div>
