@@ -123,10 +123,9 @@
         stroke-width="2"
       />
 
-      <!-- Intersection points -->
+      <!-- Intersection points with original 40px radius -->
       <circle [attr.cx]="400 + radius" cy="400" r="40" class="fill-teal-900" />
       <circle cx="400" [attr.cy]="400 - radius" r="40" class="fill-teal-900" />
-      <circle cx="400" [attr.cy]="400 + radius" r="40" class="fill-teal-900" />
       <circle cx="400" cy="400" r="40" class="fill-teal-900" />
       <circle [attr.cx]="400 - radius" cy="400" r="40" class="fill-teal-900" />
 
@@ -156,7 +155,7 @@
         class="fill-teal-900"
       />
 
-      <!-- Inner circle intersections with vertical and horizontal lines -->
+      <!-- Inner circle intersections -->
       <circle
         cx="400"
         [attr.cy]="400 - radius * 0.5"
@@ -265,10 +264,10 @@
         <tspan x="400" dy="1.2em">meződ</tspan>
       </text>
 
-      <!-- Add two diagonal split parts for color effect -->
+      <!-- Bottom split spot with exactly half size (20px) -->
       <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
-        <path d="M-40,-40 L40,40 A40,40 0 1,1 -40,-40" class="fill-teal-900" />
-        <path d="M-40,-40 L40,40 A40,40 0 1,0 -40,-40" class="fill-red-900" />
+        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" class="fill-teal-900" />
+        <path d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27" class="fill-red-900" />
       </g>
 
       <!-- Move the text label here, after the semicircles -->
