@@ -113,6 +113,16 @@
         stroke-width="2"
       />
 
+      <!-- Line between Fejlődésed útja and 5 -->
+      <line
+        [attr.x1]="400 + radius"
+        y1="400"
+        x2="400"
+        [attr.y2]="400 - radius"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+
       <!-- Intersection points -->
       <circle [attr.cx]="400 + radius" cy="400" r="40" class="fill-teal-900" />
       <circle cx="400" [attr.cy]="400 - radius" r="40" class="fill-teal-900" />
