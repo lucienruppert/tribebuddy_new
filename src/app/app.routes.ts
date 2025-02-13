@@ -1,10 +1,8 @@
-import { Routes, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { Routes, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthService } from './services/authentication.service';
-import { HomeComponent } from './components/Views/home/home.component';
 import { ContractComponent } from './components/informational/contract/contract.component';
 import { DataProtectionComponent } from './components/informational/data-protection/data-protection.component';
-import { DashboardComponent } from './components/Views/dashboard/dashboard.component';
 import { CardTypesComponent } from './components/modules/constellation-components/card-types/card-types.component';
 import { ConstellationSelectorComponent } from './components/modules/constellation-components/constellation-selector/constellation-selector.component';
 import { CardDeckComponent } from './components/modules/constellation-components/card-deck/card-deck.component';
@@ -12,6 +10,8 @@ import { GenekeysPreselectorComponent } from './components/modules/constellation
 import { GenekeysChartComponent } from './components/modules/constellation-components/genekeys-chart/genekeys-chart.component';
 import { RouteGuardService } from './services/auth-redirect-guard.service';
 import { PublicRouteGuard } from './services/public-route.guard';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
   {

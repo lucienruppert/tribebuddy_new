@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ModulesService } from '../../../services/modules.service';
 import { CommonModule } from '@angular/common';
-import { UserModule } from '../../../types';
 import { RouterModule } from '@angular/router';
-import { moduleTranslations } from '../../../translations';
+import { ModulesService } from '../../services/modules.service';
+import { moduleTranslations } from '../../translations';
+import { UserModule } from '../../types';
 
 @Component({
   selector: 'app-dashboard',

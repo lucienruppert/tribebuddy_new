@@ -1,6 +1,6 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
-import { LoginComponent } from '../../structural/login/login.component';
+import { LoginComponent } from '../structural/login/login.component';
 
 @Component({
   selector: 'app-home',
