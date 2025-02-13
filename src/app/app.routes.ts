@@ -12,6 +12,7 @@ import { RouteGuardService } from './services/auth-redirect-guard.service';
 import { PublicRouteGuard } from './services/public-route.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { MainLayoutComponent } from './components/structural/main-layout/main-layout.component';
 
 export const routes: Routes = [
   {
@@ -21,48 +22,54 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: HomeComponent,
-    resolve: {
-      auth: () => {
-        const auth = inject(AuthService);
-        const router = inject(Router);
-        const guard = new RouteGuardService(auth, router);
-        return guard.redirectBasedOnAuth();
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+        resolve: {
+          auth: () => {
+            const auth = inject(AuthService);
+            const router = inject(Router);
+            const guard = new RouteGuardService(auth, router);
+            return guard.redirectBasedOnAuth();
+          },
+        },
       },
-    },
-  },
-  {
-    path: 'contract',
-    component: ContractComponent,
-  },
-  {
-    path: 'dataprotection',
-    component: DataProtectionComponent,
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [RouteGuardService],
-  },
-  {
-    path: 'constellation',
-    component: ConstellationSelectorComponent,
-    canActivate: [RouteGuardService],
-  },
-  {
-    path: 'genekeys-preselector',
-    component: GenekeysPreselectorComponent,
-    canActivate: [RouteGuardService],
-  },
-  {
-    path: 'card-types',
-    component: CardTypesComponent,
-    canActivate: [RouteGuardService],
-  },
-  {
-    path: 'card-deck',
-    component: CardDeckComponent,
-    canActivate: [RouteGuardService],
+      {
+        path: 'contract',
+        component: ContractComponent,
+      },
+      {
+        path: 'dataprotection',
+        component: DataProtectionComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [RouteGuardService],
+      },
+      {
+        path: 'constellation',
+        component: ConstellationSelectorComponent,
+        canActivate: [RouteGuardService],
+      },
+      {
+        path: 'genekeys-preselector',
+        component: GenekeysPreselectorComponent,
+        canActivate: [RouteGuardService],
+      },
+      {
+        path: 'card-types',
+        component: CardTypesComponent,
+        canActivate: [RouteGuardService],
+      },
+      {
+        path: 'card-deck',
+        component: CardDeckComponent,
+        canActivate: [RouteGuardService],
+      },
+    ],
   },
   {
     path: '**',
