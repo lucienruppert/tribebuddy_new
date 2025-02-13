@@ -14,8 +14,8 @@
         stroke-width="20"
         fill="none"
       />
-      <!-- Lines section -->
-      <!-- Vertical line from top to Tennivalód az életben -->
+      <!-- Line connections section -->
+      <!-- Line between top edge and Tennivalód az életben -->
       <line
         x1="400"
         y1="50"
@@ -24,7 +24,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
-      <!-- Vertical line from Vonzásmeződ to bottom -->
+      <!-- Line between Életcélod and bottom edge -->
       <line
         x1="400"
         y1="550"
@@ -33,7 +33,7 @@
         class="stroke-red-900"
         stroke-width="3"
       />
-      <!-- Horizontal line from Ragyogásod to Fejlődésed útja -->
+      <!-- Line between Ragyogásod and Fejlődésed útja -->
       <line
         x1="50"
         y1="400"
@@ -43,7 +43,7 @@
         stroke-width="2"
       />
 
-      <!-- Diagonal line between Kultúra and Mag/Hivatás -->
+      <!-- Line between Kultúra and EQ -->
       <line
         [attr.x1]="400 - radius * 0.5 * 0.866"
         [attr.y1]="400 - radius * 0.5 * 0.5"
@@ -52,7 +52,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
-      <!-- Diagonal line between IQ and EQ -->
+      <!-- Line between IQ and EQ -->
       <line
         [attr.x1]="400 - radius * 0.5 * 0.866"
         [attr.y1]="400 + radius * 0.5 * 0.5"
@@ -141,7 +141,7 @@
       <!-- Spot for Tennivalód az életben -->
       <circle cx="400" [attr.cy]="400 - radius" r="40" class="fill-teal-900" />
       <!-- Spot for SQ (center) -->
-      <circle cx="400" cy="400" r="40" class="fill-teal-900" />
+      <circle cx="400" cy="400" r="40" class="fill-red-900" />
       <!-- Spot for Ragyogásod -->
       <circle [attr.cx]="400 - radius" cy="400" r="40" class="fill-teal-900" />
 
@@ -150,14 +150,14 @@
         [attr.cx]="400 + radius * 0.5 * 0.866"
         [attr.cy]="400 + radius * 0.5 * 0.5"
         r="40"
-        class="fill-teal-900"
+        class="fill-red-900"
       />
       <!-- Spot for IQ -->
       <circle
         [attr.cx]="400 - radius * 0.5 * 0.866"
         [attr.cy]="400 + radius * 0.5 * 0.5"
         r="40"
-        class="fill-teal-900"
+        class="fill-red-900"
       />
       <!-- Spot for Mag/Hivatás -->
       <circle
@@ -171,11 +171,11 @@
         [attr.cx]="400 + radius * 0.5 * 0.866"
         [attr.cy]="400 - radius * 0.5 * 0.5"
         r="40"
-        class="fill-teal-900"
+        class="fill-blue-900"
       />
 
       <!-- Spot for Gyöngy -->
-      <circle cx="400" [attr.cy]="400 - radius * 0.5" r="40" class="fill-teal-900" />
+      <circle cx="400" [attr.cy]="400 - radius * 0.5" r="40" class="fill-blue-900" />
       <!-- Spot for Vonzásmeződ -->
       <circle cx="400" [attr.cy]="400 + radius * 0.5" r="40" class="fill-red-900" />
 
