@@ -1,6 +1,5 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { RegistrationComponent } from '../registration/registration.component';
-import { AuthService } from '../../services/authentication.service';
 import { Component, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
@@ -10,6 +9,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-navigation',

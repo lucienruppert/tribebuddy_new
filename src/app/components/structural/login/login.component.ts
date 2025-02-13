@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AuthService } from '../../services/authentication.service';
 import { DialogRef } from '@angular/cdk/dialog';
+import { AuthService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-login',

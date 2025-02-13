@@ -3,14 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DialogRef } from '@angular/cdk/dialog';
-import { RegistrationService } from '../../services/registration.service';
-import { SnackBarService } from '../../services/snackbar.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { NgForm } from '@angular/forms';
-import { ApiCallResponse, User } from '../../types';
-import { EmailService } from '../../services/email.service';
 import { RouterModule } from '@angular/router';
+import { EmailService } from '../../../services/email.service';
+import { RegistrationService } from '../../../services/registration.service';
+import { SnackBarService } from '../../../services/snackbar.service';
+import { User } from '../../../types';
 
 @Component({
   selector: 'app-registration',
