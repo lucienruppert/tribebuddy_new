@@ -1,269 +1,275 @@
-<div>
-  <svg width="800" height="800">
-    <circle
-      cx="400"
-      cy="400"
-      [attr.r]="radius"
-      class="stroke-gray-700"
-      stroke-width="20"
-      fill="none"
-    />
-    <!-- Vertical lines -->
-    <line
-      x1="400"
-      y1="50"
-      x2="400"
-      y2="250"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
-    <line
-      x1="400"
-      y1="550"
-      x2="400"
-      y2="750"
-      class="stroke-red-900"
-      stroke-width="3"
-    />
-    <line
-      x1="50"
-      y1="400"
-      x2="750"
-      y2="400"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
+<div class="w-full max-w-4xl mx-auto">
+  <div class="relative w-full" style="padding-bottom: 112.5%">
+    <svg
+      class="absolute inset-0 w-full h-full"
+      viewBox="0 0 800 900"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <circle
+        cx="400"
+        cy="400"
+        [attr.r]="radius"
+        class="stroke-gray-700"
+        stroke-width="20"
+        fill="none"
+      />
+      <!-- Vertical lines -->
+      <line
+        x1="400"
+        y1="50"
+        x2="400"
+        y2="250"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+      <line
+        x1="400"
+        y1="550"
+        x2="400"
+        y2="750"
+        class="stroke-red-900"
+        stroke-width="3"
+      />
+      <line
+        x1="50"
+        y1="400"
+        x2="750"
+        y2="400"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
 
-    <!-- 30 degree diagonal lines -->
-    <line
-      [attr.x1]="400 - radius * 0.5 * 0.866"
-      [attr.y1]="400 - radius * 0.5 * 0.5"
-      [attr.x2]="400 + radius * 0.5 * 0.866"
-      [attr.y2]="400 + radius * 0.5 * 0.5"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
-    <line
-      [attr.x1]="400 - radius * 0.5 * 0.866"
-      [attr.y1]="400 + radius * 0.5 * 0.5"
-      [attr.x2]="400 + radius * 0.5 * 0.866"
-      [attr.y2]="400 + radius * 0.5 * 0.5"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
-    <line
-      [attr.x1]="400 - radius * 0.5 * 0.866"
-      [attr.y1]="400 + radius * 0.5 * 0.5"
-      [attr.x2]="400"
-      [attr.y2]="400 + radius * 0.5"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
-    <line
-      [attr.x1]="400 - radius"
-      y1="400"
-      x2="400"
-      [attr.y2]="400 + radius"
-      class="stroke-green-900"
-      stroke-width="2"
-    />
-    <line
-      [attr.x1]="400 - radius * 0.5 * 0.866"
-      [attr.y1]="400 - radius * 0.5 * 0.5"
-      [attr.x2]="400 + radius * 0.5 * 0.866"
-      [attr.y2]="400 - radius * 0.5 * 0.5"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
-    <line
-      [attr.x1]="400 - radius * 0.5 * 0.866"
-      [attr.y1]="400 - radius * 0.5 * 0.5"
-      x2="400"
-      [attr.y2]="400 - radius * 0.5"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
-    <line
-      [attr.x1]="400 - radius * 0.5 * 0.866"
-      [attr.y1]="400 - radius * 0.5 * 0.5"
-      x2="400"
-      [attr.y2]="400 - radius"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
-    <line
-      [attr.x1]="400 + radius * 0.5 * 0.866"
-      [attr.y1]="400 - radius * 0.5 * 0.5"
-      x2="400"
-      [attr.y2]="400 - radius"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
-    <line
-      [attr.x1]="400 + radius * 0.5 * 0.866"
-      [attr.y1]="400 - radius * 0.5 * 0.5"
-      x2="400"
-      [attr.y2]="400 - radius * 0.5"
-      class="stroke-yellow-500"
-      stroke-width="2"
-    />
+      <!-- 30 degree diagonal lines -->
+      <line
+        [attr.x1]="400 - radius * 0.5 * 0.866"
+        [attr.y1]="400 - radius * 0.5 * 0.5"
+        [attr.x2]="400 + radius * 0.5 * 0.866"
+        [attr.y2]="400 + radius * 0.5 * 0.5"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+      <line
+        [attr.x1]="400 - radius * 0.5 * 0.866"
+        [attr.y1]="400 + radius * 0.5 * 0.5"
+        [attr.x2]="400 + radius * 0.5 * 0.866"
+        [attr.y2]="400 + radius * 0.5 * 0.5"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+      <line
+        [attr.x1]="400 - radius * 0.5 * 0.866"
+        [attr.y1]="400 + radius * 0.5 * 0.5"
+        [attr.x2]="400"
+        [attr.y2]="400 + radius * 0.5"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+      <line
+        [attr.x1]="400 - radius"
+        y1="400"
+        x2="400"
+        [attr.y2]="400 + radius"
+        class="stroke-green-900"
+        stroke-width="2"
+      />
+      <line
+        [attr.x1]="400 - radius * 0.5 * 0.866"
+        [attr.y1]="400 - radius * 0.5 * 0.5"
+        [attr.x2]="400 + radius * 0.5 * 0.866"
+        [attr.y2]="400 - radius * 0.5 * 0.5"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+      <line
+        [attr.x1]="400 - radius * 0.5 * 0.866"
+        [attr.y1]="400 - radius * 0.5 * 0.5"
+        x2="400"
+        [attr.y2]="400 - radius * 0.5"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+      <line
+        [attr.x1]="400 - radius * 0.5 * 0.866"
+        [attr.y1]="400 - radius * 0.5 * 0.5"
+        x2="400"
+        [attr.y2]="400 - radius"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+      <line
+        [attr.x1]="400 + radius * 0.5 * 0.866"
+        [attr.y1]="400 - radius * 0.5 * 0.5"
+        x2="400"
+        [attr.y2]="400 - radius"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
+      <line
+        [attr.x1]="400 + radius * 0.5 * 0.866"
+        [attr.y1]="400 - radius * 0.5 * 0.5"
+        x2="400"
+        [attr.y2]="400 - radius * 0.5"
+        class="stroke-yellow-500"
+        stroke-width="2"
+      />
 
-    <!-- Intersection points -->
-    <circle [attr.cx]="400 + radius" cy="400" r="40" class="fill-teal-900" />
-    <circle cx="400" [attr.cy]="400 - radius" r="40" class="fill-teal-900" />
-    <circle cx="400" [attr.cy]="400 + radius" r="40" class="fill-teal-900" />
-    <circle cx="400" cy="400" r="40" class="fill-teal-900" />
-    <circle [attr.cx]="400 - radius" cy="400" r="40" class="fill-teal-900" />
+      <!-- Intersection points -->
+      <circle [attr.cx]="400 + radius" cy="400" r="40" class="fill-teal-900" />
+      <circle cx="400" [attr.cy]="400 - radius" r="40" class="fill-teal-900" />
+      <circle cx="400" [attr.cy]="400 + radius" r="40" class="fill-teal-900" />
+      <circle cx="400" cy="400" r="40" class="fill-teal-900" />
+      <circle [attr.cx]="400 - radius" cy="400" r="40" class="fill-teal-900" />
 
-    <!-- Diagonal intersection points with inner circle -->
-    <circle
-      [attr.cx]="400 + radius * 0.5 * 0.866"
-      [attr.cy]="400 + radius * 0.5 * 0.5"
-      r="40"
-      class="fill-teal-900"
-    />
-    <circle
-      [attr.cx]="400 - radius * 0.5 * 0.866"
-      [attr.cy]="400 + radius * 0.5 * 0.5"
-      r="40"
-      class="fill-teal-900"
-    />
-    <circle
-      [attr.cx]="400 - radius * 0.5 * 0.866"
-      [attr.cy]="400 - radius * 0.5 * 0.5"
-      r="40"
-      class="fill-teal-900"
-    />
-    <circle
-      [attr.cx]="400 + radius * 0.5 * 0.866"
-      [attr.cy]="400 - radius * 0.5 * 0.5"
-      r="40"
-      class="fill-teal-900"
-    />
+      <!-- Diagonal intersection points with inner circle -->
+      <circle
+        [attr.cx]="400 + radius * 0.5 * 0.866"
+        [attr.cy]="400 + radius * 0.5 * 0.5"
+        r="40"
+        class="fill-teal-900"
+      />
+      <circle
+        [attr.cx]="400 - radius * 0.5 * 0.866"
+        [attr.cy]="400 + radius * 0.5 * 0.5"
+        r="40"
+        class="fill-teal-900"
+      />
+      <circle
+        [attr.cx]="400 - radius * 0.5 * 0.866"
+        [attr.cy]="400 - radius * 0.5 * 0.5"
+        r="40"
+        class="fill-teal-900"
+      />
+      <circle
+        [attr.cx]="400 + radius * 0.5 * 0.866"
+        [attr.cy]="400 - radius * 0.5 * 0.5"
+        r="40"
+        class="fill-teal-900"
+      />
 
-    <!-- Inner circle intersections with vertical and horizontal lines -->
-    <circle
-      cx="400"
-      [attr.cy]="400 - radius * 0.5"
-      r="40"
-      class="fill-teal-900"
-    />
-    <circle
-      cx="400"
-      [attr.cy]="400 + radius * 0.5"
-      r="40"
-      class="fill-red-900"
-    />
+      <!-- Inner circle intersections with vertical and horizontal lines -->
+      <circle
+        cx="400"
+        [attr.cy]="400 - radius * 0.5"
+        r="40"
+        class="fill-teal-900"
+      />
+      <circle
+        cx="400"
+        [attr.cy]="400 + radius * 0.5"
+        r="40"
+        class="fill-red-900"
+      />
 
-    <!-- All number labels in one section -->
-    <text
-      [attr.x]="400 + radius"
-      y="400"
-      class="text-sm fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      <tspan [attr.x]="400 + radius" dy="-0.6em">Fejlődésed</tspan>
-      <tspan [attr.x]="400 + radius" dy="1.2em">útja</tspan>
-    </text>
-    <text
-      [attr.x]="400 - radius"
-      y="400"
-      class="text-sm fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      Ragyogásod
-    </text>
-    <text
-      x="400"
-      [attr.y]="400 - radius"
-      class="text-lg fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      5
-    </text>
-    <text
-      [attr.x]="400 + radius * 0.5 * 0.866"
-      [attr.y]="400 + radius * 0.5 * 0.5"
-      class="text-sm fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      EQ
-    </text>
-    <text
-      [attr.x]="400 - radius * 0.5 * 0.866"
-      [attr.y]="400 + radius * 0.5 * 0.5"
-      class="text-sm fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      IQ
-    </text>
-    <text
-      [attr.x]="400 - radius * 0.5 * 0.866"
-      [attr.y]="400 - radius * 0.5 * 0.5"
-      class="text-lg fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      11
-    </text>
-    <text
-      [attr.x]="400 + radius * 0.5 * 0.866"
-      [attr.y]="400 - radius * 0.5 * 0.5"
-      class="text-lg fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      12
-    </text>
-    <text
-      x="400"
-      y="400"
-      class="text-lg fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      13
-    </text>
-    <text
-      x="400"
-      [attr.y]="400 - radius * 0.5"
-      class="text-lg fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      18
-    </text>
-    <text
-      x="400"
-      [attr.y]="400 + radius * 0.5"
-      class="text-sm fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      <tspan x="400" dy="-0.6em">Vonzás-</tspan>
-      <tspan x="400" dy="1.2em">meződ</tspan>
-    </text>
+      <!-- All number labels in one section -->
+      <text
+        [attr.x]="400 + radius"
+        y="400"
+        class="text-sm fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        <tspan [attr.x]="400 + radius" dy="-0.6em">Fejlődésed</tspan>
+        <tspan [attr.x]="400 + radius" dy="1.2em">útja</tspan>
+      </text>
+      <text
+        [attr.x]="400 - radius"
+        y="400"
+        class="text-sm fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        Ragyogásod
+      </text>
+      <text
+        x="400"
+        [attr.y]="400 - radius"
+        class="text-lg fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        5
+      </text>
+      <text
+        [attr.x]="400 + radius * 0.5 * 0.866"
+        [attr.y]="400 + radius * 0.5 * 0.5"
+        class="text-sm fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        EQ
+      </text>
+      <text
+        [attr.x]="400 - radius * 0.5 * 0.866"
+        [attr.y]="400 + radius * 0.5 * 0.5"
+        class="text-sm fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        IQ
+      </text>
+      <text
+        [attr.x]="400 - radius * 0.5 * 0.866"
+        [attr.y]="400 - radius * 0.5 * 0.5"
+        class="text-lg fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        11
+      </text>
+      <text
+        [attr.x]="400 + radius * 0.5 * 0.866"
+        [attr.y]="400 - radius * 0.5 * 0.5"
+        class="text-lg fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        12
+      </text>
+      <text
+        x="400"
+        y="400"
+        class="text-lg fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        13
+      </text>
+      <text
+        x="400"
+        [attr.y]="400 - radius * 0.5"
+        class="text-lg fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        18
+      </text>
+      <text
+        x="400"
+        [attr.y]="400 + radius * 0.5"
+        class="text-sm fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        <tspan x="400" dy="-0.6em">Vonzás-</tspan>
+        <tspan x="400" dy="1.2em">meződ</tspan>
+      </text>
 
-    <!-- Add two diagonal split parts for color effect -->
-    <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
-      <path d="M-40,-40 L40,40 A40,40 0 1,1 -40,-40" class="fill-teal-900" />
-      <path d="M-40,-40 L40,40 A40,40 0 1,0 -40,-40" class="fill-red-900" />
-    </g>
+      <!-- Add two diagonal split parts for color effect -->
+      <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
+        <path d="M-40,-40 L40,40 A40,40 0 1,1 -40,-40" class="fill-teal-900" />
+        <path d="M-40,-40 L40,40 A40,40 0 1,0 -40,-40" class="fill-red-900" />
+      </g>
 
-    <!-- Move the text label here, after the semicircles -->
-    <text
-      x="400"
-      [attr.y]="400 + radius"
-      class="text-sm fill-white"
-      text-anchor="middle"
-      dominant-baseline="middle"
-    >
-      Életcélod
-    </text>
-  </svg>
+      <!-- Move the text label here, after the semicircles -->
+      <text
+        x="400"
+        [attr.y]="400 + radius"
+        class="text-sm fill-white"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >
+        Életcélod
+      </text>
+    </svg>
+  </div>
 </div>
