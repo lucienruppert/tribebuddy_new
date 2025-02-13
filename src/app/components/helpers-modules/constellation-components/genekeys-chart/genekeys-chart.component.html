@@ -138,8 +138,11 @@
       <!-- Spots section -->
       <!-- Spot for Fejlődésed útja -->
       <circle [attr.cx]="400 + radius" cy="400" r="40" class="fill-teal-900" />
-      <!-- Spot for Tennivalód az életben -->
-      <circle cx="400" [attr.cy]="400 - radius" r="40" class="fill-teal-900" />
+      <!-- Split spot for Tennivalód az életben -->
+      <g [attr.transform]="'translate(400,' + (400 - radius) + ') rotate(180)'">
+        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" class="fill-teal-900"/>
+        <path d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27" class="fill-blue-900"/>
+      </g>
       <!-- Spot for SQ (center) -->
       <circle cx="400" cy="400" r="40" class="fill-red-900" />
       <!-- Spot for Ragyogásod -->
