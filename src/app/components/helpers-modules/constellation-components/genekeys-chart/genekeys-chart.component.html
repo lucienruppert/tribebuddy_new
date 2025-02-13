@@ -5,6 +5,7 @@
       viewBox="0 0 800 800"
       preserveAspectRatio="xMidYMid meet"
     >
+      <!-- Main outer circle -->
       <circle
         cx="400"
         cy="400"
@@ -13,7 +14,8 @@
         stroke-width="20"
         fill="none"
       />
-      <!-- Vertical lines -->
+      <!-- Lines section -->
+      <!-- Vertical line from top to Tennivalód az életben -->
       <line
         x1="400"
         y1="50"
@@ -22,6 +24,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
+      <!-- Vertical line from Vonzásmeződ to bottom -->
       <line
         x1="400"
         y1="550"
@@ -30,6 +33,7 @@
         class="stroke-red-900"
         stroke-width="3"
       />
+      <!-- Horizontal line from Ragyogásod to Fejlődésed útja -->
       <line
         x1="50"
         y1="400"
@@ -39,7 +43,7 @@
         stroke-width="2"
       />
 
-      <!-- 30 degree diagonal lines -->
+      <!-- Diagonal line between Kultúra and Mag/Hivatás -->
       <line
         [attr.x1]="400 - radius * 0.5 * 0.866"
         [attr.y1]="400 - radius * 0.5 * 0.5"
@@ -48,6 +52,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
+      <!-- Diagonal line between IQ and EQ -->
       <line
         [attr.x1]="400 - radius * 0.5 * 0.866"
         [attr.y1]="400 + radius * 0.5 * 0.5"
@@ -56,6 +61,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
+      <!-- Line between IQ and Vonzásmeződ -->
       <line
         [attr.x1]="400 - radius * 0.5 * 0.866"
         [attr.y1]="400 + radius * 0.5 * 0.5"
@@ -64,6 +70,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
+      <!-- Line between Ragyogásod and Életcélod -->
       <line
         [attr.x1]="400 - radius"
         y1="400"
@@ -72,6 +79,7 @@
         class="stroke-green-900"
         stroke-width="2"
       />
+      <!-- Line between Mag/Hivatás and Kultúra -->
       <line
         [attr.x1]="400 - radius * 0.5 * 0.866"
         [attr.y1]="400 - radius * 0.5 * 0.5"
@@ -80,6 +88,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
+      <!-- Line between Mag/Hivatás and Gyöngy -->
       <line
         [attr.x1]="400 - radius * 0.5 * 0.866"
         [attr.y1]="400 - radius * 0.5 * 0.5"
@@ -88,6 +97,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
+      <!-- Line between Mag/Hivatás and Tennivalód az életben -->
       <line
         [attr.x1]="400 - radius * 0.5 * 0.866"
         [attr.y1]="400 - radius * 0.5 * 0.5"
@@ -96,6 +106,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
+      <!-- Line between Kultúra and Tennivalód az életben -->
       <line
         [attr.x1]="400 + radius * 0.5 * 0.866"
         [attr.y1]="400 - radius * 0.5 * 0.5"
@@ -104,6 +115,7 @@
         class="stroke-yellow-500"
         stroke-width="2"
       />
+      <!-- Line between Kultúra and Gyöngy -->
       <line
         [attr.x1]="400 + radius * 0.5 * 0.866"
         [attr.y1]="400 - radius * 0.5 * 0.5"
@@ -113,7 +125,7 @@
         stroke-width="2"
       />
 
-      <!-- Line between Fejlődésed útja and 5 -->
+      <!-- Line between Fejlődésed útja and Tennivalód az életben -->
       <line
         [attr.x1]="400 + radius"
         y1="400"
@@ -123,31 +135,38 @@
         stroke-width="2"
       />
 
-      <!-- Intersection points with original 40px radius -->
+      <!-- Spots section -->
+      <!-- Spot for Fejlődésed útja -->
       <circle [attr.cx]="400 + radius" cy="400" r="40" class="fill-teal-900" />
+      <!-- Spot for Tennivalód az életben -->
       <circle cx="400" [attr.cy]="400 - radius" r="40" class="fill-teal-900" />
+      <!-- Spot for SQ (center) -->
       <circle cx="400" cy="400" r="40" class="fill-teal-900" />
+      <!-- Spot for Ragyogásod -->
       <circle [attr.cx]="400 - radius" cy="400" r="40" class="fill-teal-900" />
 
-      <!-- Diagonal intersection points with inner circle -->
+      <!-- Spot for EQ -->
       <circle
         [attr.cx]="400 + radius * 0.5 * 0.866"
         [attr.cy]="400 + radius * 0.5 * 0.5"
         r="40"
         class="fill-teal-900"
       />
+      <!-- Spot for IQ -->
       <circle
         [attr.cx]="400 - radius * 0.5 * 0.866"
         [attr.cy]="400 + radius * 0.5 * 0.5"
         r="40"
         class="fill-teal-900"
       />
+      <!-- Spot for Mag/Hivatás -->
       <circle
         [attr.cx]="400 - radius * 0.5 * 0.866"
         [attr.cy]="400 - radius * 0.5 * 0.5"
         r="40"
         class="fill-teal-900"
       />
+      <!-- Spot for Kultúra -->
       <circle
         [attr.cx]="400 + radius * 0.5 * 0.866"
         [attr.cy]="400 - radius * 0.5 * 0.5"
@@ -155,21 +174,13 @@
         class="fill-teal-900"
       />
 
-      <!-- Inner circle intersections -->
-      <circle
-        cx="400"
-        [attr.cy]="400 - radius * 0.5"
-        r="40"
-        class="fill-teal-900"
-      />
-      <circle
-        cx="400"
-        [attr.cy]="400 + radius * 0.5"
-        r="40"
-        class="fill-red-900"
-      />
+      <!-- Spot for Gyöngy -->
+      <circle cx="400" [attr.cy]="400 - radius * 0.5" r="40" class="fill-teal-900" />
+      <!-- Spot for Vonzásmeződ -->
+      <circle cx="400" [attr.cy]="400 + radius * 0.5" r="40" class="fill-red-900" />
 
-      <!-- All number labels in one section -->
+      <!-- Text labels section -->
+      <!-- Label for Fejlődésed útja -->
       <text
         [attr.x]="400 + radius"
         y="400"
@@ -180,6 +191,7 @@
         <tspan [attr.x]="400 + radius" dy="-0.6em">Fejlődésed</tspan>
         <tspan [attr.x]="400 + radius" dy="1.2em">útja</tspan>
       </text>
+      <!-- Label for Ragyogásod -->
       <text
         [attr.x]="400 - radius"
         y="400"
@@ -189,6 +201,7 @@
       >
         Ragyogásod
       </text>
+      <!-- Label for Tennivalód az életben -->
       <text
         x="400"
         [attr.y]="400 - radius"
@@ -200,6 +213,7 @@
         <tspan x="400" dy="1.2em">az</tspan>
         <tspan x="400" dy="1.2em">életben</tspan>
       </text>
+      <!-- Label for EQ -->
       <text
         [attr.x]="400 + radius * 0.5 * 0.866"
         [attr.y]="400 + radius * 0.5 * 0.5"
@@ -209,6 +223,7 @@
       >
         EQ
       </text>
+      <!-- Label for IQ -->
       <text
         [attr.x]="400 - radius * 0.5 * 0.866"
         [attr.y]="400 + radius * 0.5 * 0.5"
@@ -218,6 +233,7 @@
       >
         IQ
       </text>
+      <!-- Label for Mag/Hivatás -->
       <text
         [attr.x]="400 - radius * 0.5 * 0.866"
         [attr.y]="400 - radius * 0.5 * 0.5"
@@ -228,6 +244,7 @@
         <tspan [attr.x]="400 - radius * 0.5 * 0.866" dy="-0.6em">Mag/</tspan>
         <tspan [attr.x]="400 - radius * 0.5 * 0.866" dy="1.2em">Hivatás</tspan>
       </text>
+      <!-- Label for Kultúra -->
       <text
         [attr.x]="400 + radius * 0.5 * 0.866"
         [attr.y]="400 - radius * 0.5 * 0.5"
@@ -237,6 +254,7 @@
       >
         Kultúra
       </text>
+      <!-- Label for SQ -->
       <text
         x="400"
         y="400"
@@ -246,6 +264,7 @@
       >
         SQ
       </text>
+      <!-- Label for Gyöngy -->
       <text
         x="400"
         [attr.y]="400 - radius * 0.5"
@@ -255,6 +274,7 @@
       >
         Gyöngy
       </text>
+      <!-- Label for Vonzásmeződ -->
       <text
         x="400"
         [attr.y]="400 + radius * 0.5"
@@ -272,7 +292,7 @@
         <path d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27" class="fill-red-900" />
       </g>
 
-      <!-- Move the text label here, after the semicircles -->
+      <!-- Label for Életcélod -->
       <text
         x="400"
         [attr.y]="400 + radius"
