@@ -55,6 +55,18 @@
           <stop offset="50%" style="stop-color: #ffffff; stop-opacity: 0" />
           <stop offset="100%" style="stop-color: #ffffff; stop-opacity: 0" />
         </linearGradient>
+
+        <!-- Refined shadow effect -->
+        <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="5" />
+          <feOffset dx="4" dy="4" result="offsetblur" />
+          <feFlood flood-color="black" flood-opacity="0.3" />
+          <feComposite in2="offsetblur" operator="in" />
+          <feMerge>
+            <feMergeNode />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
 
       <!-- Outer circle rendered as small lines -->
@@ -227,7 +239,7 @@
 
       <!-- Spots section with gradients -->
       <!-- Spot for Fejlődésed útja -->
-      <g>
+      <g filter="url(#dropShadow)">
         <circle
           [attr.cx]="400 + radius"
           cy="400"
@@ -243,7 +255,10 @@
       </g>
 
       <!-- Split spot for Tennivalód az életben -->
-      <g [attr.transform]="'translate(400,' + (400 - radius) + ') rotate(180)'">
+      <g
+        [attr.transform]="'translate(400,' + (400 - radius) + ') rotate(180)'"
+        filter="url(#dropShadow)"
+      >
         <path
           d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
           style="fill: url(#tealGradient)"
@@ -259,13 +274,13 @@
       </g>
 
       <!-- Spot for SQ (center) -->
-      <g>
+      <g filter="url(#dropShadow)">
         <circle cx="400" cy="400" r="40" style="fill: url(#redGradient)" />
         <circle cx="400" cy="400" r="40" style="fill: url(#shine)" />
       </g>
 
       <!-- Spot for Ragyogásod -->
-      <g>
+      <g filter="url(#dropShadow)">
         <circle
           [attr.cx]="400 - radius"
           cy="400"
@@ -281,7 +296,7 @@
       </g>
 
       <!-- Spot for EQ -->
-      <g>
+      <g filter="url(#dropShadow)">
         <circle
           [attr.cx]="400 + radius * 0.5 * 0.866"
           [attr.cy]="400 + radius * 0.5 * 0.5"
@@ -297,7 +312,7 @@
       </g>
 
       <!-- Spot for IQ -->
-      <g>
+      <g filter="url(#dropShadow)">
         <circle
           [attr.cx]="400 - radius * 0.5 * 0.866"
           [attr.cy]="400 + radius * 0.5 * 0.5"
@@ -321,6 +336,7 @@
           (400 - radius * 0.5 * 0.5) +
           ') rotate(165)'
         "
+        filter="url(#dropShadow)"
       >
         <path
           d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
@@ -337,7 +353,7 @@
       </g>
 
       <!-- Spot for Kultúra -->
-      <g>
+      <g filter="url(#dropShadow)">
         <circle
           [attr.cx]="400 + radius * 0.5 * 0.866"
           [attr.cy]="400 - radius * 0.5 * 0.5"
@@ -353,7 +369,7 @@
       </g>
 
       <!-- Gyöngy spot -->
-      <g>
+      <g filter="url(#dropShadow)">
         <circle
           cx="400"
           [attr.cy]="400 - radius * 0.5"
@@ -369,7 +385,7 @@
       </g>
 
       <!-- Spot for Vonzásmeződ -->
-      <g>
+      <g filter="url(#dropShadow)">
         <circle
           cx="400"
           [attr.cy]="400 + radius * 0.5"
@@ -385,7 +401,10 @@
       </g>
 
       <!-- Bottom split spot -->
-      <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
+      <g
+        [attr.transform]="'translate(400,' + (400 + radius) + ')'"
+        filter="url(#dropShadow)"
+      >
         <path
           d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
           style="fill: url(#tealGradient)"
@@ -508,7 +527,10 @@
       </text>
 
       <!-- Bottom split spot with exactly half size (20px) -->
-      <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
+      <g
+        [attr.transform]="'translate(400,' + (400 + radius) + ')'"
+        filter="url(#dropShadow)"
+      >
         <path
           d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
           style="fill: url(#tealGradient)"
