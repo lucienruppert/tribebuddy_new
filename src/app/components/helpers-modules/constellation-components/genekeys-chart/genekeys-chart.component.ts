@@ -10,6 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class GenekeysChartComponent {
   radius = 350;
-  outerCircleLines = Array(52).fill(0); // 360 degrees / 7 degrees ≈ 52 lines
+  outerCircleLines = Array(72).fill(0); 
   Math = Math; // Make Math available in template
 }

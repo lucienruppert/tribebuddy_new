@@ -8,13 +8,13 @@
       <!-- Outer circle rendered as small lines -->
       @for (line of outerCircleLines; track $index) {
         <line
-          [attr.x1]="400 + radius * Math.cos(($index * 7 * Math.PI) / 180)"
-          [attr.y1]="400 + radius * Math.sin(($index * 7 * Math.PI) / 180)"
+          [attr.x1]="400 + radius * Math.cos(($index * 5 * Math.PI) / 180)"
+          [attr.y1]="400 + radius * Math.sin(($index * 5 * Math.PI) / 180)"
           [attr.x2]="
-            400 + radius * Math.cos((($index * 7 + 3) * Math.PI) / 180)
+            400 + radius * Math.cos((($index * 5 + 4) * Math.PI) / 180)
           "
           [attr.y2]="
-            400 + radius * Math.sin((($index * 7 + 3) * Math.PI) / 180)
+            400 + radius * Math.sin((($index * 5 + 4) * Math.PI) / 180)
           "
           class="stroke-gray-900"
           stroke-width="40"
