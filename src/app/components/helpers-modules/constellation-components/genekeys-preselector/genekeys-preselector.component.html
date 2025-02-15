@@ -1,32 +1,39 @@
-<div class="w-48">
-  <h2 class="text-3xl my-5 text-center" *ngIf="clientName">{{ clientName }}</h2>
-  <div class="flex flex-col space-y-2">
-    <div *ngFor="let key of geneKeys; let i = index" class="relative h-10">
+<div class="h-screen flex items-center justify-center">
+  <div class="w-48 h-[98vh] flex flex-col gap-1">
+    <h2 class="text-2xl sm:text-3xl text-center" *ngIf="clientName">
+      {{ clientName }}
+    </h2>
+    <div class="flex flex-col gap-[2px]">
       <div
-        class="absolute inset-0 p-2 bg-yellow-500 rounded text-center text-gray-500"
-        [class.hidden]="focusedIndex === i || geneKeyValues[key]"
+        *ngFor="let key of geneKeys; let i = index"
+        class="relative h-[calc((90vh_-_4.5rem)_/_13)]"
       >
-        {{ getTranslatedGeneKey(key) }}
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-yellow-500 rounded text-center text-gray-500 text-base sm:text-lg"
+          [class.hidden]="focusedIndex === i || geneKeyValues[key]"
+        >
+          {{ getTranslatedGeneKey(key) }}
+        </div>
+        <input
+          type="text"
+          maxlength="2"
+          inputmode="numeric"
+          [(ngModel)]="geneKeyValues[key]"
+          (keydown)="onKeyDown($event)"
+          (input)="validateInput($event, key)"
+          class="relative w-full h-full px-0 rounded text-center focus:border-blue-500 focus:outline-none bg-transparent text-base sm:text-lg flex items-center justify-center"
+          [class.border-yellow-500]="geneKeyValues[key]"
+          (focus)="onFocus(i)"
+          (blur)="onBlur()"
+        />
       </div>
-      <input
-        type="text"
-        maxlength="2"
-        inputmode="numeric"
-        [(ngModel)]="geneKeyValues[key]"
-        (keydown)="onKeyDown($event)"
-        (input)="validateInput($event, key)"
-        class="relative w-full h-full p-2 rounded text-center focus:border-blue-500 focus:outline-none bg-transparent"
-        [class.border-yellow-500]="geneKeyValues[key]"
-        (focus)="onFocus(i)"
-        (blur)="onBlur()"
-      />
     </div>
+    <button
+      (click)="onSubmit()"
+      [disabled]="!isFormValid()"
+      class="w-full p-2 rounded-lg text-lg sm:text-xl bg-yellow-500 text-teal-900 enabled:hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Mehet
+    </button>
   </div>
-  <button
-    (click)="onSubmit()"
-    [disabled]="!isFormValid()"
-    class="w-full p-2 rounded-lg text-2xl bg-yellow-500 text-teal-900 enabled:hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed mt-4 mx-auto block"
-  >
-    Mehet
-  </button>
 </div>
