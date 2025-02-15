@@ -7,32 +7,53 @@
     >
       <defs>
         <!-- Enhanced gradients for all colors -->
-        <radialGradient id="redGradient" cx="40%" cy="40%" r="65%" fx="25%" fy="25%">
-          <stop offset="0%" style="stop-color:#f87171;stop-opacity:1" />
-          <stop offset="45%" style="stop-color:#dc2626;stop-opacity:1" />
-          <stop offset="75%" style="stop-color:#b91c1c;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#991b1b;stop-opacity:1" />
+        <radialGradient
+          id="redGradient"
+          cx="40%"
+          cy="40%"
+          r="65%"
+          fx="25%"
+          fy="25%"
+        >
+          <stop offset="0%" style="stop-color: #f87171; stop-opacity: 1" />
+          <stop offset="45%" style="stop-color: #dc2626; stop-opacity: 1" />
+          <stop offset="75%" style="stop-color: #b91c1c; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #991b1b; stop-opacity: 1" />
         </radialGradient>
 
-        <radialGradient id="blueGradient" cx="40%" cy="40%" r="65%" fx="25%" fy="25%">
-          <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
-          <stop offset="45%" style="stop-color:#2563eb;stop-opacity:1" />
-          <stop offset="75%" style="stop-color:#1d4ed8;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+        <radialGradient
+          id="blueGradient"
+          cx="40%"
+          cy="40%"
+          r="65%"
+          fx="25%"
+          fy="25%"
+        >
+          <stop offset="0%" style="stop-color: #60a5fa; stop-opacity: 1" />
+          <stop offset="45%" style="stop-color: #2563eb; stop-opacity: 1" />
+          <stop offset="75%" style="stop-color: #1d4ed8; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #1e40af; stop-opacity: 1" />
         </radialGradient>
 
-        <radialGradient id="tealGradient" cx="40%" cy="40%" r="65%" fx="25%" fy="25%">
-          <stop offset="0%" style="stop-color:#2dd4bf;stop-opacity:1" />
-          <stop offset="45%" style="stop-color:#14b8a6;stop-opacity:1" />
-          <stop offset="75%" style="stop-color:#0d9488;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#0f766e;stop-opacity:1" />
+        <radialGradient
+          id="tealGradient"
+          cx="40%"
+          cy="40%"
+          r="65%"
+          fx="25%"
+          fy="25%"
+        >
+          <stop offset="0%" style="stop-color: #14b8a6; stop-opacity: 1" />
+          <stop offset="45%" style="stop-color: #0d9488; stop-opacity: 1" />
+          <stop offset="75%" style="stop-color: #0f766e; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #134e4a; stop-opacity: 1" />
         </radialGradient>
 
         <!-- Shine effects -->
         <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
-          <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0" />
-          <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+          <stop offset="0%" style="stop-color: #ffffff; stop-opacity: 0.3" />
+          <stop offset="50%" style="stop-color: #ffffff; stop-opacity: 0" />
+          <stop offset="100%" style="stop-color: #ffffff; stop-opacity: 0" />
         </linearGradient>
       </defs>
 
@@ -61,7 +82,7 @@
         y2="250"
         class="stroke-blue-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between Életcélod and bottom edge -->
       <line
@@ -71,7 +92,7 @@
         y2="750"
         class="stroke-red-900 opacity-75"
         stroke-width="3"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between Ragyogásod and Fejlődésed útja -->
       <line
@@ -81,7 +102,7 @@
         y2="400"
         class="stroke-teal-900 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <line
         x1="300"
@@ -90,7 +111,7 @@
         y2="400"
         class="stroke-red-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <line
         x1="500"
@@ -99,7 +120,7 @@
         y2="400"
         class="stroke-teal-900 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
 
       <!-- Line between Mag/Hivatás and SQ and EQ -->
@@ -110,7 +131,7 @@
         [attr.y2]="400 + radius * 0.5 * 0.5"
         class="stroke-red-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between IQ and EQ -->
       <line
@@ -120,7 +141,7 @@
         [attr.y2]="400 + radius * 0.5 * 0.5"
         class="stroke-red-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between IQ and Vonzásmeződ -->
       <line
@@ -130,7 +151,7 @@
         [attr.y2]="400 + radius * 0.5"
         class="stroke-red-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between Ragyogásod and Életcélod -->
       <line
@@ -140,7 +161,7 @@
         [attr.y2]="400 + radius"
         class="stroke-teal-900 opacity-75"
         stroke-width="3"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between Mag/Hivatás and Kultúra -->
       <line
@@ -150,7 +171,7 @@
         [attr.y2]="400 - radius * 0.5 * 0.5"
         class="stroke-blue-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between Mag/Hivatás and Gyöngy -->
       <line
@@ -160,7 +181,7 @@
         [attr.y2]="400 - radius * 0.5"
         class="stroke-blue-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between Mag/Hivatás and Tennivalód az életben -->
       <line
@@ -170,7 +191,7 @@
         [attr.y2]="400 - radius"
         class="stroke-blue-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between Kultúra and Tennivalód az életben -->
       <line
@@ -180,7 +201,7 @@
         [attr.y2]="400 - radius"
         class="stroke-blue-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
       <!-- Line between Kultúra and Gyöngy -->
       <line
@@ -190,7 +211,7 @@
         [attr.y2]="400 - radius * 0.5"
         class="stroke-blue-500 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
 
       <!-- Line between Fejlődésed útja and Tennivalód az életben -->
@@ -201,33 +222,62 @@
         [attr.y2]="400 - radius"
         class="stroke-teal-900 opacity-75"
         stroke-width="2"
-        style="filter:url(#lineGlow)"
+        style="filter: url(#lineGlow)"
       />
 
       <!-- Spots section with gradients -->
       <!-- Spot for Fejlődésed útja -->
       <g>
-        <circle [attr.cx]="400 + radius" cy="400" r="40" style="fill:url(#tealGradient)" />
-        <circle [attr.cx]="400 + radius" cy="400" r="40" style="fill:url(#shine)" />
+        <circle
+          [attr.cx]="400 + radius"
+          cy="400"
+          r="40"
+          style="fill: url(#tealGradient)"
+        />
+        <circle
+          [attr.cx]="400 + radius"
+          cy="400"
+          r="40"
+          style="fill: url(#shine)"
+        />
       </g>
 
       <!-- Split spot for Tennivalód az életben -->
       <g [attr.transform]="'translate(400,' + (400 - radius) + ') rotate(180)'">
-        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" style="fill:url(#tealGradient)" />
-        <path d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27" style="fill:url(#blueGradient)" />
-        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" style="fill:url(#shine)" />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
+          style="fill: url(#tealGradient)"
+        />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27"
+          style="fill: url(#blueGradient)"
+        />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
+          style="fill: url(#shine)"
+        />
       </g>
 
       <!-- Spot for SQ (center) -->
       <g>
-        <circle cx="400" cy="400" r="40" style="fill:url(#redGradient)" />
-        <circle cx="400" cy="400" r="40" style="fill:url(#shine)" />
+        <circle cx="400" cy="400" r="40" style="fill: url(#redGradient)" />
+        <circle cx="400" cy="400" r="40" style="fill: url(#shine)" />
       </g>
 
       <!-- Spot for Ragyogásod -->
       <g>
-        <circle [attr.cx]="400 - radius" cy="400" r="40" style="fill:url(#tealGradient)" />
-        <circle [attr.cx]="400 - radius" cy="400" r="40" style="fill:url(#shine)" />
+        <circle
+          [attr.cx]="400 - radius"
+          cy="400"
+          r="40"
+          style="fill: url(#tealGradient)"
+        />
+        <circle
+          [attr.cx]="400 - radius"
+          cy="400"
+          r="40"
+          style="fill: url(#shine)"
+        />
       </g>
 
       <!-- Spot for EQ -->
@@ -236,13 +286,13 @@
           [attr.cx]="400 + radius * 0.5 * 0.866"
           [attr.cy]="400 + radius * 0.5 * 0.5"
           r="40"
-          style="fill:url(#redGradient)"
+          style="fill: url(#redGradient)"
         />
         <circle
           [attr.cx]="400 + radius * 0.5 * 0.866"
           [attr.cy]="400 + radius * 0.5 * 0.5"
           r="40"
-          style="fill:url(#shine)"
+          style="fill: url(#shine)"
         />
       </g>
 
@@ -252,21 +302,38 @@
           [attr.cx]="400 - radius * 0.5 * 0.866"
           [attr.cy]="400 + radius * 0.5 * 0.5"
           r="40"
-          style="fill:url(#redGradient)"
+          style="fill: url(#redGradient)"
         />
         <circle
           [attr.cx]="400 - radius * 0.5 * 0.866"
           [attr.cy]="400 + radius * 0.5 * 0.5"
           r="40"
-          style="fill:url(#shine)"
+          style="fill: url(#shine)"
         />
       </g>
 
       <!-- Split spot for Mag/Hivatás -->
-      <g [attr.transform]="'translate(' + (400 - radius * 0.5 * 0.866) + ',' + (400 - radius * 0.5 * 0.5) + ') rotate(165)'">
-        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" style="fill:url(#redGradient)" />
-        <path d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27" style="fill:url(#blueGradient)" />
-        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" style="fill:url(#shine)" />
+      <g
+        [attr.transform]="
+          'translate(' +
+          (400 - radius * 0.5 * 0.866) +
+          ',' +
+          (400 - radius * 0.5 * 0.5) +
+          ') rotate(165)'
+        "
+      >
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
+          style="fill: url(#redGradient)"
+        />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27"
+          style="fill: url(#blueGradient)"
+        />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
+          style="fill: url(#shine)"
+        />
       </g>
 
       <!-- Spot for Kultúra -->
@@ -275,13 +342,13 @@
           [attr.cx]="400 + radius * 0.5 * 0.866"
           [attr.cy]="400 - radius * 0.5 * 0.5"
           r="40"
-          style="fill:url(#blueGradient)"
+          style="fill: url(#blueGradient)"
         />
         <circle
           [attr.cx]="400 + radius * 0.5 * 0.866"
           [attr.cy]="400 - radius * 0.5 * 0.5"
           r="40"
-          style="fill:url(#shine)"
+          style="fill: url(#shine)"
         />
       </g>
 
@@ -291,13 +358,13 @@
           cx="400"
           [attr.cy]="400 - radius * 0.5"
           r="40"
-          style="fill:url(#blueGradient)"
+          style="fill: url(#blueGradient)"
         />
         <circle
           cx="400"
           [attr.cy]="400 - radius * 0.5"
           r="40"
-          style="fill:url(#shine)"
+          style="fill: url(#shine)"
         />
       </g>
 
@@ -307,21 +374,30 @@
           cx="400"
           [attr.cy]="400 + radius * 0.5"
           r="40"
-          style="fill:url(#redGradient)"
+          style="fill: url(#redGradient)"
         />
         <circle
           cx="400"
           [attr.cy]="400 + radius * 0.5"
           r="40"
-          style="fill:url(#shine)"
+          style="fill: url(#shine)"
         />
       </g>
 
       <!-- Bottom split spot -->
       <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
-        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" style="fill:url(#tealGradient)" />
-        <path d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27" style="fill:url(#redGradient)" />
-        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" style="fill:url(#shine)" />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
+          style="fill: url(#tealGradient)"
+        />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27"
+          style="fill: url(#redGradient)"
+        />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
+          style="fill: url(#shine)"
+        />
       </g>
 
       <!-- Text labels section -->
@@ -433,9 +509,18 @@
 
       <!-- Bottom split spot with exactly half size (20px) -->
       <g [attr.transform]="'translate(400,' + (400 + radius) + ')'">
-        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" style="fill:url(#tealGradient)" />
-        <path d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27" style="fill:url(#redGradient)" />
-        <path d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27" style="fill:url(#shine)" />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
+          style="fill: url(#tealGradient)"
+        />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,0 -27,-27"
+          style="fill: url(#redGradient)"
+        />
+        <path
+          d="M-27,-27 L27,27 A27,27 0 1,1 -27,-27"
+          style="fill: url(#shine)"
+        />
       </g>
 
       <!-- Label for Életcélod -->
