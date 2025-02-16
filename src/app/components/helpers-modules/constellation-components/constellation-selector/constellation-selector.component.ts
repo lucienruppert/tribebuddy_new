@@ -201,16 +201,27 @@ export class ConstellationSelectorComponent implements OnInit {
             c => c.id === this.selectedConstellation
           );
 
-          
           if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
-            this.dialog.open(GenekeysPreselectorComponent, {
-              autoFocus: false,
-            });
+            this.clientsService
+              .hasGenekeysStored(sessionResponse.clientId)
+              .subscribe({
+                next: response => {
+                  if (!response.hasGeneKeys) {
+                    this.dialog.open(GenekeysPreselectorComponent, {
+                      autoFocus: false,
+                    });
+                  }
+                },
+                error: error => {
+                  console.error('Error checking genekeys:', error);
+                  // Open dialog anyway in case of error to ensure user can input data
+                  this.dialog.open(GenekeysPreselectorComponent, {
+                    autoFocus: false,
+                  });
+                },
+              });
             return;
           }
-
-          // Send websocket message when creating new session
-          //this.wsService.sendMessage({ type: 'new_constellation', data: session });
 
           this.snackBar.showMessage('Az ülés létrehozva.');
           this.clearForm();

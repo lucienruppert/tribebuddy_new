@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { Client, Session, ApiCallResponse, GeneKeysData } from '../types';
 import { environment } from '../environments/environment';
 
+interface HasGeneKeysResponse {
+  hasGeneKeys: boolean;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -40,6 +44,12 @@ export class ClientsService {
         id: Number(this.getClientId()),
         ...geneKeysData,
       }
+    );
+  }
+
+  hasGenekeysStored(clientId: number): Observable<HasGeneKeysResponse> {
+    return this.http.get<HasGeneKeysResponse>(
+      `${environment.apiUrl}/clients/genekeys/get/${clientId}`
     );
   }
 }
