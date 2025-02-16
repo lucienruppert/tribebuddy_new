@@ -70,7 +70,11 @@ export class ConstellationSelectorComponent implements OnInit {
         return 0;
       });
 
-      this.constellations = constellations;
+      this.constellations = constellations.sort((a, b) => {
+        if (a.name.toLowerCase() === 'genekeys') return -1;
+        if (b.name.toLowerCase() === 'genekeys') return 1;
+        return 0;
+      });
 
       if (this.cards.length > 0) {
         this.selectedCard = this.cards[0].id;
