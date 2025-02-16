@@ -36,7 +36,7 @@ body {
 }
 
 .cdk-overlay-dark-backdrop {
-  @apply bg-teal-950;
+  @apply bg-teal-950 bg-opacity-80;
 }
 
 /* cdk-dialog-container {

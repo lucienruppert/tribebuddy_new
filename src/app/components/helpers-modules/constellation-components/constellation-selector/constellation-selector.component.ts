@@ -165,6 +165,15 @@ export class ConstellationSelectorComponent implements OnInit {
     try {
       if (!this.isFormValid()) return;
 
+      const selectedConstellation = this.constellations.find(
+        c => c.id === this.selectedConstellation
+      );
+
+      if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
+        this.dialog.open(GenekeysPreselectorComponent);
+        return;
+      }
+
       const clientName =
         this.selectedClient === 'new'
           ? this.newClientName
@@ -199,15 +208,6 @@ export class ConstellationSelectorComponent implements OnInit {
           );
           this.snackBar.showMessage('Az ülés létrehozva.');
           this.clearForm();
-
-          const selectedConstellation = this.constellations.find(
-            c => c.id === this.selectedConstellation
-          );
-
-          if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
-            this.dialog.open(GenekeysPreselectorComponent);
-            return;
-          }
         },
         error: error => {
           let errorMessage = 'Hiba történt a létrehozás során.';
