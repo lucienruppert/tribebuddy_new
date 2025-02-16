@@ -6,6 +6,7 @@ import { geneKeyTranslations } from '../../../../translations';
 import { FormsModule } from '@angular/forms';
 import { GeneKeysData } from '../../../../types';
 import { SnackBarService } from '../../../../services/snackbar.service';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-genekeys-preselector',
@@ -25,7 +26,8 @@ export class GenekeysPreselectorComponent implements OnInit {
 
   constructor(
     private clientsService: ClientsService,
-    private snackbarService: SnackBarService
+    private snackbarService: SnackBarService,
+    private dialogRef: DialogRef<GenekeysPreselectorComponent>
   ) {}
 
   ngOnInit() {
@@ -127,6 +129,7 @@ export class GenekeysPreselectorComponent implements OnInit {
           this.snackbarService.showMessage(
             'A kliens génkulcsai mentésre kerültek.'
           );
+          this.dialogRef.close();
         },
         error: error => {
           console.error('Error storing gene keys:', error);
