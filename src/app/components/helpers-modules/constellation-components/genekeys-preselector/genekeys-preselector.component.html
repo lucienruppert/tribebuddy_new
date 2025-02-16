@@ -9,7 +9,7 @@
         class="relative h-[calc((90vh_-_4.5rem)_/_13)]"
       >
         <div
-          class="absolute inset-0 flex items-center justify-center bg-yellow-500 rounded text-center text-gray-500 text-base"
+          class="absolute inset-0 flex items-center justify-center bg-teal-950 rounded text-center text-base border border-yellow-500"
           [class.hidden]="focusedIndex === i || geneKeyValues[key]"
         >
           {{ getTranslatedGeneKey(key) }}
@@ -21,8 +21,7 @@
           [(ngModel)]="geneKeyValues[key]"
           (keydown)="onKeyDown($event)"
           (input)="validateInput($event, key)"
-          class="relative w-full h-full px-0 rounded text-center focus:border-blue-500 focus:outline-none bg-transparent text-base sm:text-lg flex items-center justify-center"
-          [class.border-yellow-500]="geneKeyValues[key]"
+          class="relative w-full h-full px-0 rounded text-center focus:border-blue-500 focus:outline-none bg-transparent text-base sm:text-lg flex items-center justify-center border border-yellow-500 text-yellow-500"
           (focus)="onFocus(i)"
           (blur)="onBlur()"
         />

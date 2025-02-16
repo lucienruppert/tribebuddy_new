@@ -170,7 +170,9 @@ export class ConstellationSelectorComponent implements OnInit {
       );
 
       if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
-        this.dialog.open(GenekeysPreselectorComponent);
+        this.dialog.open(GenekeysPreselectorComponent, {
+          autoFocus: false,
+        });
         return;
       }
 
@@ -232,15 +234,6 @@ export class ConstellationSelectorComponent implements OnInit {
       }
       this.snackBar.showMessage(errorMessage);
       console.error('Submission error:', error);
-    }
-
-    const selectedConstellation = this.constellations.find(
-      c => c.id === this.selectedConstellation
-    );
-
-    if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
-      this.router.navigate(['/genekeys-preselector']);
-      return;
     }
   }
 
