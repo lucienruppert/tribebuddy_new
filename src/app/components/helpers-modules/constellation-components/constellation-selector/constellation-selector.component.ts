@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../../services/authentication.service';
 import { ClientsService } from '../../../../services/clients.service';
 import { ConstellationsService } from '../../../../services/constellations.service';
@@ -48,7 +49,8 @@ export class ConstellationSelectorComponent implements OnInit {
     private authService: AuthService,
     private snackBar: SnackBarService,
     private wsService: WebsocketService,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private router: Router
   ) {
     this.userEmail = this.authService.getUserEmail() || '';
     this.wsService.messages$.subscribe(message => {
@@ -212,9 +214,16 @@ export class ConstellationSelectorComponent implements OnInit {
                     this.dialog.open(GenekeysPreselectorComponent, {
                       autoFocus: false,
                     });
-                  }
-                  else {
-                    this.snackBar.showMessage('A kliens génkulcsai már szerepelnek a rendszerben.');
+                  } else {
+                    this.snackBar.showMessage(
+                      'A kliens génkulcsai már szerepelnek a rendszerben.'
+                    );
+                    setTimeout(() => {
+                      this.snackBar.showMessage(
+                        'Most már kezdheted az állítást!'
+                      );
+                      this.router.navigate(['genekeys-chart']);
+                    }, 1000);
                   }
                 },
                 error: error => {
