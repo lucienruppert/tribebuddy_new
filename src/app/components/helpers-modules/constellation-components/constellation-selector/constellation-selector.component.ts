@@ -211,6 +211,9 @@ export class ConstellationSelectorComponent implements OnInit {
                       autoFocus: false,
                     });
                   }
+                  else {
+                    this.snackBar.showMessage('A kliens génkulcsai már szerepelnek a rendszerben.');
+                  }
                 },
                 error: error => {
                   console.error('Error checking genekeys:', error);
