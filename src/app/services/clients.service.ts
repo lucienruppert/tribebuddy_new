@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Client, Session, ApiCallResponse, GeneKeysData } from '../types';
 import { environment } from '../environments/environment';
-import { AuthService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +10,6 @@ import { AuthService } from './authentication.service';
 export class ClientsService {
   constructor(
     private http: HttpClient,
-    private authService: AuthService
   ) {}
 
   getClientsByEmail(email: string): Observable<Client[]> {
