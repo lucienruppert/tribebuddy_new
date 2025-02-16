@@ -158,13 +158,6 @@ export class ConstellationSelectorComponent implements OnInit {
     return !this.needsCards() || !!this.selectedCard;
   }
 
-  clearForm() {
-    this.selectedClient = '';
-    this.newClientName = '';
-    this.newClientEmail = '';
-    this.selectedType = 'personal';
-  }
-
   async onSubmit(): Promise<void> {
     try {
       if (!this.isFormValid()) return;
@@ -220,10 +213,10 @@ export class ConstellationSelectorComponent implements OnInit {
                     );
                     setTimeout(() => {
                       this.snackBar.showMessage(
-                        'Most már kezdheted az állítást!'
+                        'Eredményes állítást kívánok!'
                       );
                       this.router.navigate(['genekeys-chart']);
-                    }, 1000);
+                    }, 1500);
                   }
                 },
                 error: error => {
@@ -236,9 +229,6 @@ export class ConstellationSelectorComponent implements OnInit {
               });
             return;
           }
-
-          this.snackBar.showMessage('Az ülés létrehozva.');
-          this.clearForm();
         },
         error: error => {
           let errorMessage = 'Hiba történt a létrehozás során.';

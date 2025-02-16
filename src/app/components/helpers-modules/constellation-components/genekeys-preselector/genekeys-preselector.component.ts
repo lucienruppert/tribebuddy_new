@@ -1,6 +1,6 @@
 import { geneKeys } from '../../../../../../constants';
 import { Component, OnInit } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, CommonModule } from '@angular/common';
 import { ClientsService } from '../../../../services/clients.service';
 import { geneKeyTranslations } from '../../../../translations';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-genekeys-preselector',
   standalone: true,
-  imports: [NgFor, NgIf, FormsModule],
+  imports: [NgFor, NgIf, FormsModule, CommonModule],
   templateUrl: './genekeys-preselector.component.html',
   styleUrl: './genekeys-preselector.component.css',
 })
@@ -133,9 +133,9 @@ export class GenekeysPreselectorComponent implements OnInit {
           );
           this.dialogRef.close();
           setTimeout(() => {
-            this.snackbarService.showMessage('Most már kezdheted az állítást!');
-            this.router.navigate(['/constellations/genekeys/chart']);
-          }, 500);
+            this.snackbarService.showMessage('Eredményes állítást kívánok!');
+            this.router.navigate(['genekeys-chart']);
+          }, 1500);
         },
         error: error => {
           console.error('Error storing gene keys:', error);
