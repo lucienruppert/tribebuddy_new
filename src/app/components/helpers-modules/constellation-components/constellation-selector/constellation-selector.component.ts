@@ -8,18 +8,26 @@ import { ConstellationsService } from '../../../../services/constellations.servi
 import { SnackBarService } from '../../../../services/snackbar.service';
 import { WebsocketService } from '../../../../services/websocket.service';
 import { Router } from '@angular/router';
+import { Dialog, DialogModule } from '@angular/cdk/dialog';
+import { GenekeysPreselectorComponent } from '../genekeys-preselector/genekeys-preselector.component';
 import {
   cardTranslations,
   constellationTranslations,
 } from '../../../../translations';
-import { Card, Constellation, Client, Session, SessionResponse } from '../../../../types';
+import {
+  Card,
+  Constellation,
+  Client,
+  Session,
+  SessionResponse,
+} from '../../../../types';
 
 @Component({
   selector: 'app-constellation-selector',
   templateUrl: './constellation-selector.component.html',
   styleUrls: ['./constellation-selector.component.css'],
   standalone: true,
-  imports: [FormsModule, MatProgressSpinnerModule, NgIf, NgFor],
+  imports: [FormsModule, MatProgressSpinnerModule, NgIf, NgFor, DialogModule],
 })
 export class ConstellationSelectorComponent implements OnInit {
   isLoading = true;
@@ -41,7 +49,8 @@ export class ConstellationSelectorComponent implements OnInit {
     private authService: AuthService,
     private snackBar: SnackBarService,
     private wsService: WebsocketService,
-    private router: Router
+    private router: Router,
+    private dialog: Dialog
   ) {
     this.userEmail = this.authService.getUserEmail() || '';
     this.wsService.messages$.subscribe(message => {
@@ -190,6 +199,15 @@ export class ConstellationSelectorComponent implements OnInit {
           );
           this.snackBar.showMessage('Az ülés létrehozva.');
           this.clearForm();
+
+          const selectedConstellation = this.constellations.find(
+            c => c.id === this.selectedConstellation
+          );
+
+          if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
+            this.dialog.open(GenekeysPreselectorComponent);
+            return;
+          }
         },
         error: error => {
           let errorMessage = 'Hiba történt a létrehozás során.';
