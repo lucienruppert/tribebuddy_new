@@ -165,17 +165,7 @@ export class ConstellationSelectorComponent implements OnInit {
     try {
       if (!this.isFormValid()) return;
 
-      const selectedConstellation = this.constellations.find(
-        c => c.id === this.selectedConstellation
-      );
-
-      if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
-        this.dialog.open(GenekeysPreselectorComponent, {
-          autoFocus: false,
-        });
-        return;
-      }
-
+      // Set client name (new or old)
       const clientName =
         this.selectedClient === 'new'
           ? this.newClientName
@@ -183,6 +173,7 @@ export class ConstellationSelectorComponent implements OnInit {
 
       sessionStorage.setItem('clientName', clientName);
 
+      // Create client session
       const session: Session = {
         cardId: parseInt(this.selectedCard),
         constellationType: this.selectedConstellation,
@@ -198,9 +189,6 @@ export class ConstellationSelectorComponent implements OnInit {
         helperId: parseInt(this.authService.getUserId()),
       };
 
-      // Send websocket message when creating new session
-      //this.wsService.sendMessage({ type: 'new_constellation', data: session });
-
       this.clientsService.storeConstellationSession(session).subscribe({
         next: response => {
           const sessionResponse = response as SessionResponse;
@@ -208,6 +196,22 @@ export class ConstellationSelectorComponent implements OnInit {
             'clientId',
             sessionResponse.clientId.toString()
           );
+
+          const selectedConstellation = this.constellations.find(
+            c => c.id === this.selectedConstellation
+          );
+
+          
+          if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
+            this.dialog.open(GenekeysPreselectorComponent, {
+              autoFocus: false,
+            });
+            return;
+          }
+
+          // Send websocket message when creating new session
+          //this.wsService.sendMessage({ type: 'new_constellation', data: session });
+
           this.snackBar.showMessage('Az ülés létrehozva.');
           this.clearForm();
         },
