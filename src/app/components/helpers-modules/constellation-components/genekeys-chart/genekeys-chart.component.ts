@@ -18,8 +18,14 @@ export class GenekeysChartComponent {
     private authService: AuthService
   ) {
     this.userEmail = this.authService.getUserEmail() || '';
+    this.wsService.sendMessage({
+      type: 'sessionStart',
+      sessionType: 'constellation',
+      constellation: 'geneKeys',
+      email: this.userEmail,
+    });
     this.wsService.messages$.subscribe(message => {
-      // Handle incoming messages here
+      console.log('Received message:', message);
     });
   }
 
