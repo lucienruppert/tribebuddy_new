@@ -7,7 +7,6 @@ import { AuthService } from '../../../../services/authentication.service';
 import { ClientsService } from '../../../../services/clients.service';
 import { ConstellationsService } from '../../../../services/constellations.service';
 import { SnackBarService } from '../../../../services/snackbar.service';
-import { WebsocketService } from '../../../../services/websocket.service';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { GenekeysPreselectorComponent } from '../genekeys-preselector/genekeys-preselector.component';
 import {
@@ -48,14 +47,10 @@ export class ConstellationSelectorComponent implements OnInit {
     private clientsService: ClientsService,
     private authService: AuthService,
     private snackBar: SnackBarService,
-    private wsService: WebsocketService,
     private dialog: Dialog,
     private router: Router
   ) {
     this.userEmail = this.authService.getUserEmail() || '';
-    this.wsService.messages$.subscribe(message => {
-      // Handle incoming messages here
-    });
   }
 
   async ngOnInit() {
