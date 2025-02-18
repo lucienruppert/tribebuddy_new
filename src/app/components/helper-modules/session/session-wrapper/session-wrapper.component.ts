@@ -1,4 +1,3 @@
-import { ClientsService } from './../../../../services/clients.service';
 import { Component } from '@angular/core';
 import { GenekeysChartComponent } from '../../constellation/genekeys-chart/genekeys-chart.component';
 import { WebsocketService } from '../../../../services/websocket.service';
