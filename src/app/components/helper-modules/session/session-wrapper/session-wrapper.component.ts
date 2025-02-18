@@ -3,10 +3,11 @@ import { GenekeysChartComponent } from '../../constellation/genekeys-chart/genek
 import { WebsocketService } from '../../../../services/websocket.service';
 import { AuthService } from '../../../../services/authentication.service';
 import { SessionStartMessage } from '../../../../types-websocket';
+import { SessionControlsComponent } from '../session-controls/session-controls.component';
 
 @Component({
   selector: 'app-session-wrapper',
-  imports: [GenekeysChartComponent],
+  imports: [GenekeysChartComponent, SessionControlsComponent],
   templateUrl: './session-wrapper.component.html',
   styleUrl: './session-wrapper.component.css',
 })
