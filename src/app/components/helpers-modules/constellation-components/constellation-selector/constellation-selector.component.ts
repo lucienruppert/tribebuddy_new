@@ -162,9 +162,7 @@ export class ConstellationSelectorComponent implements OnInit {
         this.selectedClient === 'new'
           ? this.newClientName
           : this.selectedClient;
-
-      sessionStorage.setItem('clientName', clientName);
-
+      
       // Create client session
       const session: Session = {
         cardId: parseInt(this.selectedCard),
@@ -204,7 +202,7 @@ export class ConstellationSelectorComponent implements OnInit {
                     });
                   } else {
                     this.snackBar.showMessage(
-                      'A kliens génkulcsai már szerepelnek a rendszerben.'
+                      `${this.clientsService.getClientName()} génkulcsai már szerepelnek a rendszerben.`
                     );
                     setTimeout(() => {
                       this.snackBar.showMessage(
@@ -254,6 +252,7 @@ export class ConstellationSelectorComponent implements OnInit {
   onClientChange(clientName: string) {
     const selectedClient = this.clients.find(c => c.name === clientName);
     this.selectedClientId = selectedClient?.id;
+    this.clientsService.setClientName(selectedClient?.name || '');
   }
 
   needsCards(): boolean {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Client, Session, ApiCallResponse, GeneKeysData } from '../types';
+import { Client, Session, ApiCallResponse } from '../types';
 import { environment } from '../environments/environment';
 
 interface HasGeneKeysResponse {
@@ -16,6 +16,7 @@ export class ClientsService {
     private http: HttpClient,
   ) {}
 
+
   getClientsByEmail(email: string): Observable<Client[]> {
     return this.http.get<Client[]>(`${environment.apiUrl}/clients/${email}`);
   }
@@ -27,6 +28,10 @@ export class ClientsService {
     );
   }
 
+  setClientName(clientName: string): void {
+    sessionStorage.setItem('clientName', clientName);
+  }
+  
   getClientName(): string {
     return sessionStorage.getItem('clientName') || '';
   }

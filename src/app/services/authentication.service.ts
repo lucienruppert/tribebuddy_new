@@ -78,7 +78,7 @@ export class AuthService {
   private setBasicUserData(userData: User): void {
     sessionStorage.setItem(this.EMAIL_KEY, userData.email!);
     sessionStorage.setItem(this.NAME_KEY, userData.name!);
-    sessionStorage.setItem('id', userData.id!);
+    sessionStorage.setItem('userId', userData.id!);
     this.isLoggedIn$.next(true);
     this.userRole$.next(userData.role!);
   }
@@ -92,7 +92,7 @@ export class AuthService {
   private logoutOnClient(): void {
     this.isLoggedIn$.next(false);
     this.userRole$.next('');
-    [this.EMAIL_KEY, this.NAME_KEY, 'id'].forEach(key =>
+    [this.EMAIL_KEY, this.NAME_KEY, 'userId'].forEach(key =>
       sessionStorage.removeItem(key)
     );
   }
@@ -111,6 +111,6 @@ export class AuthService {
   }
 
   public getUserId(): string {
-    return sessionStorage.getItem('id')!;
+    return sessionStorage.getItem('userId')!;
   }
 }

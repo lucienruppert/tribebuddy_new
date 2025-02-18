@@ -129,7 +129,7 @@ export class GenekeysPreselectorComponent implements OnInit {
         next: response => {
           console.log('Gene keys stored successfully:', response);
           this.snackbarService.showMessage(
-            'A kliens génkulcsai mentésre kerültek.'
+             `${this.clientName} génkulcsai mentésre kerültek.`
           );
           this.dialogRef.close();
           setTimeout(() => {
