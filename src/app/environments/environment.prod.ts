@@ -3,6 +3,4 @@ export const environment = {
   apiUrl: 'https://devbuddy.hu/tribebuddy',
   mailUrl: 'https://luciendelmar.com/backend/api/mail',
   websocketUrl: 'wss://devbuddy.hu/wsocket',
-  EMAIL_KEY: 'userEmail',
-  NAME_KEY: 'userName',
 };

@@ -3,4 +3,5 @@ export interface SessionStartMessage {
   sessionType: string; 
   constellation: string; 
   email: string | null;
+  sessionId: string;
 }

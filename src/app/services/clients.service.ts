@@ -12,10 +12,7 @@ interface HasGeneKeysResponse {
   providedIn: 'root',
 })
 export class ClientsService {
-  constructor(
-    private http: HttpClient,
-  ) {}
-
+  constructor(private http: HttpClient) {}
 
   getClientsByEmail(email: string): Observable<Client[]> {
     return this.http.get<Client[]>(`${environment.apiUrl}/clients/${email}`);
@@ -31,7 +28,7 @@ export class ClientsService {
   setClientName(clientName: string): void {
     sessionStorage.setItem('clientName', clientName);
   }
-  
+
   getClientName(): string {
     return sessionStorage.getItem('clientName') || '';
   }

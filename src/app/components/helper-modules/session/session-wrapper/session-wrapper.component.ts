@@ -1,3 +1,4 @@
+import { ClientsService } from './../../../../services/clients.service';
 import { Component } from '@angular/core';
 import { GenekeysChartComponent } from '../../constellation/genekeys-chart/genekeys-chart.component';
 import { WebsocketService } from '../../../../services/websocket.service';
@@ -20,6 +21,7 @@ export class SessionWrapperComponent {
       sessionType: 'constellation',
       constellation: 'geneKeys',
       email: this.authService.getUserEmail(),
+      sessionId: this.authService.getSessionId(),
     };
     this.wsService.sendMessage(message);
     this.wsService.messages$.subscribe(message => {

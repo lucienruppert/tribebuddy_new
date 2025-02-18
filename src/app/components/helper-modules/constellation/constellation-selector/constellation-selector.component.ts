@@ -186,6 +186,7 @@ export class ConstellationSelectorComponent implements OnInit {
             'clientId',
             sessionResponse.clientId.toString()
           );
+          sessionStorage.setItem('sessionId', sessionResponse.id.toString());
 
           const selectedConstellation = this.constellations.find(
             c => c.id === this.selectedConstellation

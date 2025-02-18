@@ -9,8 +9,6 @@ import { User } from '../types';
   providedIn: 'root',
 })
 export class AuthService {
-  private EMAIL_KEY: string = environment.EMAIL_KEY;
-  private NAME_KEY: string = environment.NAME_KEY;
   private apiUrl: string = environment.apiUrl;
   public isLoggedIn$ = new BehaviorSubject<boolean>(false);
   public userRole$ = new BehaviorSubject<string>('');
@@ -24,8 +22,8 @@ export class AuthService {
   }
 
   private checkExistingSession(): void {
-    const email = sessionStorage.getItem(this.EMAIL_KEY);
-    const name = sessionStorage.getItem(this.NAME_KEY);
+    const email = sessionStorage.getItem('userEmail');
+    const name = sessionStorage.getItem('userName');
 
     if (email && name) {
       this.isLoggedIn$.next(true);
@@ -76,8 +74,8 @@ export class AuthService {
   }
 
   private setBasicUserData(userData: User): void {
-    sessionStorage.setItem(this.EMAIL_KEY, userData.email!);
-    sessionStorage.setItem(this.NAME_KEY, userData.name!);
+    sessionStorage.setItem('userEmail', userData.email!);
+    sessionStorage.setItem('userName', userData.name!);
     sessionStorage.setItem('userId', userData.id!);
     this.isLoggedIn$.next(true);
     this.userRole$.next(userData.role!);
@@ -92,7 +90,7 @@ export class AuthService {
   private logoutOnClient(): void {
     this.isLoggedIn$.next(false);
     this.userRole$.next('');
-    [this.EMAIL_KEY, this.NAME_KEY, 'userId'].forEach(key =>
+    ['userEmail', 'userName', 'userId', 'clientId', 'clientName', 'sessionId'].forEach(key =>
       sessionStorage.removeItem(key)
     );
   }
@@ -107,10 +105,14 @@ export class AuthService {
   }
 
   public getUserEmail(): string | null {
-    return sessionStorage.getItem(this.EMAIL_KEY);
+    return sessionStorage.getItem('userEmail');
   }
 
   public getUserId(): string {
     return sessionStorage.getItem('userId')!;
+  }
+
+  public getSessionId(): string {
+    return sessionStorage.getItem('sessionId')!;
   }
 }
