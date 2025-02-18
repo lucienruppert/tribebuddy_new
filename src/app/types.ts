@@ -25,17 +25,6 @@ export interface EmailSendingResult {
   failed: string[];
 }
 
-export interface PhotosRequestResult {
-  status: string;
-  photosData: PhotoData[];
-}
-
-export interface PhotoData {
-  fileName: string;
-  isProfile: boolean;
-  isLoaded?: boolean;
-}
-
 export interface ApiCallResponse {
   status: string;
   message: string;
