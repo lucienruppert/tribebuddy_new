@@ -1,3 +1,4 @@
+import { Session } from './types';
 import { Routes, Router } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthService } from './services/authentication.service';
@@ -7,17 +8,17 @@ import { CardTypesComponent } from './components/helper-modules/constellation/ca
 import { ConstellationSelectorComponent } from './components/helper-modules/constellation/constellation-selector/constellation-selector.component';
 import { CardDeckComponent } from './components/helper-modules/constellation/card-deck/card-deck.component';
 import { GenekeysPreselectorComponent } from './components/helper-modules/constellation/genekeys-preselector/genekeys-preselector.component';
-import { GenekeysChartComponent } from './components/helper-modules/constellation/genekeys-chart/genekeys-chart.component';
 import { RouteGuardService } from './services/auth-redirect-guard.service';
 import { PublicRouteGuard } from './services/public-route.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { MainLayoutComponent } from './components/structural/main-layout/main-layout.component';
+import { SessionWrapperComponent } from './components/helper-modules/session/session-wrapper/session-wrapper.component';
 
 export const routes: Routes = [
   {
-    path: 'genekeys-chart',
-    component: GenekeysChartComponent,
+    path: 'session',
+    component: SessionWrapperComponent,
     canActivate: [PublicRouteGuard], // Keep this route at the top to prevent home resolver from intercepting
   },
   {

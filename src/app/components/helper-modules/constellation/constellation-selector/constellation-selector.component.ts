@@ -208,7 +208,7 @@ export class ConstellationSelectorComponent implements OnInit {
                       this.snackBar.showMessage(
                         'Eredményes állítást kívánok!'
                       );
-                      this.router.navigate(['genekeys-chart']);
+                      this.router.navigate(['session']);
                     }, 1500);
                   }
                 },

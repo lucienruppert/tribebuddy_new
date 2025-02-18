@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WebsocketService } from '../../../../services/websocket.service';
-import { AuthService } from '../../../../services/authentication.service';
 
 @Component({
   selector: 'app-genekeys-chart',
@@ -11,23 +9,6 @@ import { AuthService } from '../../../../services/authentication.service';
   imports: [CommonModule],
 })
 export class GenekeysChartComponent {
-  userEmail: string = '';
-
-  constructor(
-    private wsService: WebsocketService,
-    private authService: AuthService
-  ) {
-    this.userEmail = this.authService.getUserEmail() || '';
-    this.wsService.sendMessage({
-      type: 'sessionStart',
-      sessionType: 'constellation',
-      constellation: 'geneKeys',
-      email: this.userEmail,
-    });
-    this.wsService.messages$.subscribe(message => {
-      console.log('Received message:', message);
-    });
-  }
 
   radius = 350;
   outerCircleLines = Array(72).fill(0);
