@@ -10,5 +10,9 @@ import { Component } from '@angular/core';
   standalone: true,
 })
 export class SessionControlsComponent {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) { }
+  
+  endSession(): void {
+    console.log('Ending session');
+  }
 }
