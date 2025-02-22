@@ -8,7 +8,7 @@ import {
   HeartbeatMessage,
 } from '../../../../types-websocket';
 import { SessionControlsComponent } from '../session-controls/session-controls.component';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Component({

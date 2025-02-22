@@ -30,6 +30,7 @@ export class WebsocketService {
   }
 
   sendMessage(message: any): void {
+    console.log('Sending message:', message);
     this.socket$.next(message);
   }
 
