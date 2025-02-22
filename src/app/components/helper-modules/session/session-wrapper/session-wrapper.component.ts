@@ -48,7 +48,7 @@ export class SessionWrapperComponent {
       sessionType: 'constellation',
       constellation: 'geneKeys',
       email: this.authService.getUserEmail(),
-      sessionId: this.sessionId.toString(),
+      sessionId: this.authService.getSessionId(),
     };
     this.wsService.sendMessage(message);
   }
