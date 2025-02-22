@@ -2,8 +2,8 @@ import { NgIf } from '@angular/common';
 import { AuthService } from './../../../../services/authentication.service';
 import { Component } from '@angular/core';
 import { WebsocketService } from './../../../../services/websocket.service';
-import { ActivatedRoute } from '@angular/router';
 import { SessionEndMessage } from '../../../../types-websocket';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-session-controls',
@@ -15,8 +15,8 @@ import { SessionEndMessage } from '../../../../types-websocket';
 export class SessionControlsComponent {
   constructor(
     private wsService: WebsocketService,
-    public authService: AuthService,  // Changed from private to public
-    private route: ActivatedRoute
+    public authService: AuthService, 
+    private router: Router
   ) {}
 
   endSession(): void {
@@ -29,5 +29,6 @@ export class SessionControlsComponent {
     this.wsService.messages$.subscribe(message => {
       console.log('Received message:', message);
     });
+    this.router.navigate(['dashboard']);
   }
 }
