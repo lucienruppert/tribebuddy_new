@@ -10,3 +10,8 @@ export interface SessionEndMessage {
   type: 'sessionEnd';
   email: string | null;
 }
+
+export interface HeartbeatMessage {
+  type: 'heartbeat';
+  sessionIds: Array<string>;
+}
