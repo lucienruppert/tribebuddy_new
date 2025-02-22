@@ -1,3 +1,11 @@
+export const moduleTranslations: { [key: string]: string } = {
+  chat: 'Cset',
+  constellation: 'Állítás',
+  caseAssessment: 'Esetfelmérő',
+  newsletter: 'Hírlevél',
+  drawCard: 'Kártyahúzás',
+};
+
 export const cardTranslations: { [key: string]: string } = {
   dixit: 'Dixit',
   wisdomKeepers: 'Bölcsességőrzők',
@@ -12,13 +20,6 @@ export const constellationTranslations: { [key: string]: string } = {
   geneKeys: 'Génkulcsok',
   openSpace: 'Nyitott tér',
   lifeTree: 'Életfa',
-};
-
-export const moduleTranslations: { [key: string]: string } = {
-  chat: 'Cset',
-  constellation: 'Állítás',
-  caseAssessment: 'Esetfelmérő',
-  newsletter: 'Hírlevél',
 };
 
 export const geneKeyTranslations: { [key: string]: string } = {
