@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GenekeysChartComponent } from '../../constellation/genekeys-chart/genekeys-chart.component';
 import { WebsocketService } from '../../../../services/websocket.service';
@@ -8,7 +8,7 @@ import {
   HeartbeatMessage,
 } from '../../../../types-websocket';
 import { SessionControlsComponent } from '../session-controls/session-controls.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 @Component({
@@ -18,14 +18,15 @@ import { filter } from 'rxjs';
   styleUrl: './session-wrapper.component.css',
   standalone: true,
 })
-export class SessionWrapperComponent implements OnDestroy {
+export class SessionWrapperComponent {
   sessionId: number;
   isSessionValid = true;
 
   constructor(
     private wsService: WebsocketService,
     private route: ActivatedRoute,
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router
   ) {
     this.sessionId = parseInt(this.route.snapshot.params['sessionId']);
 
@@ -36,6 +37,9 @@ export class SessionWrapperComponent implements OnDestroy {
           this.isSessionValid = message.sessionIds.includes(
             this.sessionId.toString()
           );
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 5000);
         });
     }
 
@@ -47,9 +51,5 @@ export class SessionWrapperComponent implements OnDestroy {
       sessionId: this.sessionId.toString(),
     };
     this.wsService.sendMessage(message);
-  }
-
-  ngOnDestroy() {
-    // Clean up subscriptions if needed
   }
 }
