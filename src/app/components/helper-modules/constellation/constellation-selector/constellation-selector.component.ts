@@ -98,9 +98,7 @@ export class ConstellationSelectorComponent implements OnInit {
   }
 
   onConstellationChange() {
-    if (!this.needsCards()) {
-      this.selectedCard = '';
-    }
+    this.selectedCard = this.needsCards() ? this.cards[0].id : '';
   }
 
   getTranslatedCardName(cardName: string): string {
@@ -162,7 +160,7 @@ export class ConstellationSelectorComponent implements OnInit {
         this.selectedClient === 'new'
           ? this.newClientName
           : this.selectedClient;
-      
+
       // Create client session
       const session: Session = {
         cardId: parseInt(this.selectedCard),
@@ -206,9 +204,7 @@ export class ConstellationSelectorComponent implements OnInit {
                       `${this.clientsService.getClientName()} génkulcsai már szerepelnek a rendszerben.`
                     );
                     setTimeout(() => {
-                      this.snackBar.showMessage(
-                        'Eredményes állítást kívánok!'
-                      );
+                      this.snackBar.showMessage('Eredményes állítást kívánok!');
                       this.router.navigate(['session']);
                     }, 1500);
                   }
