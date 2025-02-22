@@ -205,7 +205,7 @@ export class ConstellationSelectorComponent implements OnInit {
                     );
                     setTimeout(() => {
                       this.snackBar.showMessage('Eredményes állítást kívánok!');
-                      this.router.navigate(['session']);
+                      this.router.navigate(['session', sessionResponse.id]);
                     }, 1500);
                   }
                 },

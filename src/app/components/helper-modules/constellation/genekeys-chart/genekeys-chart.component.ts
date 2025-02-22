@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-genekeys-chart',
@@ -8,9 +9,15 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
 })
-export class GenekeysChartComponent {
-
+export class GenekeysChartComponent implements OnInit {
   radius = 350;
   outerCircleLines = Array(72).fill(0);
-  Math = Math; // Make Math available in template
+  Math = Math;
+  @Input() sessionId!: number;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    console.log('GeneKeys Chart SessionID:', this.sessionId);
+  }
 }

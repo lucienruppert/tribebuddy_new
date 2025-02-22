@@ -17,7 +17,7 @@ import { SessionWrapperComponent } from './components/helper-modules/session/ses
 
 export const routes: Routes = [
   {
-    path: 'session',
+    path: 'session/:sessionId',
     component: SessionWrapperComponent,
     canActivate: [PublicRouteGuard], // Keep this route at the top to prevent home resolver from intercepting
   },
