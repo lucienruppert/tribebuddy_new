@@ -37,11 +37,14 @@ export class SessionWrapperComponent {
           this.isSessionValid = message.sessionIds.includes(
             this.sessionId.toString()
           );
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 5000);
+          
+          if (!this.isSessionValid) {
+            setTimeout(() => {
+              this.router.navigate(['/']);
+            }, 5000);
+          }
         });
-    }
+    } 
 
     const message: SessionStartMessage = {
       type: 'sessionStart',
