@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { GenekeysChartComponent } from '../../constellation/genekeys-chart/genekeys-chart.component';
 import { WebsocketService } from '../../../../services/websocket.service';
 import { AuthService } from '../../../../services/authentication.service';
@@ -8,9 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-session-wrapper',
-  imports: [GenekeysChartComponent, SessionControlsComponent],
+  imports: [CommonModule, GenekeysChartComponent, SessionControlsComponent],
   templateUrl: './session-wrapper.component.html',
   styleUrl: './session-wrapper.component.css',
+  standalone: true,
 })
 export class SessionWrapperComponent {
   sessionId: number;

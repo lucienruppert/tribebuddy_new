@@ -1,6 +1,8 @@
 import { NgIf } from '@angular/common';
 import { AuthService } from './../../../../services/authentication.service';
 import { Component } from '@angular/core';
+import { WebsocketService } from './../../../../services/websocket.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-session-controls',
@@ -10,8 +12,12 @@ import { Component } from '@angular/core';
   standalone: true,
 })
 export class SessionControlsComponent {
-  constructor(public authService: AuthService) { }
-  
+  constructor(
+    private wsService: WebsocketService,
+    private authService: AuthService,
+    private route: ActivatedRoute
+  ) {}
+
   endSession(): void {
     console.log('Ending session');
   }
