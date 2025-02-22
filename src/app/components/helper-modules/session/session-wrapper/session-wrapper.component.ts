@@ -19,8 +19,8 @@ export class SessionWrapperComponent {
 
   constructor(
     private wsService: WebsocketService,
-    private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public authService: AuthService,
   ) {
     this.sessionId = parseInt(this.route.snapshot.params['sessionId']);
     const message: SessionStartMessage = {
