@@ -1,2 +1,12 @@
-<app-session-controls *ngIf="authService.isLoggedIn$.value"></app-session-controls>
-<app-genekeys-chart [sessionId]="sessionId"></app-genekeys-chart>
+<ng-container *ngIf="isSessionValid; else sessionEnded">
+  <app-session-controls
+    *ngIf="authService.isLoggedIn$.value"
+  ></app-session-controls>
+  <app-genekeys-chart [sessionId]="sessionId"></app-genekeys-chart>
+</ng-container>
+
+<ng-template #sessionEnded>
+  <div class="flex h-screen w-full items-center justify-center">
+    <p class="text-xl">Az ülés végetért</p>
+  </div>
+</ng-template>

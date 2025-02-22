@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GenekeysChartComponent } from '../../constellation/genekeys-chart/genekeys-chart.component';
 import { WebsocketService } from '../../../../services/websocket.service';
 import { AuthService } from '../../../../services/authentication.service';
-import { SessionStartMessage } from '../../../../types-websocket';
+import {
+  SessionStartMessage,
+  HeartbeatMessage,
+} from '../../../../types-websocket';
 import { SessionControlsComponent } from '../session-controls/session-controls.component';
 import { ActivatedRoute } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-session-wrapper',
@@ -14,15 +18,27 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './session-wrapper.component.css',
   standalone: true,
 })
-export class SessionWrapperComponent {
+export class SessionWrapperComponent implements OnDestroy {
   sessionId: number;
+  isSessionValid = true;
 
   constructor(
     private wsService: WebsocketService,
     private route: ActivatedRoute,
-    public authService: AuthService,
+    public authService: AuthService
   ) {
     this.sessionId = parseInt(this.route.snapshot.params['sessionId']);
+
+    if (!this.authService.isLoggedIn$.value) {
+      this.wsService.messages$
+        .pipe(filter(msg => msg.type === 'heartbeat'))
+        .subscribe((message: HeartbeatMessage) => {
+          this.isSessionValid = message.sessionIds.includes(
+            this.sessionId.toString()
+          );
+        });
+    }
+
     const message: SessionStartMessage = {
       type: 'sessionStart',
       sessionType: 'constellation',
@@ -31,8 +47,9 @@ export class SessionWrapperComponent {
       sessionId: this.sessionId.toString(),
     };
     this.wsService.sendMessage(message);
-    this.wsService.messages$.subscribe(message => {
-      console.log('Received message:', message);
-    });
+  }
+
+  ngOnDestroy() {
+    // Clean up subscriptions if needed
   }
 }
