@@ -37,22 +37,22 @@ export class SessionWrapperComponent {
           this.isSessionValid = message.sessionIds.includes(
             this.sessionId.toString()
           );
-          
+
           if (!this.isSessionValid) {
             setTimeout(() => {
               this.router.navigate(['/']);
             }, 5000);
           }
         });
-    } 
-
-    const message: SessionStartMessage = {
-      type: 'sessionStart',
-      sessionType: 'constellation',
-      constellation: 'geneKeys',
-      email: this.authService.getUserEmail(),
-      sessionId: this.authService.getSessionId(),
-    };
-    this.wsService.sendMessage(message);
+    } else {
+      const message: SessionStartMessage = {
+        type: 'sessionStart',
+        sessionType: 'constellation',
+        constellation: 'geneKeys',
+        email: this.authService.getUserEmail(),
+        sessionId: this.authService.getSessionId(),
+      };
+      this.wsService.sendMessage(message);
+    }
   }
 }
