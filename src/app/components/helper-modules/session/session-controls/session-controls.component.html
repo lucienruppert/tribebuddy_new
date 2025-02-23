@@ -6,10 +6,10 @@
     Az ülés befejezése
   </button>
 
-  <div class="grid grid-cols-3 gap-2 mt-4 max-w-[330px]">
-    @for (card of clientCards; track card.clientId) {
+  <div class="grid grid-cols-3 gap-2 mt-6 max-w-[330px]">
+    @for (card of clientCards; track card.sphereName) {
       <div
-        class="aspect-[2/2.7] transition-transform hover:scale-[1.03] hover:z-10 cursor-pointer"
+        class="aspect-[2/2.7] transition-transform hover:scale-[1.03] hover:z-10 cursor-pointer relative"
       >
         <img
           [src]="
@@ -20,6 +20,11 @@
           [alt]="'Card ' + card.cardNumber"
           class="w-full h-full object-cover rounded-lg"
         />
+        <span
+          class="absolute bottom-1 left-1 text-yellow-300 font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
+        >
+          {{ card.sphereName }}
+        </span>
       </div>
     }
   </div>

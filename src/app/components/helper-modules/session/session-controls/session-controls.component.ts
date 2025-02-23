@@ -7,7 +7,7 @@ import { SessionEndMessage } from '../../../../types-websocket';
 import { Router } from '@angular/router';
 
 interface ClientCard {
-  clientId: string;
+  sphereName: string;
   cardNumber: number;
 }
 
@@ -46,8 +46,8 @@ export class SessionControlsComponent {
   get clientCards(): ClientCard[] {
     return Object.entries(this.clientGenekeys)
       .filter(([key]) => key !== 'clientId')
-      .map(([clientId, cardNumber]) => ({
-        clientId,
+      .map(([sphereName, cardNumber]) => ({
+        sphereName,
         cardNumber,
       }));
   }
