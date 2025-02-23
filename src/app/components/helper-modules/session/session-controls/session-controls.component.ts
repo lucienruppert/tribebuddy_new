@@ -1,3 +1,4 @@
+import { ClientsService } from './../../../../services/clients.service';
 import { NgIf } from '@angular/common';
 import { AuthService } from './../../../../services/authentication.service';
 import { Component } from '@angular/core';
@@ -13,11 +14,16 @@ import { Router } from '@angular/router';
   standalone: true,
 })
 export class SessionControlsComponent {
+  clientGenekeys: { [key: string]: number } = {};
+
   constructor(
     private wsService: WebsocketService,
-    public authService: AuthService, 
-    private router: Router
-  ) {}
+    public authService: AuthService,
+    private router: Router,
+    private clientsService: ClientsService
+  ) {
+    this.clientGenekeys = this.clientsService.clientGenekeys;
+  }
 
   endSession(): void {
     console.log('Ending session');
