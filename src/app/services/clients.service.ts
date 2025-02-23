@@ -4,14 +4,11 @@ import { Observable } from 'rxjs';
 import { Client, Session, ApiCallResponse } from '../types';
 import { environment } from '../environments/environment';
 
-interface HasGeneKeysResponse {
-  hasGeneKeys: boolean;
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class ClientsService {
+  clientGenekeys: { [key: string]: number } = {};
   constructor(private http: HttpClient) {}
 
   getClientsByEmail(email: string): Observable<Client[]> {
@@ -40,6 +37,8 @@ export class ClientsService {
   storeGeneKeys(geneKeysData: {
     [key: string]: number;
   }): Observable<ApiCallResponse> {
+    this.clientGenekeys = geneKeysData;
+    console.log('NEW geneKeysData', geneKeysData);
     return this.http.post<ApiCallResponse>(
       `${environment.apiUrl}/clients/genekeys/store`,
       {
@@ -49,9 +48,13 @@ export class ClientsService {
     );
   }
 
-  hasGenekeysStored(clientId: number): Observable<HasGeneKeysResponse> {
-    return this.http.get<HasGeneKeysResponse>(
+  getGenekeysById(clientId: number): Observable<{ [key: string]: number }> {
+    const response = this.http.get<{ [key: string]: number }>(
       `${environment.apiUrl}/clients/genekeys/get/${clientId}`
     );
+    response.subscribe(data => {
+      this.clientGenekeys = data;
+    });
+    return response;
   }
 }

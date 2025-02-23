@@ -192,14 +192,15 @@ export class ConstellationSelectorComponent implements OnInit {
 
           if (selectedConstellation?.name.toLowerCase() === 'genekeys') {
             this.clientsService
-              .hasGenekeysStored(sessionResponse.clientId)
+              .getGenekeysById(sessionResponse.clientId)
               .subscribe({
                 next: response => {
-                  if (!response.hasGeneKeys) {
+                  if (!response || Object.keys(response).length === 0) {
                     this.dialog.open(GenekeysPreselectorComponent, {
                       autoFocus: false,
                     });
                   } else {
+                    console.log('STORED geneKeysData', response);
                     this.snackBar.showMessage(
                       `${this.clientsService.getClientName()} génkulcsai már szerepelnek a rendszerben.`
                     );

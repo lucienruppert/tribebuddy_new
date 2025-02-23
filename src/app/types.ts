@@ -45,23 +45,6 @@ export interface PhotoUploadResponse {
   fileName: string;
 }
 
-export interface UserProfile {
-  email?: string | null;
-  nickname: string;
-  age: string;
-  aboutMe: string;
-  height: string;
-  build: string;
-  languages: string;
-  movies: string;
-  music: string;
-  books: string;
-  foods: string;
-  drinks: string;
-  county: string;
-  district: string;
-}
-
 export interface Constellation {
   id: number;
   name: string;
