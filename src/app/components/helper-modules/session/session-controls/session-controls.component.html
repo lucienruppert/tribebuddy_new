@@ -1,3 +1,26 @@
-<main *ngIf="authService.isLoggedIn$.value" class="flex justify-center mt-5">
-  <button (click)="endSession()" class="bg-red-700 text-white">Ülés befejezése</button>
+<main
+  *ngIf="authService.isLoggedIn$.value"
+  class="flex flex-col items-center mt-5"
+>
+  <button (click)="endSession()" class="bg-red-700 text-white">
+    Az ülés befejezése
+  </button>
+
+  <div class="grid grid-cols-3 gap-2 mt-4 max-w-[330px]">
+    @for (card of clientCards; track card.clientId) {
+      <div
+        class="aspect-[2/2.7] transition-transform hover:scale-[1.03] hover:z-10 cursor-pointer"
+      >
+        <img
+          [src]="
+            'https://tribebuddy.com/cards/wisdomKeepers/' +
+            card.cardNumber +
+            '.jpg'
+          "
+          [alt]="'Card ' + card.cardNumber"
+          class="w-full h-full object-cover rounded-lg"
+        />
+      </div>
+    }
+  </div>
 </main>
