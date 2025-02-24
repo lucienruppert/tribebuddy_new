@@ -20,7 +20,7 @@
   <div class="w-[min(75vh,75vw)]">
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
       @for (card of clientCards; track card.sphereName) {
-        <div class="aspect-[2/2.7] relative">
+        <div class="aspect-[2/2.7] relative cursor-pointer">
           <img
             [src]="
               'https://tribebuddy.com/cards/wisdomKeepers/' +
