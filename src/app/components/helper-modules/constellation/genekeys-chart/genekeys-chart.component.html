@@ -1,4 +1,7 @@
-<div  *ngIf="sessionId" class="w-full min-h-screen flex items-center justify-center pt-2 pb-10">
+<div
+  *ngIf="sessionId"
+  class="w-full min-h-screen flex items-center justify-center pt-2 pb-10"
+>
   <div class="relative aspect-square w-[min(95vh,98vw)]">
     <svg
       class="absolute inset-0 w-full h-full"
@@ -555,6 +558,103 @@
       >
         Életcélod
       </text>
+
+      <!-- Card Placeholders -->
+      <!-- Center SQ -->
+      <rect
+        x="360"
+        y="345"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+
+      <!-- Outer positions -->
+      <rect
+        [attr.x]="400 + radius - 40"
+        y="346"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+      <rect
+        [attr.x]="400 - radius - 40"
+        y="346"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+      <rect
+        x="360"
+        [attr.y]="400 - radius - 54"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+      <rect
+        x="360"
+        [attr.y]="400 + radius - 54"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+
+      <!-- Middle ring -->
+      <rect
+        x="360"
+        [attr.y]="400 - radius * 0.5 - 54"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+      <rect
+        x="360"
+        [attr.y]="400 + radius * 0.5 - 54"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+
+      <!-- Diagonal positions -->
+      <rect
+        [attr.x]="400 + radius * 0.5 * 0.866 - 40"
+        [attr.y]="400 + radius * 0.5 * 0.5 - 54"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+      <rect
+        [attr.x]="400 - radius * 0.5 * 0.866 - 40"
+        [attr.y]="400 + radius * 0.5 * 0.5 - 54"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+      <rect
+        [attr.x]="400 + radius * 0.5 * 0.866 - 40"
+        [attr.y]="400 - radius * 0.5 * 0.5 - 54"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
+      <rect
+        [attr.x]="400 - radius * 0.5 * 0.866 - 40"
+        [attr.y]="400 - radius * 0.5 * 0.5 - 54"
+        width="80"
+        height="108"
+        class="stroke-gray-400 fill-transparent"
+        rx="4"
+      />
     </svg>
   </div>
 </div>
