@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { WebsocketService } from './../../../../services/websocket.service';
 import { SessionEndMessage } from '../../../../types-websocket';
 import { Router } from '@angular/router';
+import { geneKeyTranslations } from '../../../../translations';
 
 interface ClientCard {
   sphereName: string;
@@ -47,7 +48,7 @@ export class SessionControlsComponent {
     return Object.entries(this.clientGenekeys)
       .filter(([key]) => key !== 'clientId')
       .map(([sphereName, cardNumber]) => ({
-        sphereName,
+        sphereName: geneKeyTranslations[sphereName] || sphereName,
         cardNumber,
       }));
   }
