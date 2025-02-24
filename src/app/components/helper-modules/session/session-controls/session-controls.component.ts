@@ -21,6 +21,7 @@ interface ClientCard {
 })
 export class SessionControlsComponent {
   clientGenekeys: { [key: string]: number } = {};
+  isFullscreen = false;
 
   constructor(
     private wsService: WebsocketService,
@@ -29,6 +30,17 @@ export class SessionControlsComponent {
     private clientsService: ClientsService
   ) {
     this.clientGenekeys = this.clientsService.clientGenekeys;
+    document.addEventListener('fullscreenchange', () => {
+      this.isFullscreen = !!document.fullscreenElement;
+    });
+  }
+
+  toggleFullscreen(): void {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
   }
 
   endSession(): void {
