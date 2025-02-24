@@ -22,6 +22,7 @@ interface ClientCard {
 export class SessionControlsComponent {
   clientGenekeys: { [key: string]: number } = {};
   isFullscreen = false;
+  onChart: number[] = [];
 
   constructor(
     private wsService: WebsocketService,
@@ -54,6 +55,20 @@ export class SessionControlsComponent {
       console.log('Received message:', message);
     });
     this.router.navigate(['dashboard']);
+  }
+
+  toggleCard(cardNumber: number): void {
+    const index = this.onChart.indexOf(cardNumber);
+    if (index === -1) {
+      this.onChart.push(cardNumber);
+    } else {
+      this.onChart.splice(index, 1);
+    }
+    console.log('Cards on chart:', this.onChart);
+  }
+
+  isCardSelected(cardNumber: number): boolean {
+    return this.onChart.includes(cardNumber);
   }
 
   get clientCards(): ClientCard[] {
