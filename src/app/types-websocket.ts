@@ -1,4 +1,4 @@
-import { onChart } from "./types";
+import { onChart } from './types';
 
 export interface SessionStartMessage {
   type: 'sessionStart';
@@ -21,5 +21,10 @@ export interface HeartbeatMessage {
 export interface UpdateOnChartMessage {
   type: 'updateOnChart';
   sessionId: string;
+  onChart: onChart;
+}
+
+export interface OnChartUpdateForwardMessage {
+  type: 'onChartUpdateForward';
   onChart: onChart;
 }
