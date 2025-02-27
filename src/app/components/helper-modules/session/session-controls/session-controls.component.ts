@@ -3,10 +3,12 @@ import { NgIf, CommonModule } from '@angular/common';
 import { AuthService } from './../../../../services/authentication.service';
 import { Component } from '@angular/core';
 import { WebsocketService } from './../../../../services/websocket.service';
-import { SessionEndMessage, UpdateOnChartMessage } from '../../../../types-websocket';
+import {
+  SessionEndMessage,
+  UpdateOnChartMessage,
+} from '../../../../types-websocket';
 import { Router } from '@angular/router';
 import { geneKeyTranslations } from '../../../../translations';
-import { DataSharingService } from '../../../../services/data-sharing.service';
 import { onChart } from '../../../../types';
 
 interface ClientCard {
@@ -31,8 +33,7 @@ export class SessionControlsComponent {
     private wsService: WebsocketService,
     public authService: AuthService,
     private router: Router,
-    private clientsService: ClientsService,
-    private dataSharingService: DataSharingService
+    private clientsService: ClientsService
   ) {
     this.clientGenekeys = this.clientsService.clientGenekeys;
     document.addEventListener('fullscreenchange', () => {
@@ -70,12 +71,11 @@ export class SessionControlsComponent {
     }
 
     this.onChart = newOnChart;
-    this.dataSharingService.updateOnChart(newOnChart);
 
     const message: UpdateOnChartMessage = {
       type: 'updateOnChart',
       onChart: this.onChart,
-      sessionId: this.authService.getUserId(),
+      sessionId: sessionStorage.getItem('sessionId') || '',
     };
     this.wsService.sendMessage(message);
   }

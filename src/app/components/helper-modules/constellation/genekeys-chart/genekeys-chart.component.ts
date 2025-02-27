@@ -1,7 +1,9 @@
-import { DataSharingService } from './../../../../services/data-sharing.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { onChart } from '../../../../types';
+import { WebsocketService } from '../../../../services/websocket.service';
+import { Subscription } from 'rxjs';
+import { UpdateOnChartMessage } from '../../../../types-websocket';
 
 @Component({
   selector: 'app-genekeys-chart',
@@ -10,7 +12,7 @@ import { onChart } from '../../../../types';
   standalone: true,
   imports: [CommonModule],
 })
-export class GenekeysChartComponent {
+export class GenekeysChartComponent implements OnInit, OnDestroy {
   private nameMapping: { [key: string]: string } = {
     lifesWork: 'Tennivalód az életben',
     evolution: 'Fejlődésed útja',
@@ -25,15 +27,38 @@ export class GenekeysChartComponent {
     sq: 'SQ',
   };
 
-  constructor(private dataSharingService: DataSharingService) {
-    this.dataSharingService.onChart$.subscribe(onChart => {
-      this.onChart = Object.entries(onChart).reduce((acc, [key, value]) => {
-        acc[this.nameMapping[key]] = value;
-        return acc;
-      }, {} as onChart);
-      this.renderCards();
-      console.log('Translated onChart:', this.onChart);
+  private wsSubscription: Subscription | null = null;
+
+  constructor(
+    private websocketService: WebsocketService
+  ) {
+
+  }
+
+  ngOnInit(): void {
+    this.wsSubscription = this.websocketService.getMessages().subscribe(message => {
+      if (message && typeof message === 'object' && 
+          'type' in message && message.type === 'updateOnChart' && 
+          'sessionId' in message && message.sessionId === this.sessionId &&
+          'onChart' in message) {
+        
+        const updateMessage = message as UpdateOnChartMessage;
+        console.log('Received updateOnChart message:', updateMessage);
+        
+        // Transform the onChart data with name mapping
+        this.onChart = Object.entries(updateMessage.onChart).reduce((acc, [key, value]) => {
+          acc[this.nameMapping[key]] = value;
+          return acc;
+        }, {} as onChart);
+        this.renderCards();
+      }
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.wsSubscription) {
+      this.wsSubscription.unsubscribe();
+    }
   }
 
   renderCards() {

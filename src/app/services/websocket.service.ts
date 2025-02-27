@@ -14,7 +14,10 @@ export class WebsocketService {
   constructor() {
     this.socket$ = this.connect();
     this.socket$.subscribe({
-      next: message => this.messagesSubject$.next(message),
+      next: message => {
+        console.log('Received message:', message);
+        this.messagesSubject$.next(message);
+      },
       error: error => console.error('WebSocket error:', error),
       complete: () => console.log('WebSocket connection closed'),
     });
