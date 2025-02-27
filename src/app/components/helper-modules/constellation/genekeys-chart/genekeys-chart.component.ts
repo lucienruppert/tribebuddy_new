@@ -93,28 +93,28 @@ export class GenekeysChartComponent {
     },
     {
       name: 'EQ',
-      x: 400 + 350 * 0.5 * 0.866 - 58,
+      x: 400 + 350 * 0.5 * 0.866 - 53, // Moved 5px right
       y: 400 + 350 * 0.5 * 0.5 - 78,
       width: 115,
       height: 156,
     },
     {
       name: 'IQ',
-      x: 400 - 350 * 0.5 * 0.866 - 58,
+      x: 400 - 350 * 0.5 * 0.866 - 53, // Moved 5px right
       y: 400 + 350 * 0.5 * 0.5 - 78,
       width: 115,
       height: 156,
     },
     {
       name: 'Kultúra',
-      x: 400 + 350 * 0.5 * 0.866 - 58,
+      x: 400 + 350 * 0.5 * 0.866 - 53, // Moved 5px right
       y: 400 - 350 * 0.5 * 0.5 - 78,
       width: 115,
       height: 156,
     },
     {
       name: 'Mag/Hivatás',
-      x: 400 - 350 * 0.5 * 0.866 - 58,
+      x: 400 - 350 * 0.5 * 0.866 - 53, // Moved 5px right
       y: 400 - 350 * 0.5 * 0.5 - 78,
       width: 115,
       height: 156,
