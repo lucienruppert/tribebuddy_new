@@ -17,6 +17,5 @@ export class DataSharingService {
   // Method to update the data
   updateOnChart(onChart: onChart): void {
     this.onChartSubject.next(onChart);
-    console.log('DataSharingService: Updated onChart data:', this.onChartSubject.value);
   }
 }

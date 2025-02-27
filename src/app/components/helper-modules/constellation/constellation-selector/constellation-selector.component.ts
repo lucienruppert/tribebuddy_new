@@ -200,7 +200,6 @@ export class ConstellationSelectorComponent implements OnInit {
                       autoFocus: false,
                     });
                   } else {
-                    console.log('STORED geneKeysData', response);
                     this.snackBar.showMessage(
                       `${this.clientsService.getClientName()} génkulcsai már szerepelnek a rendszerben.`
                     );
