@@ -51,14 +51,14 @@ export class GenekeysChartComponent {
     { name: 'SQ', x: 360 - 10, y: 345 - 13, width: 115, height: 156 },
     {
       name: 'Fejlődésed útja',
-      x: 400 + 350 - 58,
+      x: 400 + 350 - 53, // Moved additional 5px right
       y: 346 - 13,
       width: 115,
       height: 156,
     },
     {
       name: 'Ragyogásod',
-      x: 400 - 350 - 58,
+      x: 400 - 350 - 53, // Moved 5px right
       y: 346 - 13,
       width: 115,
       height: 156,
@@ -66,14 +66,14 @@ export class GenekeysChartComponent {
     {
       name: 'Tennivalód az életben',
       x: 360 - 10,
-      y: 400 - 350 - 61,
+      y: 400 - 350 - 51, // Moved additional 5px down
       width: 115,
       height: 156,
     },
     {
       name: 'Életcélod',
       x: 360 - 10,
-      y: 400 + 350 - 95,
+      y: 400 + 350 - 90, // Moved 5px down
       width: 115,
       height: 156,
     },
@@ -120,4 +120,24 @@ export class GenekeysChartComponent {
       height: 156,
     },
   ];
+
+  getCardStyle(
+    position: any,
+    cardElement: HTMLElement
+  ): { [key: string]: string } {
+    const actualWidth = cardElement.offsetWidth;
+    const actualHeight = cardElement.offsetHeight;
+
+    // Calculate centering offsets
+    const xOffset = (position.width - actualWidth) / 2;
+    const yOffset = (position.height - actualHeight) / 2;
+
+    return {
+      position: 'absolute',
+      left: `${position.x + xOffset}px`,
+      top: `${position.y + yOffset}px`,
+      width: 'auto',
+      height: 'auto',
+    };
+  }
 }
