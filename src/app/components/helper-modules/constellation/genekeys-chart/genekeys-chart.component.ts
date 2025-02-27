@@ -11,18 +11,18 @@ import { onChart } from '../../../../types';
   imports: [CommonModule],
 })
 export class GenekeysChartComponent {
-  private nameMapping: {[key: string]: string} = {
-    'lifesWork': 'Tennivalód az életben',
-    'evolution': 'Fejlődésed útja',
-    'radiance': 'Ragyogásod',
-    'purpose': 'Életcélod',
-    'pearl': 'Gyöngy',
-    'attraction': 'Vonzásmeződ',
-    'eq': 'EQ',
-    'iq': 'IQ',
-    'culture': 'Kultúra',
-    'vocation': 'Mag/Hivatás',
-    'sq': 'SQ'
+  private nameMapping: { [key: string]: string } = {
+    lifesWork: 'Tennivalód az életben',
+    evolution: 'Fejlődésed útja',
+    radiance: 'Ragyogásod',
+    purpose: 'Életcélod',
+    pearl: 'Gyöngy',
+    attraction: 'Vonzásmeződ',
+    eq: 'EQ',
+    iq: 'IQ',
+    culture: 'Kultúra',
+    vocation: 'Mag/Hivatás',
+    sq: 'SQ',
   };
 
   constructor(private dataSharingService: DataSharingService) {
@@ -48,32 +48,76 @@ export class GenekeysChartComponent {
   @Input() sessionId!: string;
 
   cardPositions = [
-    { name: 'SQ', x: 360, y: 345 },
-    { name: 'Fejlődésed útja', x: 400 + 350 - 40, y: 346 },
-    { name: 'Ragyogásod', x: 400 - 350 - 40, y: 346 },
-    { name: 'Tennivalód az életben', x: 360, y: 400 - 350 - 40 },
-    { name: 'Életcélod', x: 360, y: 400 + 350 - 68 },
-    { name: 'Gyöngy', x: 360, y: 400 - 350 * 0.5 - 54 },
-    { name: 'Vonzásmeződ', x: 360, y: 400 + 350 * 0.5 - 54 },
+    { name: 'SQ', x: 360 - 8, y: 345 - 11, width: 96, height: 130 },
+    {
+      name: 'Fejlődésed útja',
+      x: 400 + 350 - 48,
+      y: 346 - 11,
+      width: 96,
+      height: 130,
+    },
+    {
+      name: 'Ragyogásod',
+      x: 400 - 350 - 48,
+      y: 346 - 11,
+      width: 96,
+      height: 130,
+    },
+    {
+      name: 'Tennivalód az életben',
+      x: 360 - 8,
+      y: 400 - 350 - 51,
+      width: 96,
+      height: 130,
+    },
+    {
+      name: 'Életcélod',
+      x: 360 - 8,
+      y: 400 + 350 - 79,
+      width: 96,
+      height: 130,
+    },
+    {
+      name: 'Gyöngy',
+      x: 360 - 8,
+      y: 400 - 350 * 0.5 - 65,
+      width: 96,
+      height: 130,
+    },
+    {
+      name: 'Vonzásmeződ',
+      x: 360 - 8,
+      y: 400 + 350 * 0.5 - 65,
+      width: 96,
+      height: 130,
+    },
     {
       name: 'EQ',
-      x: 400 + 350 * 0.5 * 0.866 - 40,
-      y: 400 + 350 * 0.5 * 0.5 - 54,
+      x: 400 + 350 * 0.5 * 0.866 - 48,
+      y: 400 + 350 * 0.5 * 0.5 - 65,
+      width: 96,
+      height: 130,
     },
     {
       name: 'IQ',
-      x: 400 - 350 * 0.5 * 0.866 - 40,
-      y: 400 + 350 * 0.5 * 0.5 - 54,
+      x: 400 - 350 * 0.5 * 0.866 - 48,
+      y: 400 + 350 * 0.5 * 0.5 - 65,
+      width: 96,
+      height: 130,
     },
     {
       name: 'Kultúra',
-      x: 400 + 350 * 0.5 * 0.866 - 40,
-      y: 400 - 350 * 0.5 * 0.5 - 54,
+      x: 400 + 350 * 0.5 * 0.866 - 48,
+      y: 400 - 350 * 0.5 * 0.5 - 65,
+      width: 96,
+      height: 130,
     },
     {
       name: 'Mag/Hivatás',
-      x: 400 - 350 * 0.5 * 0.866 - 40,
-      y: 400 - 350 * 0.5 * 0.5 - 54,
+      x: 400 - 350 * 0.5 * 0.866 - 48,
+      y: 400 - 350 * 0.5 * 0.5 - 65,
+      width: 96,
+      height: 130,
     },
   ];
 }

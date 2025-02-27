@@ -70,6 +70,11 @@
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+
+        <!-- Rounded corners clip path -->
+        <clipPath id="roundedCorner">
+          <rect width="96" height="130" rx="8" ry="8" />
+        </clipPath>
       </defs>
 
       <!-- Outer circle rendered as small lines -->
@@ -562,19 +567,15 @@
       <!-- Card Images -->
       @for (position of cardPositions; track position.name) {
         @if (onChart[position.name]) {
-          <image
-            [attr.href]="
-              'https://tribebuddy.com/cards/wisdomKeepers/' +
-              onChart[position.name] +
-              '.jpg'
-            "
-            [attr.x]="position.x"
-            [attr.y]="position.y"
-            [attr.width]="80"
-            [attr.height]="108"
-            preserveAspectRatio="xMidYMid slice"
-            class="rounded-lg"
-          />
+          <g [attr.transform]="'translate(' + position.x + ',' + position.y + ')'">
+            <image
+              [attr.href]="'https://tribebuddy.com/cards/wisdomKeepers/' + onChart[position.name] + '.jpg'"
+              [attr.width]="position.width"
+              [attr.height]="position.height"
+              preserveAspectRatio="xMidYMid slice"
+              clip-path="url(#roundedCorner)"
+            />
+          </g>
         }
       }
     </svg>
