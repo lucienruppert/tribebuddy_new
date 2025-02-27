@@ -3,12 +3,10 @@ import { NgIf, CommonModule } from '@angular/common';
 import { AuthService } from './../../../../services/authentication.service';
 import { Component } from '@angular/core';
 import { WebsocketService } from './../../../../services/websocket.service';
-import { SessionEndMessage } from '../../../../types-websocket';
+import { SessionEndMessage, UpdateOnChartMessage } from '../../../../types-websocket';
 import { Router } from '@angular/router';
 import { geneKeyTranslations } from '../../../../translations';
-import {
-  DataSharingService
-} from '../../../../services/data-sharing.service';
+import { DataSharingService } from '../../../../services/data-sharing.service';
 import { onChart } from '../../../../types';
 
 interface ClientCard {
@@ -73,6 +71,13 @@ export class SessionControlsComponent {
 
     this.onChart = newOnChart;
     this.dataSharingService.updateOnChart(newOnChart);
+
+    const message: UpdateOnChartMessage = {
+      type: 'updateOnChart',
+      onChart: this.onChart,
+      sessionId: this.authService.getUserId(),
+    };
+    this.wsService.sendMessage(message);
   }
 
   isCardSelected(cardNumber: number, sphereName: string): boolean {

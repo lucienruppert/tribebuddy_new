@@ -1,3 +1,5 @@
+import { onChart } from "./types";
+
 export interface SessionStartMessage {
   type: 'sessionStart';
   sessionType: string;
@@ -14,4 +16,10 @@ export interface SessionEndMessage {
 export interface HeartbeatMessage {
   type: 'heartbeat';
   sessionIds: Array<string>;
+}
+
+export interface UpdateOnChartMessage {
+  type: 'updateOnChart';
+  sessionId: string;
+  onChart: onChart;
 }
