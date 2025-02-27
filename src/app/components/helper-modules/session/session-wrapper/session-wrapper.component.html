@@ -1,8 +1,10 @@
 <ng-container *ngIf="isSessionValid; else sessionEnded">
-  <app-session-controls
-    *ngIf="authService.isLoggedIn$.value"
-  ></app-session-controls>
-  <app-genekeys-chart [sessionId]="sessionId"></app-genekeys-chart>
+  <div class="flex justify-between w-full">
+    <app-session-controls
+      *ngIf="authService.isLoggedIn$.value"
+    ></app-session-controls>
+    <app-genekeys-chart [sessionId]="sessionId"></app-genekeys-chart>
+  </div>
 </ng-container>
 
 <ng-template #sessionEnded>
