@@ -12,7 +12,8 @@ import {
 } from '../../../../services/data-sharing.service';
 
 interface ClientCard {
-  sphereName: string;
+  sphereName: string; // Original English name
+  displayName: string; // Translated Hungarian name
   cardNumber: number;
 }
 
@@ -82,7 +83,8 @@ export class SessionControlsComponent {
     return Object.entries(this.clientGenekeys)
       .filter(([key]) => key !== 'clientId')
       .map(([sphereName, cardNumber]) => ({
-        sphereName: geneKeyTranslations[sphereName] || sphereName,
+        sphereName, // Original name for data operations
+        displayName: geneKeyTranslations[sphereName] || sphereName, // Translated name for display
         cardNumber,
       }));
   }
