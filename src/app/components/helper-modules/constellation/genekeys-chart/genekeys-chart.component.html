@@ -559,104 +559,24 @@
         Életcélod
       </text>
 
-      <!-- Card Placeholders -->
-      <!-- Center SQ -->
-      <rect
-        x="360"
-        y="345"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-
-      <!-- Outer positions -->
-      <rect
-        [attr.x]="400 + radius - 40"
-        y="346"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-      <rect
-        [attr.x]="400 - radius - 40"
-        y="346"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-      <!-- Top - sphere at top -->
-      <rect
-        x="360"
-        [attr.y]="400 - radius - 40"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-      <!-- Bottom - sphere at bottom -->
-      <rect
-        x="360"
-        [attr.y]="400 + radius - 68"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-
-      <!-- Middle ring -->
-      <rect
-        x="360"
-        [attr.y]="400 - radius * 0.5 - 54"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-      <rect
-        x="360"
-        [attr.y]="400 + radius * 0.5 - 54"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-
-      <!-- Diagonal positions -->
-      <rect
-        [attr.x]="400 + radius * 0.5 * 0.866 - 40"
-        [attr.y]="400 + radius * 0.5 * 0.5 - 54"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-      <rect
-        [attr.x]="400 - radius * 0.5 * 0.866 - 40"
-        [attr.y]="400 + radius * 0.5 * 0.5 - 54"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-      <rect
-        [attr.x]="400 + radius * 0.5 * 0.866 - 40"
-        [attr.y]="400 - radius * 0.5 * 0.5 - 54"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
-      <rect
-        [attr.x]="400 - radius * 0.5 * 0.866 - 40"
-        [attr.y]="400 - radius * 0.5 * 0.5 - 54"
-        width="80"
-        height="108"
-        class="stroke-gray-400 fill-transparent"
-        rx="4"
-      />
+      <!-- Card Images -->
+      @for (position of cardPositions; track position.name) {
+        @if (onChart[position.name]) {
+          <image
+            [attr.href]="
+              'https://tribebuddy.com/cards/wisdomKeepers/' +
+              onChart[position.name] +
+              '.jpg'
+            "
+            [attr.x]="position.x"
+            [attr.y]="position.y"
+            [attr.width]="80"
+            [attr.height]="108"
+            preserveAspectRatio="xMidYMid slice"
+            class="rounded-lg"
+          />
+        }
+      }
     </svg>
   </div>
 </div>
