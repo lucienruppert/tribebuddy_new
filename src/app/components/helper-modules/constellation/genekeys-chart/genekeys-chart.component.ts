@@ -13,5 +13,5 @@ export class GenekeysChartComponent {
   radius = 350;
   outerCircleLines = Array(72).fill(0);
   Math = Math;
-  @Input() sessionId!: number;
+  @Input() sessionId!: string;
 }

@@ -90,9 +90,14 @@ export class AuthService {
   private logoutOnClient(): void {
     this.isLoggedIn$.next(false);
     this.userRole$.next('');
-    ['userEmail', 'userName', 'userId', 'clientId', 'clientName', 'sessionId'].forEach(key =>
-      sessionStorage.removeItem(key)
-    );
+    [
+      'userEmail',
+      'userName',
+      'userId',
+      'clientId',
+      'clientName',
+      'sessionId',
+    ].forEach(key => sessionStorage.removeItem(key));
   }
 
   private async logoutOnServer(): Promise<void> {
@@ -110,9 +115,5 @@ export class AuthService {
 
   public getUserId(): string {
     return sessionStorage.getItem('userId')!;
-  }
-
-  public getSessionId(): string {
-    return sessionStorage.getItem('sessionId')!;
   }
 }

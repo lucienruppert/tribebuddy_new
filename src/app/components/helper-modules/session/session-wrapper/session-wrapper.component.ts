@@ -19,7 +19,7 @@ import { filter } from 'rxjs';
   standalone: true,
 })
 export class SessionWrapperComponent {
-  sessionId: number;
+  sessionId: string;
   isSessionValid = true;
 
   constructor(
@@ -28,14 +28,14 @@ export class SessionWrapperComponent {
     public authService: AuthService,
     private router: Router
   ) {
-    this.sessionId = parseInt(this.route.snapshot.params['sessionId']);
+    this.sessionId = this.route.snapshot.params['sessionId'];
 
     if (!this.authService.isLoggedIn$.value) {
       this.wsService.messages$
         .pipe(filter(msg => msg.type === 'heartbeat'))
         .subscribe((message: HeartbeatMessage) => {
           this.isSessionValid = message.sessionIds.includes(
-            this.sessionId.toString()
+            this.sessionId
           );
 
           if (!this.isSessionValid) {
@@ -44,15 +44,15 @@ export class SessionWrapperComponent {
             }, 5000);
           }
         });
-    } else {
-      const message: SessionStartMessage = {
-        type: 'sessionStart',
-        sessionType: 'constellation',
-        constellation: 'geneKeys',
-        email: this.authService.getUserEmail(),
-        sessionId: this.authService.getSessionId(),
-      };
-      this.wsService.sendMessage(message);
     }
+
+    const message: SessionStartMessage = {
+      type: 'sessionStart',
+      sessionType: 'constellation',
+      constellation: 'geneKeys',
+      email: this.authService.getUserEmail(),
+      sessionId: this.sessionId,
+    };
+    this.wsService.sendMessage(message);
   }
 }
