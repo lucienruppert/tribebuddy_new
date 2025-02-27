@@ -6,7 +6,10 @@ import { WebsocketService } from './../../../../services/websocket.service';
 import { SessionEndMessage } from '../../../../types-websocket';
 import { Router } from '@angular/router';
 import { geneKeyTranslations } from '../../../../translations';
-import { DataSharingService } from '../../../../services/data-sharing.service';
+import {
+  DataSharingService,
+  onChart,
+} from '../../../../services/data-sharing.service';
 
 interface ClientCard {
   sphereName: string;
@@ -23,7 +26,7 @@ interface ClientCard {
 export class SessionControlsComponent {
   clientGenekeys: { [key: string]: number } = {};
   isFullscreen = false;
-  onChart: number[] = [];
+  onChart: onChart = {};
 
   constructor(
     private wsService: WebsocketService,
@@ -60,17 +63,23 @@ export class SessionControlsComponent {
   }
 
   toggleCard(cardNumber: number): void {
-    const index = this.onChart.indexOf(cardNumber);
-    if (index === -1) {
-      this.onChart.push(cardNumber);
+    const sphereName = Object.keys(this.clientGenekeys).find(
+      key => this.clientGenekeys[key] === cardNumber && key !== 'clientId'
+    );
+
+    if (!sphereName) return;
+
+    if (this.onChart[sphereName]) {
+      const { [sphereName]: removed, ...rest } = this.onChart;
+      this.onChart = rest;
     } else {
-      this.onChart.splice(index, 1);
+      this.onChart = { ...this.onChart, [sphereName]: cardNumber };
     }
     this.dataSharingService.updateOnChart(this.onChart);
   }
 
   isCardSelected(cardNumber: number): boolean {
-    return this.onChart.includes(cardNumber);
+    return Object.values(this.onChart).includes(cardNumber);
   }
 
   get clientCards(): ClientCard[] {
