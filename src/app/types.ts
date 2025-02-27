@@ -76,3 +76,7 @@ export interface GeneKeysData {
   id: number;
   [key: string]: number;
 }
+
+export interface onChart {
+  [key: string]: number;
+}

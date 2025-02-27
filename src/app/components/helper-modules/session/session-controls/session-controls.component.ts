@@ -7,9 +7,9 @@ import { SessionEndMessage } from '../../../../types-websocket';
 import { Router } from '@angular/router';
 import { geneKeyTranslations } from '../../../../translations';
 import {
-  DataSharingService,
-  onChart,
+  DataSharingService
 } from '../../../../services/data-sharing.service';
+import { onChart } from '../../../../types';
 
 interface ClientCard {
   sphereName: string; // Original English name

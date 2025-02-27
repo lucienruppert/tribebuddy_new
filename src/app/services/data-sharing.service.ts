@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
-// Define interface for chart data
-export interface onChart {
-  [key: string]: number;
-}
+import { onChart } from '../types';
 
 @Injectable({
   providedIn: 'root', // Make the service available application-wide

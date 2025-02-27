@@ -1,6 +1,7 @@
 import { DataSharingService } from './../../../../services/data-sharing.service';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { onChart } from '../../../../types';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class GenekeysChartComponent {
       console.log(this.onChart);
     });
   }
-  onChart = {};
+  onChart: onChart = {};
   radius = 350;
   outerCircleLines = Array(72).fill(0);
   Math = Math;
