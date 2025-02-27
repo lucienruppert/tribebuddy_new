@@ -20,26 +20,37 @@
   <div class="w-[min(75vh,75vw)]">
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
       @for (card of clientCards; track card.sphereName) {
-        <div
-          (click)="toggleCard(card.cardNumber, card.sphereName)"
-          class="aspect-[2/2.7] relative cursor-pointer"
-          [class.opacity-50]="isCardSelected(card.cardNumber, card.sphereName)"
-        >
-          <img
-            [src]="
-              'https://tribebuddy.com/cards/wisdomKeepers/' +
-              card.cardNumber +
-              '.jpg'
-            "
-            [alt]="'Card ' + card.cardNumber"
-            class="w-full h-full object-cover rounded-lg"
+        <div class="relative aspect-[2/2.7]">
+          <div
+            class="absolute inset-0"
             [class.border-4]="isCardSelected(card.cardNumber, card.sphereName)"
             [class.border-blue-500]="
               isCardSelected(card.cardNumber, card.sphereName)
             "
-          />
+            [class.rounded-lg]="
+              isCardSelected(card.cardNumber, card.sphereName)
+            "
+          >
+            <div
+              (click)="toggleCard(card.cardNumber, card.sphereName)"
+              class="h-full cursor-pointer"
+              [class.opacity-50]="
+                isCardSelected(card.cardNumber, card.sphereName)
+              "
+            >
+              <img
+                [src]="
+                  'https://tribebuddy.com/cards/wisdomKeepers/' +
+                  card.cardNumber +
+                  '.jpg'
+                "
+                [alt]="'Card ' + card.cardNumber"
+                class="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          </div>
           <span
-            class="absolute bottom-1 left-1 text-yellow-300 font-semibold text-sm drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
+            class="absolute bottom-2 left-2 text-yellow-300 font-semibold text-sm drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
           >
             {{ card.displayName }}
           </span>
