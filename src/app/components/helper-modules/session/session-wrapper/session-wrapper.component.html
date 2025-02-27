@@ -1,5 +1,11 @@
 <ng-container *ngIf="isSessionValid; else sessionEnded">
-  <div class="flex justify-between w-full">
+  <div
+    [class]="
+      authService.isLoggedIn$.value
+        ? 'flex justify-between w-full'
+        : 'flex justify-center w-full'
+    "
+  >
     <app-session-controls
       *ngIf="authService.isLoggedIn$.value"
     ></app-session-controls>
