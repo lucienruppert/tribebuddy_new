@@ -50,7 +50,6 @@ export class SessionControlsComponent {
   }
 
   endSession(): void {
-    console.log('Ending session');
     const message: SessionEndMessage = {
       type: 'sessionEnd',
       email: this.authService.getUserEmail(),
@@ -62,24 +61,21 @@ export class SessionControlsComponent {
     this.router.navigate(['dashboard']);
   }
 
-  toggleCard(cardNumber: number): void {
-    const sphereName = Object.keys(this.clientGenekeys).find(
-      key => this.clientGenekeys[key] === cardNumber && key !== 'clientId'
-    );
+  toggleCard(cardNumber: number, sphereName: string): void {
+    const newOnChart = { ...this.onChart };
 
-    if (!sphereName) return;
-
-    if (this.onChart[sphereName]) {
-      const { [sphereName]: removed, ...rest } = this.onChart;
-      this.onChart = rest;
+    if (newOnChart[sphereName]) {
+      delete newOnChart[sphereName];
     } else {
-      this.onChart = { ...this.onChart, [sphereName]: cardNumber };
+      newOnChart[sphereName] = cardNumber;
     }
-    this.dataSharingService.updateOnChart(this.onChart);
+
+    this.onChart = newOnChart;
+    this.dataSharingService.updateOnChart(newOnChart);
   }
 
-  isCardSelected(cardNumber: number): boolean {
-    return Object.values(this.onChart).includes(cardNumber);
+  isCardSelected(cardNumber: number, sphereName: string): boolean {
+    return this.onChart[sphereName] === cardNumber;
   }
 
   get clientCards(): ClientCard[] {

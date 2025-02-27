@@ -21,9 +21,9 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
       @for (card of clientCards; track card.sphereName) {
         <div
-          (click)="toggleCard(card.cardNumber)"
+          (click)="toggleCard(card.cardNumber, card.sphereName)"
           class="aspect-[2/2.7] relative cursor-pointer"
-          [class.opacity-50]="isCardSelected(card.cardNumber)"
+          [class.opacity-50]="isCardSelected(card.cardNumber, card.sphereName)"
         >
           <img
             [src]="
@@ -33,8 +33,10 @@
             "
             [alt]="'Card ' + card.cardNumber"
             class="w-full h-full object-cover rounded-lg"
-            [class.border-4]="isCardSelected(card.cardNumber)"
-            [class.border-blue-500]="isCardSelected(card.cardNumber)"
+            [class.border-4]="isCardSelected(card.cardNumber, card.sphereName)"
+            [class.border-blue-500]="
+              isCardSelected(card.cardNumber, card.sphereName)
+            "
           />
           <span
             class="absolute bottom-1 left-1 text-yellow-300 font-semibold text-sm drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]"
