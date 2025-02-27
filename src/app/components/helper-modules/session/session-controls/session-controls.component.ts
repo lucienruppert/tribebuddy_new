@@ -6,6 +6,7 @@ import { WebsocketService } from './../../../../services/websocket.service';
 import { SessionEndMessage } from '../../../../types-websocket';
 import { Router } from '@angular/router';
 import { geneKeyTranslations } from '../../../../translations';
+import { DataSharingService } from '../../../../services/data-sharing.service';
 
 interface ClientCard {
   sphereName: string;
@@ -28,7 +29,8 @@ export class SessionControlsComponent {
     private wsService: WebsocketService,
     public authService: AuthService,
     private router: Router,
-    private clientsService: ClientsService
+    private clientsService: ClientsService,
+    private dataSharingService: DataSharingService
   ) {
     this.clientGenekeys = this.clientsService.clientGenekeys;
     document.addEventListener('fullscreenchange', () => {
@@ -64,7 +66,7 @@ export class SessionControlsComponent {
     } else {
       this.onChart.splice(index, 1);
     }
-    console.log('Cards on chart:', this.onChart);
+    this.dataSharingService.updateOnChart(this.onChart);
   }
 
   isCardSelected(cardNumber: number): boolean {
