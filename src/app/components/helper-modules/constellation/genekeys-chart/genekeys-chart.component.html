@@ -71,10 +71,17 @@
           </feMerge>
         </filter>
 
-        <!-- Rounded corners clip path -->
-        <clipPath id="roundedCorner">
-          <rect width="96" height="130" rx="8" ry="8" />
-        </clipPath>
+        <!-- Rounded corners clip path - one for each card position -->
+        @for (position of cardPositions; track position.name) {
+          <clipPath [attr.id]="'clipPath-' + position.name">
+            <rect
+              [attr.width]="position.width"
+              [attr.height]="position.height"
+              rx="8"
+              ry="8"
+            />
+          </clipPath>
+        }
       </defs>
 
       <!-- Outer circle rendered as small lines -->
@@ -571,19 +578,23 @@
             [attr.transform]="
               'translate(' + position.x + ',' + position.y + ')'
             "
+            [attr.clip-path]="'url(#clipPath-' + position.name + ')'"
           >
+            <!-- The card image -->
             <image
               [attr.href]="
                 'https://tribebuddy.com/cards/wisdomKeepers/' +
                 onChart[position.name] +
                 '.jpg'
               "
+              x="0"
+              y="0"
               [attr.width]="position.width"
               [attr.height]="position.height"
               preserveAspectRatio="xMidYMid slice"
-              clip-path="url(#roundedCorner)"
             />
-            <!-- Removed border radius (rx) from the background rectangle -->
+
+            <!-- Text background -->
             <rect
               x="0"
               [attr.y]="position.height - 24"
@@ -591,6 +602,8 @@
               height="24"
               fill="rgba(0,0,0,0.7)"
             />
+
+            <!-- Text overlay -->
             <text
               [attr.x]="position.width / 2"
               [attr.y]="position.height - 8"
