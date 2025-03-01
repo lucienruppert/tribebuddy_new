@@ -589,21 +589,38 @@
               <!-- Text background inside the clip path -->
               <rect
                 x="0"
-                y="106"
+                [attr.y]="
+                  position.name === 'Tennivalód az életben' ? '90' : '106'
+                "
                 width="96"
-                height="24"
+                [attr.height]="
+                  position.name === 'Tennivalód az életben' ? '40' : '24'
+                "
                 fill="rgba(0,0,0,0.7)"
               />
 
               <!-- Text overlay also inside clip path -->
               <text
                 x="48"
-                y="122"
+                [attr.y]="
+                  position.name === 'Tennivalód az életben' ? '110' : '122'
+                "
                 class="text-sm font-medium fill-white"
                 text-anchor="middle"
                 dominant-baseline="middle"
               >
-                {{ position.name }}
+                <ng-container
+                  *ngIf="
+                    position.name === 'Tennivalód az életben';
+                    else normalText
+                  "
+                >
+                  <tspan x="48" dy="-0.5em">Tennivalód</tspan>
+                  <tspan x="48" dy="1.2em">az életben</tspan>
+                </ng-container>
+                <ng-template #normalText>
+                  {{ position.name }}
+                </ng-template>
               </text>
             </g>
           </g>
