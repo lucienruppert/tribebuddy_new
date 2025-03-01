@@ -4,8 +4,7 @@ import { onChart } from '../../../../types';
 import { WebsocketService } from '../../../../services/websocket.service';
 import { Subscription } from 'rxjs';
 import {
-  OnChartUpdateForwardMessage,
-  UpdateOnChartMessage,
+  OnChartUpdateForwardMessage
 } from '../../../../types-websocket';
 
 @Component({
@@ -91,14 +90,14 @@ export class GenekeysChartComponent implements OnInit, OnDestroy {
     {
       name: 'Tennivalód az életben',
       x: 360 - 10,
-      y: 400 - 350 - 51, // Moved additional 5px down
+      y: 400 - 350 - 51, 
       width: 92,
       height: 125,
     },
     {
       name: 'Életcélod',
       x: 360 - 10,
-      y: 400 + 350 - 90, // Moved 5px down
+      y: 400 + 350 - 80,
       width: 92,
       height: 125,
     },
@@ -118,28 +117,28 @@ export class GenekeysChartComponent implements OnInit, OnDestroy {
     },
     {
       name: 'EQ',
-      x: 400 + 350 * 0.5 * 0.866 - 53, // Moved 5px right
+      x: 400 + 350 * 0.5 * 0.866 - 53, 
       y: 400 + 350 * 0.5 * 0.5 - 78,
       width: 92,
       height: 125,
     },
     {
       name: 'IQ',
-      x: 400 - 350 * 0.5 * 0.866 - 53, // Moved 5px right
+      x: 400 - 350 * 0.5 * 0.866 - 53, 
       y: 400 + 350 * 0.5 * 0.5 - 78,
       width: 92,
       height: 125,
     },
     {
       name: 'Kultúra',
-      x: 400 + 350 * 0.5 * 0.866 - 53, // Moved 5px right
+      x: 400 + 350 * 0.5 * 0.866 - 53, 
       y: 400 - 350 * 0.5 * 0.5 - 78,
       width: 92,
       height: 125,
     },
     {
       name: 'Mag/Hivatás',
-      x: 400 - 350 * 0.5 * 0.866 - 53, // Moved 5px right
+      x: 400 - 350 * 0.5 * 0.866 - 53,
       y: 400 - 350 * 0.5 * 0.5 - 78,
       width: 92,
       height: 125,
