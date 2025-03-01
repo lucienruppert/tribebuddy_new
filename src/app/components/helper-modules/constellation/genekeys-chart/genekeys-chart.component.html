@@ -567,14 +567,39 @@
       <!-- Card Images -->
       @for (position of cardPositions; track position.name) {
         @if (onChart[position.name]) {
-          <g [attr.transform]="'translate(' + position.x + ',' + position.y + ')'">
+          <g
+            [attr.transform]="
+              'translate(' + position.x + ',' + position.y + ')'
+            "
+          >
             <image
-              [attr.href]="'https://tribebuddy.com/cards/wisdomKeepers/' + onChart[position.name] + '.jpg'"
+              [attr.href]="
+                'https://tribebuddy.com/cards/wisdomKeepers/' +
+                onChart[position.name] +
+                '.jpg'
+              "
               [attr.width]="position.width"
               [attr.height]="position.height"
               preserveAspectRatio="xMidYMid slice"
               clip-path="url(#roundedCorner)"
             />
+            <!-- Removed border radius (rx) from the background rectangle -->
+            <rect
+              x="0"
+              [attr.y]="position.height - 24"
+              [attr.width]="position.width"
+              height="24"
+              fill="rgba(0,0,0,0.7)"
+            />
+            <text
+              [attr.x]="position.width / 2"
+              [attr.y]="position.height - 8"
+              class="text-sm font-medium fill-white"
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              {{ position.name }}
+            </text>
           </g>
         }
       }
