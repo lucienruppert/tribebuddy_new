@@ -71,17 +71,10 @@
           </feMerge>
         </filter>
 
-        <!-- Rounded corners clip path - one for each card position -->
-        @for (position of cardPositions; track position.name) {
-          <clipPath [attr.id]="'clipPath-' + position.name">
-            <rect
-              [attr.width]="position.width"
-              [attr.height]="position.height"
-              rx="8"
-              ry="8"
-            />
-          </clipPath>
-        }
+        <!-- Simplified single clip path with explicit viewBox -->
+        <clipPath id="roundedCardCorners">
+          <rect width="96" height="130" rx="8" ry="8" />
+        </clipPath>
       </defs>
 
       <!-- Outer circle rendered as small lines -->
@@ -574,45 +567,46 @@
       <!-- Card Images -->
       @for (position of cardPositions; track position.name) {
         @if (onChart[position.name]) {
+          <!-- Wrapper group with translation -->
           <g
             [attr.transform]="
               'translate(' + position.x + ',' + position.y + ')'
             "
-            [attr.clip-path]="'url(#clipPath-' + position.name + ')'"
           >
-            <!-- The card image -->
-            <image
-              [attr.href]="
-                'https://tribebuddy.com/cards/wisdomKeepers/' +
-                onChart[position.name] +
-                '.jpg'
-              "
-              x="0"
-              y="0"
-              [attr.width]="position.width"
-              [attr.height]="position.height"
-              preserveAspectRatio="xMidYMid slice"
-            />
+            <!-- Create a masked group for all card content -->
+            <g clip-path="url(#roundedCardCorners)">
+              <!-- The card image -->
+              <image
+                [attr.href]="
+                  'https://tribebuddy.com/cards/wisdomKeepers/' +
+                  onChart[position.name] +
+                  '.jpg'
+                "
+                width="96"
+                height="130"
+                preserveAspectRatio="xMidYMid slice"
+              />
 
-            <!-- Text background -->
-            <rect
-              x="0"
-              [attr.y]="position.height - 24"
-              [attr.width]="position.width"
-              height="24"
-              fill="rgba(0,0,0,0.7)"
-            />
+              <!-- Text background inside the clip path -->
+              <rect
+                x="0"
+                y="106"
+                width="96"
+                height="24"
+                fill="rgba(0,0,0,0.7)"
+              />
 
-            <!-- Text overlay -->
-            <text
-              [attr.x]="position.width / 2"
-              [attr.y]="position.height - 8"
-              class="text-sm font-medium fill-white"
-              text-anchor="middle"
-              dominant-baseline="middle"
-            >
-              {{ position.name }}
-            </text>
+              <!-- Text overlay also inside clip path -->
+              <text
+                x="48"
+                y="122"
+                class="text-sm font-medium fill-white"
+                text-anchor="middle"
+                dominant-baseline="middle"
+              >
+                {{ position.name }}
+              </text>
+            </g>
           </g>
         }
       }
